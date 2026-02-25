@@ -1,0 +1,47 @@
+# Databricks SDK
+databricks-sdk>=0.20.0
+databricks-connect>=14.0.0
+
+# LangChain
+langchain>=0.3.0
+langchain-community>=0.3.0
+langchain-openai>=0.2.0
+
+# Vector Search & Embeddings
+sentence-transformers>=2.2.0
+faiss-cpu>=1.7.4
+
+# PDF Processing
+PyPDF2>=3.0.0
+pypdf>=3.17.0
+pdfplumber>=0.10.0
+
+# Document Processing
+python-docx>=1.1.0
+openpyxl>=3.1.0
+
+# Voice Processing
+openai-whisper>=20231117
+SpeechRecognition>=3.10.0
+pyaudio>=0.2.13
+gTTS>=2.4.0
+pydub>=0.25.1
+
+# Web Framework
+streamlit>=1.28.0
+gradio>=4.0.0
+
+# Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Utilities
+python-dotenv>=1.0.0
+pyyaml>=6.0
+requests>=2.31.0
+tqdm>=4.66.0
+
+# Development
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.1.0
