@@ -93,26 +93,103 @@ class SpeechToText:
         Returns:
             인식된 텍스트
         """
+        import os
+        import tempfile
+
         try:
             import speech_recognition as sr
+            from pydub import AudioSegment
 
+            logger.info(f"Processing audio file: {audio_file}")
+
+            # Check file exists and size
+            if not os.path.exists(audio_file):
+                logger.error(f"Audio file not found: {audio_file}")
+                return None
+
+            file_size = os.path.getsize(audio_file)
+            logger.info(f"Audio file size: {file_size} bytes")
+
+            if file_size < 100:  # Too small
+                logger.error("Audio file too small")
+                return None
+
+            # Convert to WAV format using pydub
+            # This handles WebM, OGG, and other formats
+            try:
+                logger.info("Converting audio to WAV format...")
+                audio_segment = AudioSegment.from_file(audio_file)
+
+                # Export as WAV
+                wav_file = tempfile.NamedTemporaryFile(delete=False, suffix=".wav")
+                wav_path = wav_file.name
+                wav_file.close()
+
+                audio_segment.export(
+                    wav_path,
+                    format="wav",
+                    parameters=["-ar", "16000", "-ac", "1"]  # 16kHz, mono
+                )
+
+                logger.info(f"Converted to WAV: {wav_path}")
+
+            except Exception as conv_error:
+                logger.error(f"Audio conversion failed: {conv_error}")
+                # Try to use original file
+                wav_path = audio_file
+
+            # Speech recognition
             recognizer = sr.Recognizer()
 
+            # Adjust for ambient noise and energy threshold
+            recognizer.energy_threshold = 300
+            recognizer.dynamic_energy_threshold = True
+
             # Load audio file
-            with sr.AudioFile(audio_file) as source:
-                audio = recognizer.record(source)
+            try:
+                with sr.AudioFile(wav_path) as source:
+                    # Adjust for ambient noise
+                    recognizer.adjust_for_ambient_noise(source, duration=0.5)
 
-            # Recognize
-            text = recognizer.recognize_google(
-                audio,
-                language=self.language
-            )
+                    # Record audio
+                    audio = recognizer.record(source)
 
-            logger.info(f"Google STT recognized: '{text}'")
-            return text
+                    logger.info(f"Audio recorded, duration: ~{len(audio.frame_data) / (audio.sample_rate * audio.sample_width)} seconds")
+
+            except Exception as read_error:
+                logger.error(f"Failed to read audio file: {read_error}")
+                # Clean up temp file
+                if wav_path != audio_file and os.path.exists(wav_path):
+                    os.unlink(wav_path)
+                return None
+
+            # Recognize with timeout
+            try:
+                logger.info("Calling Google Speech Recognition API...")
+                text = recognizer.recognize_google(
+                    audio,
+                    language=self.language
+                )
+
+                logger.info(f"Google STT recognized: '{text}'")
+
+                # Clean up temp WAV file
+                if wav_path != audio_file and os.path.exists(wav_path):
+                    os.unlink(wav_path)
+
+                return text
+
+            except sr.UnknownValueError:
+                logger.warning("Google Speech Recognition could not understand audio")
+                return None
+            except sr.RequestError as e:
+                logger.error(f"Google Speech Recognition service error: {e}")
+                return None
 
         except Exception as e:
             logger.error(f"Google STT recognition failed: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
             return None
 
     def recognize_from_microphone(self, duration: int = 5) -> Optional[str]:

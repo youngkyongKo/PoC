@@ -2,6 +2,37 @@
 
 Databricks 플랫폼을 활용한 음성 기반 RAG Agent 시스템
 
+> **현재 상태 (2025-02-25):** Phase 1 완료 - 음성 인터페이스 테스트 환경 구축 완료
+> 상세 진행 상황은 [README_PROGRESS.md](README_PROGRESS.md) 참고
+
+## 🚀 빠른 시작 (현재 가능한 기능)
+
+### 음성 인터페이스 테스트하기
+
+```bash
+# 1. 가상환경 활성화
+source venv/bin/activate
+
+# 2. Streamlit 앱 실행
+streamlit run 3_voice_app/app_simple.py
+
+# 또는 CLI에서 테스트
+python test_voice_flow.py
+```
+
+**현재 동작하는 기능:**
+- 🎤 음성 입력 → 텍스트 변환 (Google Speech Recognition)
+- 🤖 Dummy Agent 처리 (테스트용)
+- 🔊 답변 음성 출력 (gTTS)
+- 💬 텍스트 입력 (음성 대신 타이핑 가능)
+- 📝 대화 기록 표시 및 오디오 재생
+
+**필수 사항:**
+- FFmpeg 설치: `brew install ffmpeg`
+- 인터넷 연결 (STT/TTS API 사용)
+
+---
+
 ## 프로젝트 구성
 
 ### 1. RAG 파이프라인 (`1_rag_pipeline/`)
@@ -90,12 +121,27 @@ NH_voice_agent/
 
 ## 개발 로드맵
 
+### Phase 1: 음성 인터페이스 (완료 ✅)
 - [x] 프로젝트 구조 생성
-- [ ] RAG 파이프라인 구현
-- [ ] Agent 툴 개발
-- [ ] Supervisor Agent 통합
-- [ ] 음성 인터페이스 구현
-- [ ] 통합 테스트 및 데모
+- [x] 음성 입력 (STT) 구현
+- [x] 음성 출력 (TTS) 구현
+- [x] Streamlit UI 구현
+- [x] Dummy Agent 테스트 환경
+
+### Phase 2: RAG Pipeline (진행 예정)
+- [ ] PDF 파싱 및 청킹
+- [ ] Vector Search 인덱스 생성
+- [ ] DLT 파이프라인 구현
+
+### Phase 3: Agent System (진행 예정)
+- [ ] Vector Search Tool 개발
+- [ ] Genie Space Tool 개발
+- [ ] LangChain Supervisor Agent 통합
+
+### Phase 4: 통합 및 배포 (진행 예정)
+- [ ] Voice App ↔ Real Agent 연동
+- [ ] Databricks Workspace 배포
+- [ ] 성능 최적화
 
 ## 라이선스
 
