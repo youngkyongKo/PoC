@@ -45,6 +45,9 @@ if "last_audio_bytes" not in st.session_state:
 if "audio_responses" not in st.session_state:
     st.session_state.audio_responses = {}
 
+if "recognized_text" not in st.session_state:
+    st.session_state.recognized_text = ""
+
 
 def initialize_agent():
     """Agent 초기화"""
@@ -156,6 +159,7 @@ def main():
             st.session_state.messages = []
             st.session_state.last_audio_bytes = None
             st.session_state.audio_responses = {}
+            st.session_state.recognized_text = ""
             st.success("대화 기록이 초기화되었습니다")
             st.rerun()
 
@@ -215,43 +219,12 @@ def main():
                 text = None
 
             if text:
-                st.success(f"인식된 텍스트: {text}")
+                st.success(f"✅ 인식된 텍스트: {text}")
 
-                # Add user message
-                st.session_state.messages.append({
-                    "role": "user",
-                    "content": text
-                })
+                # Store recognized text in session state
+                st.session_state.recognized_text = text
 
-                # Get agent response
-                with st.spinner("답변 생성 중..."):
-                    result = st.session_state.agent.query(text)
-                    answer = result.get("answer", "")
-
-                # Synthesize response first (before adding to messages)
-                with st.spinner("음성 생성 중..."):
-                    audio_file = synthesize_response(answer)
-
-                # Store audio data if synthesis succeeded
-                audio_data = None
-                if audio_file:
-                    with open(audio_file, "rb") as f:
-                        audio_data = f.read()
-                    # Clean up temp file
-                    Path(audio_file).unlink()
-
-                # Add assistant message
-                st.session_state.messages.append({
-                    "role": "assistant",
-                    "content": answer
-                })
-
-                # Store audio for this message
-                if audio_data:
-                    message_idx = len(st.session_state.messages) - 1
-                    st.session_state.audio_responses[message_idx] = audio_data
-
-                # Rerun to update chat
+                # Rerun to show in text input
                 st.rerun()
 
             elif audio_bytes != st.session_state.last_audio_bytes:
@@ -267,9 +240,27 @@ def main():
 
     # Text input (alternative to voice)
     st.divider()
-    st.subheader("텍스트 입력")
+    st.subheader("텍스트 입력 (수정 가능)")
 
-    if prompt := st.chat_input("여기에 질문을 입력하세요"):
+    # Text input with recognized text pre-filled using form
+    with st.form("input_form", clear_on_submit=True):
+        col_text, col_button = st.columns([4, 1])
+
+        with col_text:
+            prompt = st.text_input(
+                "질문을 입력하거나 수정하세요",
+                value=st.session_state.recognized_text,
+                label_visibility="collapsed"
+            )
+
+        with col_button:
+            send_button = st.form_submit_button("전송", type="primary", use_container_width=True)
+
+    # Process when send button is clicked
+    if send_button and prompt:
+        # Clear recognized text
+        st.session_state.recognized_text = ""
+
         # Add user message
         st.session_state.messages.append({
             "role": "user",
