@@ -63,6 +63,9 @@ data/processed/*.csv
 # Databricks
 .databricks/
 
+# Claude Code
+.claude/
+
 # Testing
 .pytest_cache/
 .coverage
