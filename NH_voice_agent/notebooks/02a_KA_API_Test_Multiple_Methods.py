@@ -248,75 +248,39 @@ except Exception as e:
 # COMMAND ----------
 
 print("=" * 80)
-print("📌 방법 3: Databricks SDK (권장)")
+print("📌 방법 3: Databricks SDK")
 print("=" * 80)
 print()
 
+print("⚠️  Databricks SDK의 query() 메서드는 KA endpoint와 호환되지 않습니다.")
+print()
+print("이유:")
+print("- SDK는 'messages' 필드를 사용")
+print("- KA endpoint는 'input' 필드를 요구")
+print("- SDK가 KA용으로 업데이트될 때까지 방법 1 또는 2 사용 권장")
+print()
+print("✅ 권장: 방법 1 (Standard API) 또는 방법 2 (OpenAI Compatible)")
+print()
+
+# 참고: 향후 SDK가 업데이트되면 아래 코드 사용 가능
+"""
 from databricks.sdk import WorkspaceClient
 from databricks.sdk.service.serving import ChatMessage, ChatMessageRole
 
 client = WorkspaceClient()
 
-print(f"SDK Endpoint: {KA_ENDPOINT_NAME}")
-print()
-
-start_time = time.time()
-
-try:
-    print("⏳ SDK를 통한 쿼리 전송...")
-
-    # SDK query
-    response = client.serving_endpoints.query(
-        name=KA_ENDPOINT_NAME,
-        messages=[
-            ChatMessage(
-                role=ChatMessageRole.USER,
-                content=test_question
-            )
-        ],
-        max_tokens=500,
-        temperature=0.1
-    )
-
-    elapsed = time.time() - start_time
-
-    print(f"✅ 응답 수신 (소요: {elapsed:.1f}초)")
-    print()
-
-    # 응답 구조 확인
-    print("응답 타입:", type(response))
-    print("응답 속성:", [attr for attr in dir(response) if not attr.startswith('_')][:10])
-    print()
-
-    # 답변 추출
-    if hasattr(response, 'choices') and response.choices:
-        answer = response.choices[0].message.content
-        print("💬 답변:")
-        print("=" * 80)
-        print(answer)
-        print("=" * 80)
-        print()
-        print("✅ 방법 3 성공! (SDK 방식 - 가장 권장)")
-
-        # 추가 정보
-        if hasattr(response, 'usage'):
-            print()
-            print("사용량 정보:")
-            print(f"  Prompt tokens: {response.usage.prompt_tokens}")
-            print(f"  Completion tokens: {response.usage.completion_tokens}")
-            print(f"  Total tokens: {response.usage.total_tokens}")
-    else:
-        print("⚠️  예상과 다른 응답 형식")
-        print("응답 전체:")
-        print(response)
-
-except Exception as e:
-    elapsed = time.time() - start_time
-    print(f"❌ SDK 에러 ({elapsed:.1f}초 후): {e}")
-    print()
-    print("상세 정보:")
-    import traceback
-    traceback.print_exc()
+response = client.serving_endpoints.query(
+    name=KA_ENDPOINT_NAME,
+    messages=[
+        ChatMessage(
+            role=ChatMessageRole.USER,
+            content=test_question
+        )
+    ],
+    max_tokens=500,
+    temperature=0.1
+)
+"""
 
 # COMMAND ----------
 
@@ -416,30 +380,31 @@ print("📊 테스트 결과 요약")
 print("=" * 80)
 print()
 
-print("위의 4가지 방법 중 성공한 방법을 확인하세요:")
+print("테스트 결과:")
 print()
-print("✅ 방법 1 (Standard API) - 표준 방식")
-print("✅ 방법 2 (OpenAI API) - 호환 방식")
-print("✅ 방법 3 (Databricks SDK) - 가장 권장 ⭐")
-print("✅ 방법 4 (Bricks API) - UI 방식")
+print("✅ 방법 1 (Standard API) - 작동! ⭐ 권장")
+print("✅ 방법 2 (OpenAI API) - 작동! ⭐ 권장")
+print("❌ 방법 3 (Databricks SDK) - KA endpoint와 호환 안됨")
+print("✅ 방법 4 (Bricks API) - 작동 (Tile ID 필요)")
 print()
 print("-" * 80)
 print()
 
 print("💡 권장사항:")
 print()
-print("1. 방법 3 (SDK)이 성공했다면:")
-print("   → 이후 모든 코드에서 SDK 방식 사용")
-print("   → 가장 안정적이고 유지보수 용이")
+print("1. 방법 1 또는 2 사용 (둘 다 정상 작동):")
+print("   → 'input' 필드 형식 사용")
+print("   → 간단하고 안정적")
+print("   → 02a_Knowledge_Assistant_Setup.py에 이미 적용됨")
 print()
-print("2. 방법 4 (Bricks API)만 성공했다면:")
-print("   → UI 전용 API일 가능성")
-print("   → Tile ID를 사용한 호출 필요")
+print("2. 방법 4 (Bricks API)를 사용하려면:")
+print("   → Tile ID 필요")
+print("   → UI와 동일한 방식")
+print("   → 특별한 이유가 없으면 방법 1 권장")
 print()
-print("3. 모두 실패했다면:")
-print("   → KA endpoint 권한 확인")
-print("   → Workspace 관리자에게 문의")
-print("   → Personal Access Token 재생성")
+print("3. 방법 3 (SDK)는 현재 사용 불가:")
+print("   → SDK가 'input' 필드를 지원할 때까지 대기")
+print("   → 대신 방법 1 또는 2 사용")
 print()
 
 print("=" * 80)
