@@ -106,9 +106,18 @@ try:
     if response.status_code == 200:
         result = response.json()
 
-        # 답변 추출
-        if "choices" in result and len(result["choices"]) > 0:
-            answer = result["choices"][0]["message"]["content"]
+        # 답변 추출 (Databricks Agent 형식)
+        answer = None
+        if "output" in result and len(result["output"]) > 0:
+            output = result["output"][0]
+            if isinstance(output, dict) and "content" in output:
+                content_list = output["content"]
+                if isinstance(content_list, list) and len(content_list) > 0:
+                    content_item = content_list[0]
+                    if isinstance(content_item, dict) and "text" in content_item:
+                        answer = content_item["text"]
+
+        if answer:
             print("💬 답변:")
             print("=" * 80)
             print(answer)
@@ -206,9 +215,18 @@ try:
                 print(f"  - {key}: {type(result[key])}")
             print()
 
-            # 답변 추출
-            if "choices" in result and len(result["choices"]) > 0:
-                answer = result["choices"][0]["message"]["content"]
+            # 답변 추출 (Databricks Agent 형식)
+            answer = None
+            if "output" in result and len(result["output"]) > 0:
+                output = result["output"][0]
+                if isinstance(output, dict) and "content" in output:
+                    content_list = output["content"]
+                    if isinstance(content_list, list) and len(content_list) > 0:
+                        content_item = content_list[0]
+                        if isinstance(content_item, dict) and "text" in content_item:
+                            answer = content_item["text"]
+
+            if answer:
                 print("💬 답변:")
                 print("=" * 80)
                 print(answer)
@@ -216,7 +234,7 @@ try:
                 print()
                 print("✅ 방법 2 성공!")
             else:
-                print("⚠️  'choices' 키가 없거나 비어있음")
+                print("⚠️  'output' 구조에서 답변을 찾을 수 없음")
                 print("전체 응답:")
                 print(json.dumps(result, indent=2, ensure_ascii=False)[:1000])
 
@@ -340,11 +358,22 @@ try:
         # 다양한 응답 형식 시도
         answer = None
 
-        if "answer" in result:
+        # 시도 1: output[0].content[0].text (Databricks Agent 형식)
+        if "output" in result and len(result["output"]) > 0:
+            output = result["output"][0]
+            if isinstance(output, dict) and "content" in output:
+                content_list = output["content"]
+                if isinstance(content_list, list) and len(content_list) > 0:
+                    content_item = content_list[0]
+                    if isinstance(content_item, dict) and "text" in content_item:
+                        answer = content_item["text"]
+
+        # 시도 2: answer 키
+        if not answer and "answer" in result:
             answer = result["answer"]
-        elif "choices" in result and len(result["choices"]) > 0:
-            answer = result["choices"][0]["message"]["content"]
-        elif "response" in result:
+
+        # 시도 3: response 키
+        if not answer and "response" in result:
             answer = result["response"]
 
         if answer:

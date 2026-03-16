@@ -202,11 +202,34 @@ def query_knowledge_assistant(question, debug=False):
 
         # 성공 응답 파싱
         result = response.json()
-        answer = result.get("choices", [{}])[0].get("message", {}).get("content", "")
+
+        # 다양한 응답 형식 시도
+        answer = None
+
+        # 시도 1: output[0].content[0].text (Databricks Agent 형식)
+        if "output" in result and len(result["output"]) > 0:
+            output = result["output"][0]
+            if isinstance(output, dict) and "content" in output:
+                content_list = output["content"]
+                if isinstance(content_list, list) and len(content_list) > 0:
+                    content_item = content_list[0]
+                    if isinstance(content_item, dict) and "text" in content_item:
+                        answer = content_item["text"]
+
+        # 시도 2: choices[0].message.content (OpenAI 형식)
+        if not answer and "choices" in result and len(result["choices"]) > 0:
+            choice = result["choices"][0]
+            if isinstance(choice, dict):
+                if "message" in choice and "content" in choice["message"]:
+                    answer = choice["message"]["content"]
+
+        # 시도 3: answer 키
+        if not answer and "answer" in result:
+            answer = result["answer"]
 
         return {
             "success": True,
-            "answer": answer,
+            "answer": answer if answer else "",
             "raw_response": result
         }
 

@@ -500,8 +500,18 @@ def query_ka_endpoint(endpoint_name, question, debug=False):
         # 다양한 응답 형식 시도
         answer = None
 
-        # 시도 1: choices[0].message.content (OpenAI 형식)
-        if "choices" in result and len(result["choices"]) > 0:
+        # 시도 1: output[0].content[0].text (Databricks Agent 형식)
+        if "output" in result and len(result["output"]) > 0:
+            output = result["output"][0]
+            if isinstance(output, dict) and "content" in output:
+                content_list = output["content"]
+                if isinstance(content_list, list) and len(content_list) > 0:
+                    content_item = content_list[0]
+                    if isinstance(content_item, dict) and "text" in content_item:
+                        answer = content_item["text"]
+
+        # 시도 2: choices[0].message.content (OpenAI 형식)
+        if not answer and "choices" in result and len(result["choices"]) > 0:
             choice = result["choices"][0]
             if isinstance(choice, dict):
                 if "message" in choice and "content" in choice["message"]:
@@ -509,15 +519,15 @@ def query_ka_endpoint(endpoint_name, question, debug=False):
                 elif "text" in choice:
                     answer = choice["text"]
 
-        # 시도 2: content 직접 참조
+        # 시도 3: content 직접 참조
         if not answer and "content" in result:
             answer = result["content"]
 
-        # 시도 3: answer 키
+        # 시도 4: answer 키
         if not answer and "answer" in result:
             answer = result["answer"]
 
-        # 시도 4: response 키
+        # 시도 5: response 키
         if not answer and "response" in result:
             answer = result["response"]
 
