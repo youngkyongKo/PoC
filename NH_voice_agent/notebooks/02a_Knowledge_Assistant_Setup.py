@@ -433,6 +433,7 @@ def query_ka_endpoint(endpoint_name, question, debug=False):
         # Databricks Model Serving API 호출
         # KA는 OpenAI compatible endpoint를 제공합니다
         import requests
+        import json
         import os
 
         # Databricks workspace URL과 token 가져오기
@@ -492,11 +493,37 @@ def query_ka_endpoint(endpoint_name, question, debug=False):
         result = response.json()
 
         if debug:
-            print(f"🔍 Response: {result}")
+            print(f"🔍 Response keys: {list(result.keys())}")
+            print(f"🔍 Full Response: {json.dumps(result, indent=2, ensure_ascii=False)[:1000]}")
+            print()
+
+        # 다양한 응답 형식 시도
+        answer = None
+
+        # 시도 1: choices[0].message.content (OpenAI 형식)
+        if "choices" in result and len(result["choices"]) > 0:
+            choice = result["choices"][0]
+            if isinstance(choice, dict):
+                if "message" in choice and "content" in choice["message"]:
+                    answer = choice["message"]["content"]
+                elif "text" in choice:
+                    answer = choice["text"]
+
+        # 시도 2: content 직접 참조
+        if not answer and "content" in result:
+            answer = result["content"]
+
+        # 시도 3: answer 키
+        if not answer and "answer" in result:
+            answer = result["answer"]
+
+        # 시도 4: response 키
+        if not answer and "response" in result:
+            answer = result["response"]
 
         return {
             "success": True,
-            "answer": result.get("choices", [{}])[0].get("message", {}).get("content", ""),
+            "answer": answer if answer else "",
             "raw_response": result
         }
 
@@ -644,17 +671,27 @@ else:
         print(f"❓ {question}")
         print()
 
-        # 질문 전송
+        # 질문 전송 (첫 번째 질문은 디버그 모드)
         print("⏳ 답변 생성 중...")
-        result = query_ka_endpoint(KA_ENDPOINT_NAME, question, debug=False)
+        is_first = (i == 1)
+        result = query_ka_endpoint(KA_ENDPOINT_NAME, question, debug=is_first)
 
         if result["success"]:
             answer = result["answer"]
             print()
             print("💬 답변:")
             print("-" * 80)
-            print(answer)
+            print(answer if answer else "(답변이 비어있습니다)")
             print("-" * 80)
+
+            # 답변이 비어있으면 원본 응답 출력
+            if not answer and "raw_response" in result:
+                print()
+                print("⚠️  답변이 비어있습니다. 원본 응답 확인:")
+                print("-" * 80)
+                import json
+                print(json.dumps(result["raw_response"], indent=2, ensure_ascii=False)[:1000])
+                print("-" * 80)
 
             # 평가 기록
             test_results.append({
