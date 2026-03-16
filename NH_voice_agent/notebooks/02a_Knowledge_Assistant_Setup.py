@@ -462,11 +462,32 @@ def query_ka_endpoint(endpoint_name, question, debug=False):
 
         if debug:
             print(f"🔍 Request URL: {url}")
+            print(f"🔍 Headers: Authorization: Bearer {token[:10]}...")
             print(f"🔍 Payload: {payload}")
+            print()
 
         # API 호출
         response = requests.post(url, json=payload, headers=headers, timeout=60)
-        response.raise_for_status()
+
+        if debug:
+            print(f"🔍 Response Status: {response.status_code}")
+            print(f"🔍 Response Headers: {dict(response.headers)}")
+            print()
+
+        # 상태 코드 확인
+        if response.status_code != 200:
+            error_detail = response.text
+            return {
+                "success": False,
+                "error_code": response.status_code,
+                "error_message": error_detail,
+                "answer": None,
+                "debug_info": {
+                    "url": url,
+                    "endpoint": endpoint_name,
+                    "token_prefix": token[:10] if token else "None"
+                }
+            }
 
         result = response.json()
 
@@ -479,6 +500,12 @@ def query_ka_endpoint(endpoint_name, question, debug=False):
             "raw_response": result
         }
 
+    except requests.exceptions.Timeout:
+        return {
+            "success": False,
+            "error": "Timeout: 요청 시간 초과 (60초)",
+            "answer": None
+        }
     except Exception as e:
         return {
             "success": False,
@@ -491,7 +518,107 @@ print("✅ 쿼리 함수 준비 완료")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ### 🧪 테스트 실행
+# MAGIC ### 🔍 빠른 연결 테스트 (권장)
+# MAGIC
+# MAGIC 전체 테스트를 실행하기 전에 먼저 하나의 질문으로 연결을 확인합니다.
+# MAGIC
+# MAGIC ⚠️ **401 에러가 발생하면 여기서 먼저 해결하세요!**
+
+# COMMAND ----------
+
+# 빠른 연결 테스트
+if KA_ENDPOINT_NAME:
+    print("=" * 80)
+    print("🔍 빠른 연결 테스트")
+    print("=" * 80)
+    print()
+    print(f"Endpoint: {KA_ENDPOINT_NAME}")
+    print()
+
+    # 간단한 테스트 질문
+    test_question = "안녕하세요. 이 문서에 대해 간단히 설명해주세요."
+
+    print(f"❓ 테스트 질문: {test_question}")
+    print()
+    print("⏳ 답변 생성 중 (디버그 모드)...")
+    print()
+
+    # 디버그 모드로 실행하여 상세 정보 확인
+    result = query_ka_endpoint(KA_ENDPOINT_NAME, test_question, debug=True)
+
+    print()
+    print("=" * 80)
+
+    if result["success"]:
+        print("✅ 연결 성공!")
+        print("=" * 80)
+        print()
+        print("💬 답변:")
+        print("-" * 80)
+        print(result["answer"])
+        print("-" * 80)
+        print()
+        print("🎉 Knowledge Assistant가 정상 작동합니다!")
+        print("   아래의 전체 테스트를 진행하세요.")
+    else:
+        print("❌ 연결 실패")
+        print("=" * 80)
+        print()
+
+        if "error_code" in result:
+            error_code = result["error_code"]
+            print(f"HTTP 상태 코드: {error_code}")
+            print(f"에러 메시지: {result.get('error_message', 'Unknown')}")
+            print()
+
+            if error_code == 401:
+                print("🔧 401 인증 에러 - 해결 방법:")
+                print()
+                print("1. 이 Notebook이 Databricks Workspace에서 실행 중인지 확인")
+                print("   - 로컬 환경에서는 실행 불가")
+                print("   - Databricks Notebook에서 실행해야 함")
+                print()
+                print("2. dbutils와 spark 객체가 정상 작동하는지 확인")
+                print("   - 새 셀에서 'spark.version' 실행해보기")
+                print("   - 새 셀에서 'dbutils.fs.ls(\"/\")' 실행해보기")
+                print()
+                print("3. KA endpoint 권한 확인")
+                print("   - Workspace 관리자에게 문의")
+                print(f"   - 필요 권한: USE ENDPOINT ON {KA_ENDPOINT_NAME}")
+                print()
+                print("4. Personal Access Token 재생성")
+                print("   - User Settings → Developer → Access Tokens")
+                print("   - 새 토큰 생성 후 Notebook 재시작")
+
+                if "debug_info" in result:
+                    print()
+                    print("디버그 정보:")
+                    for key, value in result["debug_info"].items():
+                        print(f"   {key}: {value}")
+            elif error_code == 403:
+                print("🔧 403 권한 에러:")
+                print(f"   KA endpoint에 대한 접근 권한이 없습니다.")
+                print(f"   Workspace 관리자에게 다음 권한을 요청하세요:")
+                print(f"   GRANT USE ENDPOINT ON {KA_ENDPOINT_NAME} TO `your_email@domain.com`;")
+            elif error_code == 404:
+                print("🔧 404 Not Found 에러:")
+                print(f"   Endpoint를 찾을 수 없습니다: {KA_ENDPOINT_NAME}")
+                print(f"   Step 4로 돌아가서 올바른 endpoint 이름을 확인하세요.")
+        else:
+            print(f"에러: {result.get('error', 'Unknown')}")
+
+        print()
+        print("⚠️  문제를 해결한 후 이 셀을 다시 실행하세요.")
+else:
+    print("❌ KA_ENDPOINT_NAME이 설정되지 않았습니다.")
+    print("   Step 4로 돌아가서 KA를 선택하세요.")
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ### 🧪 전체 테스트 실행
+# MAGIC
+# MAGIC 위의 빠른 테스트가 성공하면 여러 질문으로 한글 성능을 평가합니다.
 # MAGIC
 # MAGIC 각 질문에 대해 KA의 답변을 확인하고 평가합니다.
 
@@ -537,12 +664,42 @@ else:
             })
 
         else:
-            print(f"\n❌ 에러: {result['error']}")
+            print(f"\n❌ 에러 발생")
+
+            # 에러 코드가 있는 경우 (HTTP 에러)
+            if "error_code" in result:
+                error_code = result["error_code"]
+                error_msg = result.get("error_message", "Unknown")
+
+                print(f"   HTTP 상태 코드: {error_code}")
+                print(f"   에러 메시지: {error_msg}")
+
+                # 401 에러 상세 안내
+                if error_code == 401:
+                    print()
+                    print("🔧 401 인증 에러 해결 방법:")
+                    print("   1. Notebook을 Databricks Workspace에서 실행 중인지 확인")
+                    print("   2. dbutils와 spark가 정상 작동하는지 확인")
+                    print("   3. KA endpoint에 대한 권한이 있는지 확인")
+                    print("   4. debug=True로 재실행하여 상세 정보 확인")
+
+                    if "debug_info" in result:
+                        debug_info = result["debug_info"]
+                        print()
+                        print("디버그 정보:")
+                        print(f"   URL: {debug_info.get('url', 'N/A')}")
+                        print(f"   Endpoint: {debug_info.get('endpoint', 'N/A')}")
+                        print(f"   Token 접두사: {debug_info.get('token_prefix', 'N/A')}")
+            else:
+                # 일반 에러
+                print(f"   에러: {result.get('error', 'Unknown')}")
+
             test_results.append({
                 "question": question,
                 "answer": None,
                 "success": False,
-                "error": result["error"]
+                "error": result.get("error", "Unknown"),
+                "error_code": result.get("error_code")
             })
 
         print()
