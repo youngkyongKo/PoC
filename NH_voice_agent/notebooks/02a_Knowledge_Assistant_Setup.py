@@ -313,6 +313,39 @@ else:
 # COMMAND ----------
 
 # MAGIC %md
+# MAGIC ## Step 4: KA Tile ID 설정
+# MAGIC
+# MAGIC ⚠️ **중요**: API로 RAG 검색을 활성화하려면 Tile ID가 필요합니다.
+# MAGIC
+# MAGIC ### Tile ID 찾는 방법:
+# MAGIC 1. KA 설정 페이지 URL에서 확인:
+# MAGIC    ```
+# MAGIC    https://your-workspace.cloud.databricks.com/ml/bricks/ka/configure/{TILE_ID}
+# MAGIC    ```
+# MAGIC 2. `{TILE_ID}` 부분을 복사하여 아래에 입력
+
+# COMMAND ----------
+
+# KA Tile ID 입력 (UI URL에서 확인)
+# 예: "69e8398a-b268-4732-b6cd-5c2b8051b349"
+KA_TILE_ID = "69e8398a-b268-4732-b6cd-5c2b8051b349"  # 👈 실제 Tile ID로 변경
+
+if KA_TILE_ID and KA_ENDPOINT_NAME:
+    print("=" * 60)
+    print("✅ KA 정보")
+    print("=" * 60)
+    print(f"Endpoint Name: {KA_ENDPOINT_NAME}")
+    print(f"Tile ID: {KA_TILE_ID}")
+    print()
+else:
+    if not KA_ENDPOINT_NAME:
+        print("❌ KA_ENDPOINT_NAME이 설정되지 않았습니다.")
+    if not KA_TILE_ID:
+        print("❌ KA_TILE_ID를 입력해주세요.")
+
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC ## Step 5: 프로비저닝 대기
 # MAGIC
 # MAGIC KA가 `PROVISIONING` 상태인 경우 `READY`가 될 때까지 대기합니다.
@@ -417,12 +450,15 @@ print()
 
 # COMMAND ----------
 
-def query_ka_endpoint(endpoint_name, question, debug=False):
+def query_ka_endpoint(tile_id, question, debug=False):
     """
-    Knowledge Assistant endpoint에 질문 전송
+    Knowledge Assistant에 질문 전송 (Bricks API 사용)
+
+    ⚠️ 중요: RAG 검색이 작동하려면 Bricks API(/api/2.0/bricks/tiles/{tile_id}/query)를 사용해야 합니다.
+    Model Serving API는 RAG 검색을 활성화하지 않습니다.
 
     Args:
-        endpoint_name: KA endpoint 이름
+        tile_id: KA Tile ID (UI URL에서 확인)
         question: 질문 텍스트
         debug: 디버그 모드 (상세 출력)
 
@@ -430,8 +466,6 @@ def query_ka_endpoint(endpoint_name, question, debug=False):
         dict: 응답 결과
     """
     try:
-        # Databricks Model Serving API 호출
-        # KA는 OpenAI compatible endpoint를 제공합니다
         import requests
         import json
         import os
@@ -440,8 +474,8 @@ def query_ka_endpoint(endpoint_name, question, debug=False):
         workspace_url = spark.conf.get("spark.databricks.workspaceUrl")
         token = dbutils.notebook.entry_point.getDbutils().notebook().getContext().apiToken().get()
 
-        # API endpoint URL
-        url = f"https://{workspace_url}/serving-endpoints/{endpoint_name}/invocations"
+        # Bricks API endpoint URL (UI가 사용하는 방식)
+        url = f"https://{workspace_url}/api/2.0/bricks/tiles/{tile_id}/query"
 
         # 요청 페이로드
         payload = {
@@ -450,9 +484,7 @@ def query_ka_endpoint(endpoint_name, question, debug=False):
                     "role": "user",
                     "content": question
                 }
-            ],
-            "max_tokens": 1000,
-            "temperature": 0.1  # 낮은 temperature로 일관된 답변
+            ]
         }
 
         # 헤더
@@ -463,8 +495,9 @@ def query_ka_endpoint(endpoint_name, question, debug=False):
 
         if debug:
             print(f"🔍 Request URL: {url}")
+            print(f"🔍 Tile ID: {tile_id}")
             print(f"🔍 Headers: Authorization: Bearer {token[:10]}...")
-            print(f"🔍 Payload: {payload}")
+            print(f"🔍 Payload: {json.dumps(payload, ensure_ascii=False)}")
             print()
 
         # API 호출
@@ -531,9 +564,15 @@ def query_ka_endpoint(endpoint_name, question, debug=False):
         if not answer and "response" in result:
             answer = result["response"]
 
+        # sources_used 확인 (RAG 검색이 활성화되었는지)
+        sources_used = False
+        if "custom_outputs" in result and isinstance(result["custom_outputs"], dict):
+            sources_used = result["custom_outputs"].get("sources_used", False)
+
         return {
             "success": True,
             "answer": answer if answer else "",
+            "sources_used": sources_used,
             "raw_response": result
         }
 
@@ -564,12 +603,13 @@ print("✅ 쿼리 함수 준비 완료")
 # COMMAND ----------
 
 # 빠른 연결 테스트
-if KA_ENDPOINT_NAME:
+if KA_ENDPOINT_NAME and KA_TILE_ID:
     print("=" * 80)
     print("🔍 빠른 연결 테스트")
     print("=" * 80)
     print()
     print(f"Endpoint: {KA_ENDPOINT_NAME}")
+    print(f"Tile ID: {KA_TILE_ID}")
     print()
 
     # 간단한 테스트 질문
@@ -581,7 +621,7 @@ if KA_ENDPOINT_NAME:
     print()
 
     # 디버그 모드로 실행하여 상세 정보 확인
-    result = query_ka_endpoint(KA_ENDPOINT_NAME, test_question, debug=True)
+    result = query_ka_endpoint(KA_TILE_ID, test_question, debug=True)
 
     print()
     print("=" * 80)
@@ -590,13 +630,27 @@ if KA_ENDPOINT_NAME:
         print("✅ 연결 성공!")
         print("=" * 80)
         print()
+
+        # RAG 검색 사용 여부 확인
+        sources_used = result.get("sources_used", False)
+        if sources_used:
+            print("✅ RAG 검색 활성화: 문서에서 정보를 찾았습니다.")
+        else:
+            print("⚠️  RAG 검색 비활성화: 문서 검색이 수행되지 않았습니다.")
+        print()
+
         print("💬 답변:")
         print("-" * 80)
         print(result["answer"])
         print("-" * 80)
         print()
-        print("🎉 Knowledge Assistant가 정상 작동합니다!")
-        print("   아래의 전체 테스트를 진행하세요.")
+
+        if sources_used:
+            print("🎉 Knowledge Assistant가 정상 작동합니다!")
+            print("   아래의 전체 테스트를 진행하세요.")
+        else:
+            print("⚠️  문서 검색이 작동하지 않습니다.")
+            print("   Bricks API (Tile ID) 방식을 사용해야 합니다.")
     else:
         print("❌ 연결 실패")
         print("=" * 80)
@@ -647,8 +701,12 @@ if KA_ENDPOINT_NAME:
         print()
         print("⚠️  문제를 해결한 후 이 셀을 다시 실행하세요.")
 else:
-    print("❌ KA_ENDPOINT_NAME이 설정되지 않았습니다.")
-    print("   Step 4로 돌아가서 KA를 선택하세요.")
+    if not KA_ENDPOINT_NAME:
+        print("❌ KA_ENDPOINT_NAME이 설정되지 않았습니다.")
+        print("   Step 3으로 돌아가서 KA를 선택하세요.")
+    if not KA_TILE_ID:
+        print("❌ KA_TILE_ID가 설정되지 않았습니다.")
+        print("   Step 4로 돌아가서 Tile ID를 입력하세요.")
 
 # COMMAND ----------
 
@@ -661,13 +719,18 @@ else:
 
 # COMMAND ----------
 
-if not KA_ENDPOINT_NAME:
-    print("❌ KA endpoint가 설정되지 않았습니다.")
-    print("   Step 4로 돌아가서 KA를 선택하세요.")
+if not KA_ENDPOINT_NAME or not KA_TILE_ID:
+    if not KA_ENDPOINT_NAME:
+        print("❌ KA endpoint가 설정되지 않았습니다.")
+        print("   Step 3으로 돌아가서 KA를 선택하세요.")
+    if not KA_TILE_ID:
+        print("❌ KA_TILE_ID가 설정되지 않았습니다.")
+        print("   Step 4로 돌아가서 Tile ID를 입력하세요.")
 else:
     print("=" * 80)
     print(f"🧪 Knowledge Assistant 한글 테스트")
     print(f"   Endpoint: {KA_ENDPOINT_NAME}")
+    print(f"   Tile ID: {KA_TILE_ID}")
     print("=" * 80)
     print()
 
@@ -684,10 +747,18 @@ else:
         # 질문 전송 (첫 번째 질문은 디버그 모드)
         print("⏳ 답변 생성 중...")
         is_first = (i == 1)
-        result = query_ka_endpoint(KA_ENDPOINT_NAME, question, debug=is_first)
+        result = query_ka_endpoint(KA_TILE_ID, question, debug=is_first)
 
         if result["success"]:
             answer = result["answer"]
+            sources_used = result.get("sources_used", False)
+
+            print()
+            if sources_used:
+                print("✅ 문서 검색 사용됨")
+            else:
+                print("⚠️  문서 검색 안됨")
+
             print()
             print("💬 답변:")
             print("-" * 80)
