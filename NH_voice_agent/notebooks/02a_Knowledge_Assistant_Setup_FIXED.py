@@ -160,7 +160,7 @@ def query_knowledge_assistant(question, debug=False):
     try:
         # 요청 페이로드
         payload = {
-            "messages": [
+            "input": [
                 {
                     "role": "user",
                     "content": question

@@ -1,0 +1,3214 @@
+# TKO FY27 - PRODUCT SESSIONS
+
+
+
+############################################################
+# Databricks Apps
+############################################################
+
+=== Slide 1 ===
+Databricks Apps
+Applied data and AI solutions
+for everyone
+Justin DeBrabant - Director, Product
+
+=== Slide 2 ===
+Agenda
+Why Apps?
+Product overview
+Voice of the customer
+Competitive Overview
+Roadmap
+Unvarnished truth
+Summary
+
+=== Slide 3 ===
+Why
+Apps?
+
+=== Slide 4 ===
+Founding hypothesis
+Value in custom interfaces
+Moving data to apps is bad
+Data and AI Gravity
+The data and AI needed to power enterprise applications is already owned by Databricks.
+Data science and data engineering teams want to democratize data and AI.
+The apps should live alongside the data and AI, with built-in hosting, governance, auth, observability, etc.
+
+=== Slide 5 ===
+>
+>
+>
+>
+>
+>
+>
+>
+Integrate auth/SSO
+Define governance and access controls around data
+Manage app infrastructure/containers
+Integrate into a VPC
+Deploy a database to manage app state
+Integrate with observability tools
+Configure audit/access logs
+Upgrade packages/containers
+Why this is so hard in the enterprise…
+
+=== Slide 6 ===
+>$75M
+ARR (direct)
+3500+ Active
+Accounts
+30k Apps
+w/
+Indirect $DBU
+🚀
+FY26 was a breakout (first) year
+Databricks Internal Only - Do Not Share
+👩‍💻
+💰
+
+=== Slide 7 ===
+This isn’t (just) about Apps as a product. This is about realizing our mission of democratizing data and AI, and how we can help customers
+app
+ly the value of data and AI across their entire organization.
+
+=== Slide 8 ===
+Apps brings together the best of Databricks
+20,000+
+Apps built with DBSQL
+10,000+
+Apps built with
+Model Serving
+2500+
+Apps built with Lakebase
+2000+
+Apps built with
+Genie Space
+9,000+
+Apps built With Jobs
+With
+40,000+
+unique weekly active users
+
+=== Slide 9 ===
+We’re not the only one seeing the opportunity of apps
+We need to be here
+Gartner’s new AI App Platform MQ
+
+=== Slide 10 ===
+Product Overview
+
+=== Slide 11 ===
+Apps integrate with your data and AI stack
+Connect seamlessly with internal and external services
+👩‍💻
+👨‍💻
+SQL warehouse
+Model Serving
+Genie
+Vector Search
+Jobs
+Cloud provider services
+AI/BI Dashboards
+Databricks Apps
+External APIs
+Lakebase
+Tables
+AI Models
+Files
+Notebooks
+Dashboards
+Unified governance for apps
+
+=== Slide 12 ===
+Why Databricks Apps?
+Built on everything in Databricks
+Out-of-the-box auth and SSO
+*NEW* AppKit makes it even easier to integrate these services
+Powered by Data Intelligence
+
+=== Slide 13 ===
+Why Databricks Apps?
+Databricks-managed containers and infra across 45+ regions and 3 clouds
+Resource-level governance through Unity Catalog
+Out-of-the-box auth and access logs provide enterprise auditability
+Secure and governed
+
+=== Slide 14 ===
+Why Databricks Apps?
+All popular Python frameworks: Streamlit, Gradio, Dash, Shiny, FastAPI, Flask, etc
+Support for JavaScript with Node.js/React
+20+ pre-installed and managed open source packages
+Open   ecosystem
+
+=== Slide 15 ===
+Voice of the
+Customer
+
+=== Slide 16 ===
+What can you build with Databricks Apps?
+Gen AI-based fraud detector
+Demand forecasting what-if modeling tool
+Product
+Q&A RAG chatbot
+Airline revenue management system
+Interactive margin simulator
+Contract management tool
+Loan scoring and approval tool
+Experimentation & causal analysis tool
+Supply chain scenario planner
+Marketing campaign configuration
+Employee safety intelligence platform
+and much more…
+
+=== Slide 17 ===
+Thales is building a Maintenance, Repair, and Overhaul (MRO) Operations Control Tower using Databricks Apps, unifying repair volumes, aircraft on ground events, and reliability metrics into a single UI. The app enables site-level comparisons and helps teams identify bottlenecks and improve margins across their global operations. It leverages Lakebase, DBSQL, Model Serving, and Genie.
+
+=== Slide 18 ===
+easyJet rebuilt their revenue management system on Databricks, using Lakebase for real-time transactions, Lakehouse for analytics, and Databricks Apps to create a unified pricing hub—replacing fragmented legacy tools with a governed, modern platform.
+
+=== Slide 19 ===
+Solution
+Bridgestone used Databricks Apps to rapidly deploy computer vision tools for tire inspection and secure GenAI chatbots, eliminating infrastructure overhead while maintaining governance through Unity Catalog.
+Bridgestone used Databricks Apps to rapidly deploy computer vision tools for tire inspection, and providing secured access to their chatbot agents.
+
+=== Slide 21 ===
+Competitive
+Overview
+
+=== Slide 22 ===
+Enterprise app platforms
+
+=== Slide 23 ===
+Roadmap
+
+=== Slide 24 ===
+FY27 will be MUCH bigger
+Micro Apps w/ scale-to-zero
+Horizontal scaling
+Larger app instance sizes
+Operational observability
+Apps in DB1 and OneChat
+External user auth
+Marketplace apps
+The universal runtime for every enterprise app, large or small
+Apps need to be accessible wherever users are
+AppKit developer tools
+Deploy from git
+3rd party vibe-coding integrations
+Built/preview environments
+Empower pro and citizen devs to build more (and better) apps
+More
+Apps
+More
+Users
+More
+Developers
+
+=== Slide 25 ===
+And a shift from product to platform
+Apps will get a new home in the Apps Switcher
+Def-first abstractions and interfaces distinct from the workspace
+OOTB observability, analytics, and auditing
+Admin consoles for platform teams managing 1000s of apps
+Platform “agents” for supporting platform teams
+A completely redesigned
+Apps UI
+A platform for managing
+1000s of apps
+
+=== Slide 26 ===
+Unvarnished Truth
+
+=== Slide 27 ===
+Unvarnished Truth
+There are thousands of prod apps. BUT we’re still not ready to win the most mission-critical workloads. We’ll need…
+Operational observability
+High SLAs (and zero-downtime deployments)
+Better scalability
+We’ll take on migrations selectivity, and will be a bigger part of the strategy in FY28
+There are real product gaps that will require workarounds (e.g., PowerApps Dataverse or Palantir Ontologies)
+We don’t yet have the expertise or tooling to make migrations seamless
+This is a huge opportunity for us, especially as we expand into new developers
+Working on Replit, Claude, and Cursor integrations in Q1
+Also planning a number of GTM activations with vibe coding partners
+Will expand beyond initial partners and explore first-party agents in Q2 and beyond.
+“Apps is not production ready” is a misperception
+Migrations will be difficult, we should focus primarily on green-field
+Vibe coding Apps is harder than it should be
+Our Q1 roadmap addresses all of these
+Databricks Internal Only - Do Not Share
+
+=== Slide 28 ===
+Unvarnished Truth
+But we’ll change that. We just staffed a new Apps Devex org to own this.
+AppKit is just the start, and we’re thinking about apps and agents holistically.
+It’s about “solution-selling” all of Databricks via Apps and better aligning to business value/outcomes.
+Apps creates pull-through consumption for services like Lakebase, DBSQL, Genie, etc.
+We’re investing in GTM resources to build out these playbooks, but there’s still a lot to learn.
+We’re also building out a more developer-focused brand (website, docs, etc…)
+The devex for Apps isn’t great.
+This isn’t
+just
+about “selling” Apps or direct consumption
+Selling to developers (and platform teams) will be hard.
+Databricks Internal Only - Do Not Share
+
+=== Slide 29 ===
+Summary
+
+=== Slide 30 ===
+Apps is production ready and we’re expanding the type of apps supported
+Key Takeaways
+Apps is about end-to-end solutions that drive platform consumption
+We’re going even bigger in FY27 as we transition from a product to platform.
+1
+2
+3
+
+=== Slide 31 ===
+Check out all the apps resources
+→ go/apps
+Find relevant demos/templates
+→ go/industry-demos      → go/appsgallery
+Get started with Apps
+Use AppKit to build an App
+→ go/appkit
+
+=== Slide 32 ===
+Thank you.
+
+
+############################################################
+# Lakeflow Connect
+############################################################
+
+=== Slide 1 ===
+Lakeflow Connect
+What’s new and coming soon
+
+=== Slide 2 ===
+State of the union
+Roadmap
+Competitive landscape
+#lakeflow-connect
+
+=== Slide 3 ===
+Connect
+Declarative Pipelines
+Jobs
+Unified data engineering
+
+=== Slide 4 ===
+Lakeflow Connect
+Point-and-click UI, simple API, and automated pipeline management
+Incremental reads and writes to support incremental processing downstream
+Simple setup and management
+End-to-end efficiency
+Unified governance, orchestration, monitoring, and more
+Unification with the lakehouse
+
+=== Slide 5 ===
+Internal
+
+=== Slide 6 ===
+Internal
+
+=== Slide 8 ===
+Roadmap
+Connectors
+
+=== Slide 9 ===
+Coverage
+Cost & performance          Simplicity
+go/connectors/timelines
+
+=== Slide 10 ===
+Coverage
+Cost & performance          Simplicity
+
+=== Slide 11 ===
+Community connectors
+Ingest from any source with a REST API
+Unified governance
+Credentials, pipelines, data, lineage, and more
+Built-in tooling
+Observability, SCD 2, lineage, and more
+Customization
+More flexible than managed connectors
+Coverage
+Cost & performance          Simplicity
+
+=== Slide 12 ===
+Reach out if you’d like to collaborate on community connectors!
+
+=== Slide 14 ===
+Applications
+Databases and data warehouses
+File sources
+Streaming sources
+go/connectors/timelines
+Internal
+go/connectors/launches
+In dev
+Beta
+PuPr
+PuPr
+PuPr
+PuPr
+PuPr
+GA
+PuPr
+PuPr
+PuPr
+PuPr
+In dev
+In dev
+PrPr
+PrPr
+Roadmap
+GA
+GA
+GA
+GA
+GA
+GA
+Beta
+PuPr
+GA
+Beta
+
+=== Slide 15 ===
+Excel support
+All major surfaces
+UI, DBSQL, Auto Loader, and more
+Multi-sheet files
+One file generates N tables
+File cleanup
+Data islands, unique headers, and more
+Available now
+Coming in FY27
+Coverage
+Cost & performance          Simplicity
+
+=== Slide 16 ===
+Coverage
+Cost & performance
+Simplicity
+Incremental ingestion
+Compute efficiency          Full refreshes
+
+=== Slide 17 ===
+Coverage
+Cost & performance
+Simplicity
+Incremental ingestion
+Compute efficiency          Full refreshes
+* Directional results from internal testing
+2-3X faster
+6-10X cheaper
+Cost
+Time to ingest
+Before
+After
+Before
+After
+
+=== Slide 18 ===
+Coverage
+Cost & performance
+Simplicity
+Incremental ingestion
+Compute efficiency
+Full refreshes
+Available today
+Improved database scalability
+Improved autoscaling
+Reduced default core allocation →
+-40%
+gateway cost
+Planned for FY27
+
+=== Slide 19 ===
+Coverage
+Cost & performance
+Simplicity
+Incremental ingestion
+Compute efficiency
+Full refreshes
+Available today
+Improved database scalability
+Improved autoscaling
+Reduced default core allocation →
+-40%
+gateway cost
+Managed file events
+Time to ingest 10K files: 41 mins →
+1 min
+Max directory size for triggers: 10,000 →
+Unlimited
+# file arrival triggers per workspace: 50 →
+1,000
+Planned for FY27
+
+=== Slide 20 ===
+Coverage
+Cost & performance
+Simplicity
+Incremental ingestion
+Compute efficiency
+Full refreshes
+Available today
+Improved database scalability
+Improved autoscaling
+Reduced default core allocation →
+-40%
+gateway cost
+Managed file events
+Time to ingest 10K files: 41 mins →
+1 min
+Max directory size for triggers: 10,000 →
+Unlimited
+# file arrival triggers per workspace: 50 →
+1,000
+Improved listing performance
+3X
+faster directory listing
+10X
+faster new file discovery
+90%
+faster startup time
+2-3X
+faster small file ingestion
+3-7X
+faster compressed & multiline files
+Planned for FY27
+
+=== Slide 21 ===
+Coverage
+Cost & performance
+Simplicity
+Incremental ingestion
+Compute efficiency
+Full refreshes
+Available today
+Improved database scalability
+Improved autoscaling
+Reduced default core allocation →
+-40%
+gateway cost
+Managed file events
+Time to ingest 10K files: 41 mins →
+1 min
+Max directory size for triggers: 10,000 →
+Unlimited
+# file arrival triggers per workspace: 50 →
+1,000
+Improved listing performance
+3X
+faster directory listing
+10X
+faster new file discovery
+90%
+faster startup time
+2-3X
+faster small file ingestion
+3-7X
+faster compressed & multiline files
+Planned for FY27
+Improved database cost and performance: H1
+Continuous mode for
+latency-sensitive
+use cases
+Gateway scheduling for
+cost-sensitive
+use cases
+Part of the combined gateway + pipeline entity
+Single pipeline entity (combining the gateway + pipeline)
+Perf improvements (e.g., horizontal autoscaling) for schema fetch and initial snapshot
+
+=== Slide 22 ===
+Coverage
+Cost & performance
+Simplicity
+Incremental ingestion
+Compute efficiency
+Full refreshes
+Available today
+Improved database scalability
+Improved autoscaling
+Reduced default core allocation →
+-40%
+gateway cost
+Managed file events
+Time to ingest 10K files: 41 mins →
+1 min
+Max directory size for triggers: 10,000 →
+Unlimited
+# file arrival triggers per workspace: 50 →
+1,000
+Improved listing performance
+3X
+faster directory listing
+10X
+faster new file discovery
+90%
+faster startup time
+2-3X
+faster small file ingestion
+3-7X
+faster compressed & multiline files
+Planned for FY27
+Improved database cost and performance: H1
+Continuous mode for
+latency-sensitive
+use cases
+Gateway scheduling for
+cost-sensitive
+use cases
+Part of the combined gateway + pipeline entity
+Single pipeline entity (combining the gateway + pipeline)
+Perf improvements (e.g., horizontal autoscaling) for schema fetch and initial snapshot
+Improved database cost and performance: H2
+Multiple databases per pipeline
+Managed CDC feeds to break glass
+Perf improvements (e.g., horizontal autoscaling) for CDC
+
+=== Slide 23 ===
+Internal
+Source coverage
+Now
+4
+CDC connectors
+9
+query-based connectors
+User coverage
+Technical (API) or non-technical (UI)
+Coverage
+Cost & performance
+Simplicity
+Incremental ingestion
+Compute efficiency
+Full refreshes
+EO FY27 H1
+EO FY27 H2
+5+
+CDC
+10+
+query-based
+Read replicas for snapshots
+Target workloads
+Scheduled pipelines
+1 database : N gateways : N pipelines
+<10K rows per second
+(Varies heavily, based on row size, database size, etc. This is also for SQL Server; Postgres and MySQL may be higher.
+Test it yourself!
+)
+<1TB source size
+Scheduled or continuous pipelines
+1 database : N pipelines
+<10K rows per second
+<5TB source size
+N databases : 1 pipeline
+(with con’td limitations on # tables per pipeline)
+<20K rows per second
+<10TB source size
+go/connectors/qualification
+Avg latency
+in continuous mode
+60 minutes
+5 mins
++ Ability to reduce snapshot throttling
++ Faster schema fetch in the UI
+3 mins
+(~1 min if you take the provided CDC feed and customize / fine-tune your downstream pipeline)
+Cost
+Budget policy tagging
+Pipeline scheduling
+Auto refresh controls
+Gateway scheduling
+Improvements behind the scenes
+Improvements behind the scenes
+(See also N databases : 1 pipeline)
+
+=== Slide 24 ===
+Coverage
+Cost & performance
+Simplicity
+Incremental ingestion          Compute efficiency
+Full refreshes
+Available now
+✅
+New columns and tables
+✅
+Deleted columns and tables
+⚠️
+Duplicate keys
+⚠️  Renamed columns and tables
+
+=== Slide 25 ===
+Coverage
+Cost & performance
+Simplicity
+Incremental ingestion          Compute efficiency
+Full refreshes
+Available now
+Planned for FY27
+✅
+New columns and tables
+✅
+Deleted columns and tables
+⚠️
+Duplicate keys
+⚠️  Renamed columns and tables
+✅
+Type widening
+⚠️
+Partial refreshes
+✅
+Basic
+ALTER TABLE
+commands
+
+=== Slide 26 ===
+Coverage          Cost & performance
+Simplicity
+Applications
+Databases         File sources         Streaming sources
+
+=== Slide 27 ===
+Coverage          Cost & performance
+Simplicity
+Applications
+Databases         File sources         Streaming sources
+Launched recently
+Simplified OAuth apps
+Planned for FY27
+
+=== Slide 28 ===
+Coverage          Cost & performance
+Simplicity
+Applications
+Databases         File sources         Streaming sources
+Launched recently
+Simplified OAuth apps
+Planned for FY27
+Simplified OAuth apps
+
+=== Slide 29 ===
+Coverage          Cost & performance
+Simplicity
+Applications
+Databases         File sources         Streaming sources
+Launched recently
+Simplified OAuth apps
+Planned for FY27
+Simplified OAuth apps
+Reduced privileges
+mTLS
+Admin-less auth
+M2M with client creds
+
+=== Slide 30 ===
+Coverage          Cost & performance
+Simplicity
+Applications
+Databases         File sources         Streaming sources
+Launched recently
+Simplified OAuth apps
+Planned for FY27
+Simplified OAuth apps
+Reduced privileges
+mTLS
+Admin-less auth
+M2M with client creds
+Reduced privileges
+Let us know what else you need!
+
+=== Slide 31 ===
+Coverage          Cost & performance
+Simplicity
+Applications
+Databases
+File sources         Streaming sources
+Launched recently
+CDC simplification
+Planned for FY27
+Automated database setup for SQL Server
+Postgres, MySQL, and Oracle in progress
+Auto-refresh
+Customizable refresh windows
+
+=== Slide 32 ===
+Coverage          Cost & performance
+Simplicity
+Applications
+Databases
+File sources         Streaming sources
+Launched recently
+CDC simplification
+Planned for FY27
+CDC simplification
+Automated database setup for SQL Server
+Postgres, MySQL, and Oracle in progress
+Auto-refresh
+Customizable refresh windows
+Private Network Gateway
+Fully classic pipelines
+Internal
+
+=== Slide 33 ===
+Coverage          Cost & performance
+Simplicity
+Applications
+Databases
+File sources         Streaming sources
+Launched recently
+CDC simplification
+Planned for FY27
+Query-based simplification
+Automated database setup for SQL Server
+Postgres, MySQL, and Oracle in progress
+Auto-refresh
+Customizable refresh windows
+
+=== Slide 34 ===
+Coverage          Cost & performance
+Simplicity
+Applications
+Databases
+File sources         Streaming sources
+Launched recently
+CDC simplification
+Planned for FY27
+Query-based simplification
+Query-based simplification
+Automated database setup for SQL Server
+Postgres, MySQL, and Oracle in progress
+Auto-refresh
+Customizable refresh windows
+1-click materialization for foreign catalogs
+From Catalog Explorer
+From Add Data
+
+=== Slide 35 ===
+Available now
+Planned for FY27
+SharePoint, GDrive, and more
+Basic ACL ingestion
+U
+I support for file sources
+Includes cloud storage
+Deeper Agent Bricks integrations
+Includes automated ACL parsing
+Support for
+ai_prep_search
+Coverage          Cost & performance
+Simplicity
+Applications          Databases
+File sources
+Streaming sources
+
+=== Slide 36 ===
+Available now
+Planned for FY27
+Streaming connectors
+read_kafka
+read_kinesis
+read_pulsar
+read_pubsub
+Managed Kafka ingestion
+UC governance for Kafka configs
+Topic-to-table fanout
+Message deserialization
+Schema registry integration
+Coverage          Cost & performance
+Simplicity
+Applications          Databases         File sources
+Streaming sources
+
+=== Slide 37 ===
+Available now
+Planned for FY27
+Streaming connectors
+read_kafka
+read_kinesis
+read_pulsar
+read_pubsub
+Managed Kafka ingestion
+UC governance for Kafka configs
+Topic-to-table fanout
+Message deserialization
+Schema registry integration
+RabbitMQ
+Coverage          Cost & performance
+Simplicity
+Applications          Databases         File sources
+Streaming sources
+
+=== Slide 38 ===
+Coverage          Cost & performance
+Simplicity
+github.com/databricks/bundle-examples
+↳ contrib/databricks_ingestion_monitoring
+
+=== Slide 39 ===
+Coverage          Cost & performance
+Simplicity
+
+=== Slide 40 ===
+Roadmap
+Zerobus Ingest
+
+=== Slide 41 ===
+How can we offload data quickly from the source?
+
+=== Slide 42 ===
+Cloud apps
+Topics
+
+=== Slide 43 ===
+How can we offload data quickly from the source—
+without excessive cost and complexity?
+
+=== Slide 44 ===
+Zerobus Ingest
+Just create a table, then push your data
+Performance @ scale
+<5s writes; 100MB / second; thousands of clients per table
+Streamlined infra
+Avoid the cost and complexity of a message bus
+Full integration
+UC governance and serverless compute
+
+=== Slide 46 ===
+Production readiness
+Use case coverage
+Management
+
+=== Slide 47 ===
+Zerobus Ingest
+Just create a table, then push data
+Performance @ scale
+Near real-time writes <5 seconds at high throughput (up to 100 MB/s per connection)
+Streamlined infra
+Avoid the cost and complexity of a message bus
+Full integration
+UC governance and serverless compute
+Zerobus GA
+Use case coverage          Pipeline management
+
+=== Slide 48 ===
+Zerobus GA
+Use case coverage          Pipeline management
+Compliance
+Data source
+Current solution
+User
+Requirements
+Zerobus GA
+Good fit
+Non-CSP workspaces
+Message bus, Open Telemetry data, etc.
+Cloud
+or
+on-prem
+Single-topic message bus writing solely to the lakehouse
+Cloud migration situations where customers are rethinking their architecture (e.g., AWS to Azure, and customer is evaluating Event Hub)
+Technical (API)
+5-second latency
+<10MB messages
+Fleet of writers to one destination
+Not a good fit
+CSP workspaces (e.g., FedRAMP, HIPAA, PCI, etc.)
+-
+Multiple consumers of the topic
+Non-technical (UI)
+<5-second latency
+>10MB messages
+Exactly-once use case
+Mid-flight transformations required
+Internal
+
+=== Slide 49 ===
+Zerobus pricing is
+50% off
+until September 1, 2026.
+
+=== Slide 50 ===
+Zerobus GA
+Use case coverage
+Pipeline management
+Launched recently
+Interfaces, formats, and languages
+Coming soon
+Interfaces, formats, and languages
+Specialized use cases
+Specialized use cases
+
+=== Slide 51 ===
+Launched recently
+Interfaces, formats, and languages
+Coming soon
+Interfaces, formats, and languages
+Specialized use cases
+Specialized use cases
+gRPC and REST APIs
+Zerobus GA
+Use case coverage
+Pipeline management
+
+=== Slide 52 ===
+Launched recently
+Interfaces, formats, and languages
+Coming soon
+Interfaces, formats, and languages
+Specialized use cases
+Specialized use cases
+gRPC and REST APIs
+Kafka producer APIs
+Zerobus GA
+Use case coverage
+Pipeline management
+
+=== Slide 53 ===
+Launched recently
+Interfaces, formats, and languages
+Coming soon
+Interfaces, formats, and languages
+Specialized use cases
+Specialized use cases
+gRPC and REST APIs
+Support for Protobuf and JSON
+Kafka producer APIs
+Zerobus GA
+Use case coverage
+Pipeline management
+
+=== Slide 54 ===
+Launched recently
+Interfaces, formats, and languages
+Coming soon
+Interfaces, formats, and languages
+Specialized use cases
+Specialized use cases
+gRPC and REST APIs
+Support for Protobuf and JSON
+Kafka producer APIs
+Support for Arrow
+Zerobus GA
+Use case coverage
+Pipeline management
+
+=== Slide 55 ===
+Launched recently
+Interfaces, formats, and languages
+Coming soon
+Interfaces, formats, and languages
+Specialized use cases
+Specialized use cases
+gRPC and REST APIs
+Support for Protobuf and JSON
+SDKs for Python, Java, Go, and Typescript
+Kafka producer APIs
+Support for Arrow
+Zerobus GA
+Use case coverage
+Pipeline management
+
+=== Slide 56 ===
+Launched recently
+Interfaces, formats, and languages
+Coming soon
+Interfaces, formats, and languages
+Specialized use cases
+Specialized use cases
+gRPC and REST APIs
+Support for Protobuf and JSON
+SDKs for Python, Java, Go, and Typescript
+Kafka producer APIs
+Support for Arrow
+Open Telemetry endpoint
+Used in MLflow, Databricks Apps, streaming tables, and more
+Zerobus GA
+Use case coverage
+Pipeline management
+
+=== Slide 57 ===
+Launched recently
+Interfaces, formats, and languages
+Coming soon
+Interfaces, formats, and languages
+Specialized use cases
+Specialized use cases
+gRPC and REST APIs
+Support for Protobuf and JSON
+SDKs for Python, Java, Go, and Typescript
+Kafka producer APIs
+Support for Arrow
+OTEL GA towards ~end of the month!
+Open Telemetry endpoint
+Used in MLflow, Databricks Apps, streaming tables, and more
+Zerobus GA
+Use case coverage
+Pipeline management
+
+=== Slide 58 ===
+Zerobus GA          Use case coverage
+Pipeline management
+Launched recently
+Interfaces, formats, and languages
+Coming soon
+Interfaces, formats, and languages
+Specialized use cases
+Specialized use cases
+gRPC and REST APIs
+Support for Protobuf and JSON
+SDKs for Python, Java, Go, and Typescript
+Kafka producer APIs
+Support for Arrow
+OTEL GA towards ~end of the month!
+Open Telemetry endpoint
+Used in MLflow, Databricks Apps, streaming tables, and more
+Monitoring and debugging
+Usage and billing
+Bytes ingested
+Open connections
+Time to ingest
+Error logs
+
+=== Slide 59 ===
+Launched recently
+Interfaces, formats, and languages
+Coming soon
+Interfaces, formats, and languages
+Specialized use cases
+Specialized use cases
+gRPC and REST APIs
+Support for Protobuf and JSON
+SDKs for Python, Java, Go, and Typescript
+Kafka producer APIs
+Support for Arrow
+OTEL GA towards ~end of the month!
+Open Telemetry endpoint
+Used in MLflow, Databricks Apps, streaming tables, and more
+Monitoring and debugging
+Monitoring and debugging
+Rescued data columns
+Metadata columns
+Usage and billing
+Bytes ingested
+Open connections
+Time to ingest
+Error logs
+Zerobus GA          Use case coverage
+Pipeline management
+
+=== Slide 60 ===
+Ingestion landscape
+go/connectors/partners
+Internal
+
+=== Slide 61 ===
+Simplicity
+Source and
+feature coverage
+Efficiency
+(Snowpipe)
+Unified authoring, orchestration, monitoring
+Enterprise governance
+and security
+Snowflake
+Snowflake
+(-) Complex connectors:
+more than 50 steps to set up “bring your own cloud” deployment for NiFi.
+(+) Simple record push:
+@table syntax is clean.
+(-) Complex record push:
+requires pipes and channels, which each have limitations that stack up.
+(-) Limited native connectors:
+18 sources.
+(+) Custom connectors
+via OpenFlow and partners.
+(-) Few advanced features:
+despite setup complexity, no history tracking, filtering, etc.
+(+) Small workloads:
+does well @ low volumes.
+(-) Large workloads:
+TCO increases as volume gets larger; Snowpipe streaming supports ~1/20 the data volume per channel vs. Zerobus. (See talk track for details.)
+(-)
+Limited orchestration:
+No GUI for job authoring; depends on external systems for advanced jobs.
+(+) Unified governance
+via Horizon, including fine-grained access controls
+(-)
+Lineage:
+fully manual; not built into OpenFlow.
+(+/-) ABAC:
+tag data after it lands.
+Databricks
+(+) Simple connectors:
+relatively quick UI and API, with schema evolution, retries, and error handling.
+(+) Simple file push:
+use volumes + file events.
+(+) Simple record push:
+do an API call, tell us where to put the data.
+(+/-) Moderate connector coverage:
+50 sources.
+(+) Custom connectors
+via community connectors.
+(+/-) Moderate advanced features:
+SCD, CDF, filtering; adding ALTER TABLE and custom applier.
+(-) Small workloads:
+worse @ low file volumes. (If your customer can push records, ZB does very well.)
+(+) Large workloads:
+already more performant for small workloads, but the delta gets bigger with more data. Zerobus supports 20X more data per channel.
+(+) Embedded with Lakeflow Jobs:
+unified orchestratoin, transformation, and monitoring.
+(+) Unified governance
+via Unity Catalog, with permissions, auditability, lineage, and security
+(-) ABAC:
+no support for bronze layer yet.
+Internal
+
+=== Slide 62 ===
+Fabric
+Fabric Mirroring
+Internal
+Databricks
+
+=== Slide 63 ===
+Internal
+Fivetran
+Databricks
+Simplicity
+Source and
+feature coverage
+Efficiency
+Unified authoring, orchestration, monitoring
+(+) Simple connectors:
+there are hiccups in each CUJ, but generally very easy to set up.
+(+) High connector coverage:
+700 sources—and growing. This will always be higher.
+(+) Key industry connectors:
+SAP, Epic, etc.
+(-) Custom connectors
+are difficult to build.
+(+/-) Moderate advanced features:
+e.g., history but no query pushdown; pipelines are fully locked.
+(+) Incremental connectors:
+generally strong performance, with source-specific pros and cons.
+(-) Perceived as high-cost:
+offers free refreshes, but customers pay for the managed service.
+(-) Limited orchestration:
+generally limited to coarse scheduling options.
+(+) Built-in normalization:
+preconfigured dbt functions.
+(+) Simple connectors:
+relatively quick UI and API, with schema evolution, retries, and error handling.
+(+/-) Moderate connector coverage:
+50 sources.
+(+) Custom connectors
+via community connectors.
+(+/-) Moderate advanced features:
+SCD, CDF, filtering; adding ALTER TABLE and custom applier.
+(+) Incremental connectors:
+generally strong performance, with source-specific pros and cons.
+(+) Lower cost:
+simple, compute-based model.
+(+) Embedded with Lakeflow Jobs:
+unified orchestratoin, transformation, and monitoring.
+(-) Custom normalization only,
+for now.
+Fivetran
+Fivetran is a partner; we work better together. Don’t pursue happy Fivetran customers.
+Be sure to consult the rules of engagement with ISV partners: go/isv-roe.
+go/connectors/partners
+go/isv-roe
+
+=== Slide 64 ===
+Resources
+
+=== Slide 65 ===
+Internal
+By topic
+Chat with the team:
+#lakeflow-connect
+Nomination links, demos, pitch decks: go/
+lakeflow
+FAQ: go/connectors/
+FAQ
+Timelines: go/connectors/
+timelines
+Recent launches: go/connectors/
+launches
+Connector roadmap: go/connectors/
+roadmap
+Feature roadmap: go/connectors/
+backlog
+Objection handling: go/connectors/
+objections
+Qualification guide: go/connectors/
+qualification
+By sales stage
+go/
+validating
+-lakeflowconnect
+go/
+scoping
+-lakeflowconnect
+go/
+evaluating
+-lakeflowconnect
+go/
+confirming
+-lakeflowconnect
+go/
+onboarding
+-lakeflowconnect
+
+=== Slide 67 ===
+Cloud apps
+
+=== Slide 68 ===
+Cloud apps
+
+
+############################################################
+# Lakeflow SDP Roadmap
+############################################################
+
+=== Slide 1 ===
+Lakeflow SDP
+The past, the present, and the future
+Ray Zhu
+PM
+
+=== Slide 2 ===
+The Past - Why did we build SDP?
+New users and use cases
+Enterprise Data Engineers, Analytics Engineers, SQL Analysts, Business Users, and AI Agents
+Spark needs to continue to be the dominating framework
+Create new Edge capabilities for Databricks
+
+=== Slide 3 ===
+The Present - How are we doing?
+$100M ARR at year 3
+$200M+ ARR
+
+=== Slide 4 ===
+The Future - Where do we want to be?
+10X adoption ($2B+) in the next 3-5 years
+Need to bend the growth curve!
+But how?
+
+=== Slide 5 ===
+Things people love about SDP
+Auto CDC
+Enzyme incremental engine
+Data quality expectations
+Dataflow graph
+Validation
+Orchestration
+Observability
+Managed streaming checkpoint
+Continuous streaming
+Streaming auto-scaling
+CI/CD for data assets
+
+=== Slide 6 ===
+The challenge for broader adoption
+It’s a binary (all-or-nothing) choice
+Declarative?
+Imperative?
+
+=== Slide 7 ===
+Open up the adoption funnel
+Decompose SDP to break the binary choice
+SDP Pipeline
+Streaming Tables
+Materialized Views
+
+=== Slide 8 ===
+Open up the adoption funnel
+Decompose SDP to break the binary choice
+Streaming Tables
+Streaming
+Flows
+Tables
+Break up Streaming Tables into Flows and Tables -
+no special Tables
+
+=== Slide 9 ===
+Open up the adoption funnel
+Decompose SDP to break the binary choice
+Materialized Views
+Streaming Tables
+Streaming
+Flows
+Tables
+Break up Streaming Tables into Flows and Tables -
+no special Tables
+Add batch Flows (Replace Where with Enzyme) -
+no full refresh on the entire MV
+Batch
+Flows
+
+=== Slide 10 ===
+Open up the adoption funnel
+Decompose SDP to break the binary choice
+SDP Pipeline
+Materialized Views
+Streaming Tables
+Streaming
+Flows
+Tables
+Break up Streaming Tables into Flows and Tables -
+no special Tables
+Add batch Flows (Replace Where with Enzyme) -
+no full refresh on the entire MV
+Remove tight coupling of Flows/MVs and Pipeline -
+allow for gradual adoption
+Batch
+Flows
+
+=== Slide 11 ===
+Open up the adoption funnel
+Decompose SDP to break the binary choice
+SDP Pipeline
+Flows
+(Streaming + Batch)
+Materialized Views
+ETL
+Query Acceleration
+
+=== Slide 12 ===
+What are Flows?
+The first step to declarative ETL
+Append Flow
+for incremental ingestion from cloud storage, Kafka, etc.
+Auto CDC Flow
+for SCD1 and SCD2
+Replace Where Flow
+for batch transformation (Enzyme enabled)
+
+=== Slide 13 ===
+Bring Flows to Notebooks
+Meet customers where they are
+Python + SQL Flows in Serverless GC
+Why does this matter?
+Deliver Auto CDC, Enzyme, data quality expectations, managed streaming checkpoint to data engineers using Notebooks (50%+ of current ETL)
+Flexibility for a mix of imperative code and declarative Flows
+No migration required. Flows work with existing tables, existing Notebooks, existing orchestrators, and existing CI/CD workflows
+
+=== Slide 14 ===
+Bring Flows to DBSQL
+Meet customers where they are
+SQL Flows in DBSQL
+Why does this matter?
+Deliver Auto CDC, Enzyme, data quality expectations, data graph refresh to EDW Engineers and Analytics Engineers
+Native SQL experience w/o knowing or learning a new product
+Make DBSQL the DWH with the most capable ETL functionalities
+
+=== Slide 15 ===
+Bring Flows to OSS Spark
+Meet customers where they are
+Python and SQL Flows in OSS SDP
+Why does this matter?
+Maintain Spark’s leadership position in OSS: RDD -> Dataframes -> SDP
+Maintain the key value proposition of Databricks being Open
+Drive new edge features (e.g. Enzyme) for Databricks as competitors adopt SDP Flows
+Allow local IDE developers to use SDP w/o changing their current workflows
+
+=== Slide 16 ===
+From Flows to Pipelines
+The next step to declarative ETL
+Enable an adoption path from Flows to Pipelines
+What does Pipeline give you?
+Metaprogramming with Python
+Dataflow graph validation, orchestration, and observability
+CI/CD - deploy Flows, Tables, and MVs to UC as code
+Continuous streaming, even Real-Time mode!
+
+=== Slide 17 ===
+Recap
+SDP enables new users and use cases, strengthens Spark’s dominating position in OSS, and drives new Edge for Databricks
+We have achieved early success and we want 10X growth
+How? Meet customers where they are with a gradual adoption path to declarative ETL
+Decompose SDP to the Flows primitive (batch and streaming)
+Bring Flows to Notebooks, DBSQL, and OSS Spark -> Auto CDC, Enzyme, data quality expectations, managed streaming checkpoint
+Enable an adoption path from Flows to Pipelines -> Dataflow graph, metaprogramming, CI/CD for UC datasets, continuous streaming
+
+=== Slide 18 ===
+CTA
+Stay tuned on upcoming enablement sessions on SDP Flows
+Give us feedback on the concept, product experience, and GTM
+Help us evangelize with your customers
+Contact: ray.zhu@, isaac.gritz@, steven.yu@
+
+=== Slide 19 ===
+Thank you!
+
+
+############################################################
+# Managed Tables & DR
+############################################################
+
+=== Slide 1 ===
+Sirui Sun, Sr. Manager, Product Management
+Managed Tables
+& Disaster Recovery
+
+=== Slide 2 ===
+Meet Your Speaker
+Sirui Sun
+Sr. Manager, PM
+
+=== Slide 3 ===
+First off ...
+What’s a
+managed table?
+
+=== Slide 4 ===
+Unity Catalog Table Types
+Note: Streaming Tables (STs) & Materialized Views (MVs) are also considered to be UC managed tables
+
+=== Slide 5 ===
+Unity Catalog Table Types
+> CREATE OR REPLACE TABLE main.default.my_tbl …
+LOCATION `s3://path/to/table`
+Note: Streaming Tables (STs) & Materialized Views (MVs) are also considered to be UC managed tables
+
+=== Slide 6 ===
+UC is the catalog source of truth
+UC governs access securely, for all clients
+1
+2
+Unlocks better performance and powerful capabilities
+Powered by Data Intelligence
+A Unity Catalog (UC) Managed Table…
+
+=== Slide 7 ===
+Unity Catalog Table Types
+> CREATE OR REPLACE TABLE main.default.my_tbl …
+LOCATION `s3://path/to/table`
+> CREATE OR REPLACE TABLE main.default.my_tbl …
+Note: Streaming Tables (STs) & Materialized Views (MVs) are also considered to be UC managed tables
+
+=== Slide 8 ===
+Unity Catalog Table Types
+> CREATE OR REPLACE TABLE main.default.my_tbl …
+LOCATION `s3://path/to/table`
+> CREATE OR REPLACE TABLE main.default.my_tbl …
+Note: Streaming Tables (STs) & Materialized Views (MVs) are also considered to be UC managed tables
+Also includes: Lakeflow Connect, Spark Declarative Pipelines, DB SQL MVs and STs, Zerobus
+
+=== Slide 9 ===
+Introducing Catalog-Managed Commits!
+Required
+for future managed tables benefitsEx: FGAC on external engines, MSTs, etc.
+Catalog-Managed Commits makes Delta a
+catalog-oriented
+format, aligning its design with Iceberg
+Coming soon
+- rolling out automatically to UC managed tables
+Call to action:
+Upgrade your DBRs to 16.4+ (or move to serverless)
+Client
+(Spark, Trino, etc.)
+Catalog
+Storage
+The catalog orchestrates Delta reads and writes
+Key details
+CC is an open-source Delta feature
+DBR 16.4+ is required to read/write to tables with CC enabled
+
+=== Slide 10 ===
+Databricks Internal Only - Do Not Share
+FY27 Goal:
+75% of $DBUs
+On Managed Tables
+UC managed tables
+Core KPI: % of $DBUs to managed tables
+
+=== Slide 11 ===
+Databricks Internal Only - Do Not Share
+FY27 Goal:
+75% of $DBUs
+On Managed Tables
+UC managed tables
+Core KPI: % of $DBUs to managed tables
+38% of customers: <50% managed tables
+26% of customers: <10% managed tables
+
+=== Slide 12 ===
+Best of Databricks
+Powerful capabilities like managed DR, multi-statement transactions
+Stickier
+Databricks takes on the hardest data management challenges
+Visibility into external access
+See when and how your customers are using 3P tooling
+Why get your customers hooked on Managed Tables?
+Databricks Internal Only - Do Not Share
+
+=== Slide 13 ===
+Managed tables make your data POP
+
+=== Slide 14 ===
+Managed tables make your data
+P
+erformant
+Predictive Optimization:
+constantly improving
+Automatic…
+File sizing and compaction
+Liquid clustering
+File clean-up
+(now 10x faster)
+Statistics
+(now smarter)
+Indexing
+(coming soon)
+Compression
+(coming soon)
+
+=== Slide 15 ===
+Predictive Optimization
+10x adoption YoY
+15K+ enabled accounts; on for ~50% of managed tables
+$3M in annual storage savings,
+per day
+Managed tables make your data
+P
+erformant
+
+=== Slide 16 ===
+Managed tables make your data
+P
+erformant
+
+=== Slide 17 ===
+Managed tables make your data
+P
+erformant
+Objection handling:
+Can Predictive Optimization do better than a hyper-tuned existing table?
+It depends.
+Has the customer covered all the bases? E.g., setting the right stats collection columns
+Does your customer have the bandwidth to custom tune
+all
+their tables?
+Is the customer over-tuning the table?
+
+=== Slide 18 ===
+Managed tables make your data
+P
+erformant
+Objection handling:
+How do I know why Predictive Optimization is (or is not) performing a certain operation?
+Coming soon:
+PO run reasons:
+Run DESCRIBE EXTENDED <table_name>
+Get the list of operations that P.O. can perform, and why they either ran or were skipped.
+
+=== Slide 19 ===
+O
+pen
+P
+owerful
+Managed tables make your data
+P
+erformant
+O
+pen
+Choose your storage
+Customer-managed or Databricks-managed
+Choose your open table format
+Delta Lake or Iceberg
+Choose your tool
+Read or write from wide ecosystem of tools
+
+=== Slide 20 ===
+Unity REST APIs
+Read/Write with
+Vended Credentials
+Iceberg REST APIs
+DELTA CLIENTS
+ICEBERG CLIENTS
+EMR
+Any asset in UC can be accessed via
+Open APIs
+Access UC tables, volumes, and models securely with Credential Vending
+Tables
+AI Models
+Functions
+Files
+Views
+
+=== Slide 21 ===
+Read Managed Tables using
+Open APIs
+Install UC and Delta extensions
+Read
+from
+Delta clients
+Install Iceberg extensions
+Read from
+Iceberg clients
+Unity Rest APIs (Public Preview)
+/api/2.1/unity-catalog
+Iceberg REST APIs (Public Preview)
+/api/2.1/unity-catalog/iceberg-rest
+Customer Setup
+Configure external access in Unity Catalog, authenticate from engines via PAT Token/OAuth credentials.
+
+=== Slide 22 ===
+Write to UC managed tables via Open APIs
+Write from any
+Delta client
+that supports catalog-managed commits
+Clients include:
+Spark, Flink, Starburst Trino, DuckDB (preview), and other Delta Kernel-integrated clients
+Write from
+any
+Iceberg client
+Clients include:
+Spark, Flink, Trino, Kafka Connect and other clients which support Iceberg REST catalog APIs
+Unity Rest APIs (Private Preview)
+/api/2.1/unity-catalog
+Iceberg REST APIs (Public Preview)
+/api/2.1/unity-catalog/iceberg-rest
+
+=== Slide 23 ===
+Tables
+AI Models
+Functions
+Files
+Views
+Collaborate across platforms with
+Delta Sharing
+Securely share assets across domains with fine-grained controls and zero data replication
+Delta Sharing
+protocol
+Sharing Clients
+
+=== Slide 24 ===
+Read Managed Tables using
+Delta Sharing
+Setup
+Customers can configure Delta Sharing by:
+Enabling it in Unity Catalog
+Creating a share for data assets
+Adding recipients
+Giving recipients the info they need to connect
+Reading via Delta sharing
+Recipient provides their credentials to read the data from
+their external tool of choice
+
+=== Slide 25 ===
+What if I’m using clients that don’t talk to Open APIs?
+Problem:
+Some clients require path-based access to tables
+Solution: Compatibility Mode
+allows you to access UC managed tables by path
+Read
+UC managed tables
+from
+any
+external client
+Managed Table
+Compatibility Mode (V1) Version
+External Client
+Sync of changes
+Read by path
+
+=== Slide 26 ===
+UC Ecosystem Product Roadmap
+Learn more:
+TKO Open Lakehouse Deep Dive
+
+=== Slide 27 ===
+O
+pen
+P
+owerful
+Managed tables make your data
+P
+erformant
+O
+pen
+Objection handling:
+Why are managed tables stored in GUID-based paths?
+Access your tables via Open Catalog APIs
+Clients should
+not
+go to storage paths.
+Unified governance
+Avoids bugs and corner cases
+Unlocks innovation (e.g., FGAC)
+
+=== Slide 28 ===
+O
+pen
+P
+owerful
+Managed tables make your data
+P
+erformant
+O
+pen
+P
+owerful
+Powered by UC, enabling…
+File clean-up DROP table
+[NEW]
+Now with configurable retention
+[NEW]
+Auto TTL
+No more DELETE / VACUUM cronjobs
+Out of the box observability
+Storage size over time - coming soon
+
+=== Slide 29 ===
+O
+pen
+P
+owerful
+Managed tables make your data
+P
+erformant
+O
+pen
+P
+owerful
+Powered by UC, enabling…
+Multi-table transactions
+Private Preview
+BEGIN TRANSACTION
+;
+INSERT INTO
+silver.orders
+SELECT
+*
+FROM
+bronze.orders
+WHERE
+o_isvalid;
+DELETE FROM
+bronze.orders
+WHERE
+o_orderkey
+IN
+(
+select o_orderkey from silver.orders
+);
+COMMIT TRANSACTION
+;
+
+=== Slide 30 ===
+O
+pen
+P
+owerful
+Managed tables make your data
+P
+erformant
+O
+pen
+P
+owerful
+Objection handling:
+Why are these capabilities
+only
+offered in managed tables?
+The catalog is the key
+. All of these capabilities require a catalog coordinator to know when data is written / read.
+
+=== Slide 31 ===
+O
+pen
+P
+owerful
+Managed tables make your data
+P
+erformant
+O
+pen
+P
+owerful
+Powered by UC, enabling…
+Managed Disaster Recovery
+Gated Private Preview
+
+=== Slide 32 ===
+Disaster Recovery
+Keep Databricks running in the face of a
+regional cloud outage
+Recovery Point Objective (RPO)
+Tolerable data loss (target: <15m)
+Recovery Time Objective (RTO)
+Time to recover (target: <15m)
+
+=== Slide 33 ===
+Data
+Plane
+Control Plane
+Cloud Storage
+Data
+Primary region
+Unity Catalog
+Data
+Plane
+Control Plane
+Cloud Storage
+Data
+Secondary region
+Active
+Passive
+Databricks Managed DR offering
+Stable URL
+Clients
+Managed replication
+Stable connections
+Workspace Assets
+Unity Catalog
+Workspace Assets
+
+=== Slide 34 ===
+Data
+Plane
+Control Plane
+Cloud Storage
+Data
+Primary region
+Unity Catalog
+Data
+Plane
+Control Plane
+Cloud Storage
+Data
+Secondary region
+Active
+Passive
+Databricks Managed DR offering
+Stable URL
+Clients
+Workspace Assets
+Unity Catalog
+Workspace Assets
+Powered by serverless compute
+Out-of-the-box observability
+Failover / failback
+
+=== Slide 35 ===
+Set up replication
+$ databricks failover-group create
+--name
+failover_group_1
+--workspaces (
+workspace_1, workspace_2
+)
+--catalogs
+catalog_1
+,
+catalog_2
+,...
+--regions
+region_a, region_b
+--primary
+region_a
+
+=== Slide 36 ===
+What gets replicated?
+Unvarnished truth
+Not all resources will be covered from the outset.
+
+=== Slide 37 ===
+Stable URLs
+Replication groups provide
+stable connection URLs
+$ databricks failover-group get-connection
+failover_group_1
+Returns:
+For this workspace pair, returns a stable connection URL
+Ex:
+{account-name}.databricks.com/..c?=<connection-id>
+The URL directs to the current primary workspace
+Works for:
+ODBC / JBDC
+Web browser
+APIs
+
+=== Slide 38 ===
+Fail over
+$ databricks failover-group failover
+--name
+failover_group_1
+--primary
+region_b
+
+=== Slide 39 ===
+Pricing
+Compute and network egress costs
+Compute charged per GB transferred
+Network charged via Data Transfer SKUs
+Mission Critical Add-on
+Estimated 15% DBU premium (final amount TBD)
+Applied to all workloads in target workspaces
+Bundled with other advanced capabilities like Enhanced Security and Compliance, etc
+$ databricks failover-group create
+--name
+failover_group_1
+--workspaces (
+workspace_1, workspace_2
+)
+--catalogs
+catalog_1
+,
+catalog_2
+,...
+--regions
+region_a, region_b
+--primary
+region_a
+
+=== Slide 40 ===
+Today
+Private Preview
+Limited customers
+Non-production workloads
+Non-final API
+Q1 - Q2FY27
+Private Preview
+Expanded customers
+Higher throughput
+Final API and pricing
+DAIS 2026
+Public Preview
+Production workloads
+The Path Forward for Disaster Recovery
+
+=== Slide 41 ===
+Unvarnished truths
+Coverage of all workloads and resources will be an iterative process
+Not covered in PuPr: Volumes, Delta Sharing, Models
+DR is a muscle that your customer needs to develop
+The managed DR offering makes the hardest parts easier
+We are onboarding customers incrementally
+Even at DAIS
+
+=== Slide 42 ===
+go/dr
+Request PM / product specialist support
+Best practices guide
+Pitch slides
+Competitive battlecards
+User group sign-up and recordings
+
+=== Slide 43 ===
+If your customer is not yet on UC managed tables…
+
+=== Slide 44 ===
+How to check usage
+go/managedtables/dashboard
+Databricks Internal Only - Do Not Share
+
+=== Slide 45 ===
+Push managed tables!
+Pitch slides:
+L100: go/managedtables/100
+L200: go/managedtables/200
+Managed tables make your data POP
+Performant, open, powerful
+Start with new workloads
+But expand to existing workloads
+Need help? Ask in #apa-managed-tables
+
+=== Slide 46 ===
+Easy conversion from existing UC external tables (PuPr)
+> ALTER TABLE catalog.schema.external_table SET MANAGED
+When run:
+✅
+No data movement or duplicated data (which means no additional costs)
+✅ Path-based code from DBR continues to work
+✅ Minimal downtime (<1m) - only need to wait for Delta log creation in the UC managed location
+
+=== Slide 47 ===
+Why access via catalog APIs?
+(as opposed to directly using a storage path?)
+Single source of governance
+Catalog governs all accesses - no more “side door” access going directly to storage
+Fine grained access controls for external clients
+External clients can get FGAC through catalog APIs
+Unblocks new capabilities
+Catalog as a coordinator unlocks:
+Predictive Optimization
+Managed Disaster Recovery
+Multi-statement transactions
+
+=== Slide 48 ===
+But… what if I need to control the storage location at a catalog or schema level, for cost attribution?
+In Private Preview!
+ALTER (SCHEMA | CATALOG)… SET MANAGED LOCATION
+Run this before converting to UC managed tables, to control the
+physical location
+of you UC managed tables at the schema/catalog level!
+… with additional features are also coming soon, that will allow you to view storage size (and ~cost estimates) for each table, schema, and catalog!
+
+=== Slide 49 ===
+What if my customer is
+already using
+managed tables?
+
+=== Slide 50 ===
+[#1] Deepen usage of UC
+Data:
+Predictive Optimization
+Multi-statement Transactions
+Managed Disaster Recovery
+Auto Liquid
+Policy:
+ABAC / RLS / CLM
+Group clusters
+Discovery-related tags
+[#2] Push to upgrade DBRs
+To 16.4+ (or serverless), unlocking catalog-managed commits
+
+=== Slide 51 ===
+[#3] Understanding third-party access
+With UC managed tables, we gather telemetry on external accesses
+Check this dashboard for the full view
+Go after 3P writes - win with 1P Databricks compute
+Databricks compute should have industry-leading performance on managed tables
+go/managedtables/dashboard
+
+=== Slide 52 ===
+What’s next?
+Takeaways
+
+=== Slide 53 ===
+UC managed tables make your data POP
+P
+erformant,
+O
+pen,
+P
+owerful
+Push managed tables
+Stickier workloads, visibility on all access patterns
+go/managedtables/100
+go/managedtables/200
+If already adopted…
+Deep usage of UC
+Prepare for catalog-managed commits 	Upgrade DBRs to 16.4+ (or use serverless)
+Check for 3P usage
+Win writes with 1P compute
+Ask questions, request support at:
+#disaster-recovery
+#apa-managed-tables
+
+=== Slide 54 ===
+Thank you
+
+=== Slide 55 ===
+SUPPORTING TEXT
+Agenda
+
+=== Slide 56 ===
+Learning Outcomes
+
+=== Slide 58 ===
+[Internal Only Slide]
+[This slide will not be shown to Partners]
+Databricks Internal Only - Do Not Share
+
+=== Slide 59 ===
+SUPPORTING TEXT
+Problem Statement
+
+=== Slide 60 ===
+Product Overview
+SUPPORTING TEXT
+
+=== Slide 61 ===
+SUPPORTING TEXT
+Key Features and Functionality
+
+=== Slide 62 ===
+Product Architecture
+SUPPORTING TEXT
+
+=== Slide 63 ===
+SUPPORTING TEXT
+Integration With Other Products
+
+=== Slide 64 ===
+Competitors
+SUPPORTING TEXT
+
+=== Slide 65 ===
+SUPPORTING TEXT
+Unvarnished Truth
+
+=== Slide 66 ===
+Demo
+SUPPORTING TEXT
+
+=== Slide 67 ===
+Roadmap
+SUPPORTING TEXT
+
+=== Slide 68 ===
+Summary
+SUPPORTING TEXT
+
+=== Slide 69 ===
+Call To Action
+SUPPORTING TEXT
+
+=== Slide 70 ===
+SUPPORTING TEXT
+Extra Section Title
+
+=== Slide 71 ===
+SUPPORTING TEXT
+Section Title
+
+=== Slide 72 ===
+SUPPORTING TEXT
+Section Title
+
+=== Slide 73 ===
+Two-column content
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Here’s a column subheader
+Here’s a column subheader
+Your subtitle here
+
+=== Slide 74 ===
+Two column with icon space
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space above for an icon
+These columns have space above for an icon
+Your subtitle here
+
+=== Slide 77 ===
+Three-column text
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Here’s a column subheader
+Here’s a column subheader
+Here’s a column subheader
+Your subtitle here
+
+=== Slide 78 ===
+Three-column with icon space
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space for an icon
+These columns have space for an icon
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space for an icon
+Your subtitle here
+
+=== Slide 79 ===
+“The advance of technology is based on making it fit in so that you don’t really even notice it, so it’s part of everyday life.”
+—Bill Gates, Co-founder of Microsoft
+
+=== Slide 80 ===
+“The advance of technology is based on making it fit in so that you don’t really even notice it, so it’s part of everyday life.”
+—Bill Gates, Co-founder of Microsoft
+
+=== Slide 81 ===
+Three column card
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+Card number one
+Card number two
+Card number three
+Your subtitle here
+
+=== Slide 82 ===
+Righthand card
+Add your content here.
+Bullet one
+Bullet two
+Bullet three
+This spot is great for a diagram, image, small table, code snippet or screenshot
+Your subtitle here
+
+=== Slide 83 ===
+Lefthand card
+Add your content here
+Bullet one
+Bullet two
+Bullet three
+This spot is great for a diagram, image, small table, code snippet or screenshot
+Your subtitle here
+
+=== Slide 84 ===
+Full width card
+This card is good for larger diagrams, tables or other general use
+Your subtitle here
+
+=== Slide 85 ===
+For more guidance, reference the assets linked below
+Resource deck
+
+=== Slide 86 ===
+Dark Mode
+There are also dark versions of these layouts. To access these layouts, create a new slide immediately after this one, right click on its slide thumbnail and select an option under
+Apply
+Layout
+
+
+############################################################
+# UC ABAC
+############################################################
+
+=== Slide 1 ===
+Governance at Scale
+Permissions, ABAC & RBAC
+
+=== Slide 2 ===
+Meet Your Speaker
+Stefania Leone
+Director of Product
+
+=== Slide 3 ===
+Objectives
+
+=== Slide 4 ===
+Learning Outcomes
+Understand Databricks Permission model, ABAC and RBAC
+Understand what to use when and how to combine them
+Understand current limitations, how we compare to the competition and what is on the roadmap
+
+=== Slide 5 ===
+Problem Statement
+
+=== Slide 6 ===
+Governance Journey: Access control
+Access control requirements evolve
+Marketing
+Sales
+Schema A.2
+Schema B.1
+Schema B.2
+Schema A.1
+Table A.2.1
+Marketing team should have access to Marketing data
+Sales team should access to Sales data
+ONLY see revenue data from their regions: EMEA, US, APAC
+Only Admins should be able to see PII
+Access control requirements
+
+=== Slide 7 ===
+Governance Journey: Access control
+Map requirements into access policies
+Marketing
+Sales
+Schema A.2
+Schema B.1
+Schema B.2
+Schema A.1
+Table A.2.1
+> GRANT USE CATALOG Marketing TO
+marketing_team
+> GRANT USE SCHEMA A.1 TO
+marketing_team
+> GRANT SELECT ON TABLE A.1.1 TO
+marketing_team
+…
+> GRANT USE CATALOG Sales TO
+sales_team
+> GRANT USE SCHEMA B.1 TO
+sales_team
+> GRANT SELECT ON TABLE B.1.1 TO
+sales_team
+> GRANT all privileges ON SCHEMA B.2 TO
+sales_team
+Gov Admin: Access control by org units
+
+=== Slide 8 ===
+Governance Journey: Access control
+Filter revenue data by region
+Marketing
+Sales
+Schema A.2
+Schema B.1
+Schema B.2
+Schema A.1
+Table A.2.1
+-- revenue tables must be split by region
+> ALTER TABLE revenue
+SET ROW FILTER filter_sales ON (region);
+Row filter for revenue table
+
+=== Slide 9 ===
+Governance Journey: Access control
+Mask all PII for all users but admins
+Marketing
+Sales
+Schema A.2
+Schema B.1
+Schema B.2
+Schema A.1
+Table A.2.1
+-- mask PII everywhere:
+Prospects, Customers, Revenue, …
+> ALTER TABLE customers
+ALTER COLUMN name SET MASK mask_name;
+> ALTER TABLE customers
+ALTER COLUMN email SET MASK mask_email;
+> ALTER TABLE prospects
+ALTER COLUMN name SET MASK mask_name;
+> ALTER TABLE prospects
+ALTER COLUMN email SET MASK mask_email;
+> ...
+Column mask on all columns w/ PII
+
+=== Slide 10 ===
+Governance Journey: Access control
+New Catalog and team onboarded
+Marketing
+Sales
+Finance
+Schema A.2
+Schema B.1
+Schema B.2
+Schema C.1
+Schema C.2
+Schema C.3
+Schema A.1
+Table A.2.1
+Revenue
+Finance-specific requirements
+Finance should have access to Finance data
+Finance should also have access to some Sales and Marketing data
+Common requirements
+Only Admin should be able to see PII: same filters, new tables
+Rinse and repeat
+
+=== Slide 11 ===
+Governance Journey
+Attribute-based access control
+Marketing
+Sales
+Finance
+Schema A.2
+Schema B.1
+Schema B.2
+Schema C.1
+Schema C.2
+Schema C.3
+Schema A.1
+Table A.2.1
+Revenue
+PII
+PII
+PII
+PII
+Gov Admin
+Define tags at account level
+Defines Policy
+Object owner, data steward or AI data classification
+tags objects, e.g. columns
+
+=== Slide 12 ===
+Governance at scale
+Must enable collaboration between parties with different responsibilities
+Data consumer
+Data steward
+Governance
+admin
+Data producer
+
+=== Slide 13 ===
+Governance at scale
+Challenges if governance primitives don’t support governance patterns
+2
+Access control primitives
+may not scale and make separation of duties harder to implement
+1
+Bundled or too coarse privileges
+to ensure principle of least privilege
+3
+Isolation boundaries
+to ensure principle of least privilege
+become more important
+
+=== Slide 14 ===
+Unity Catalog core governance framework
+2
+ABAC policies
+Attribute-based access control for scale & flexibility
+1
+Permission model
+Define least privilege access based on granular permissions that can be granted independently
+3
+RBAC / exclusive access
+Create isolation boundaries & allow role switching
+
+=== Slide 15 ===
+Product Overview
+Permissions, ABAC & RBAC
+[Existing]
+
+=== Slide 16 ===
+Unity Catalog core governance framework
+2
+ABAC policies
+Attribute-based access control for scale & flexibility
+1
+Permission model
+Define least privilege access based on granular permissions that can be granted independently
+3
+RBAC / exclusive access
+Create isolation boundaries & allow role switching
+
+=== Slide 17 ===
+Permission granularity
+Insufficiently granular permissions leads to over-privileged users
+⚠
+Creators are by default
+owners
+and can grant permissions
+⚠
+MANAGE
+over-privileges
+for the task
+
+=== Slide 18 ===
+Permissions evolution: Granular controls
+MANAGE example
+
+=== Slide 19 ===
+Permissions evolution: Granular controls
+MANAGE example
+01
+> GRANT MANAGE GRANTS TO admins
+-
+Can manage permissions, without other controls
+Domain owner
+> GRANT VIEW ADMIN METADATA TO SREs
+-
+Can view access control information to debug issues
+SRE debugging access issue
+
+=== Slide 20 ===
+Permissions evolution: Granular controls
+MODIFY example
+
+=== Slide 21 ===
+Permissions evolution: Granular controls
+MODIFY example
+> GRANT INSERT TO ingestion_SP
+-
+Can only write data that matches the current schema exactly
+Ingestion SP
+> GRANT MODIFY TO data_architects
+-
+Can append/rename, drop columns, change data types/table properties
+Data architect
+
+=== Slide 22 ===
+Unity Catalog core governance framework
+2
+ABAC policies
+Attribute-based access control for scale & flexibility
+1
+Permission model
+Define least privilege access based on granular permissions that can be granted independently
+3
+RBAC / exclusive access
+Create isolation boundaries & allow role switching
+
+=== Slide 23 ===
+Attribute-based access control
+Policies
+match objects by
+attributes
+for dynamic authorization
+Catalog A
+Catalog B
+Catalog C
+Schema A.2
+Schema B.3
+Schema B.4
+Schema C.1
+Schema C.2
+Schema C.3
+Schema A.1
+Table A.2.1
+Table A.1.1
+PII
+PII
+PII
+HR
+→
+Determine access dynamically by evaluating
+Policies
+in a specified
+scope
+, e.g., a catalog or schema
+→ Match
+objects based on
+attributes
+, e.g., governed tags, object types and soon user attributes
+→
+Permissions are enforced
+automatically
+as soon as attributes are applied (“future grants”)
+HR
+
+=== Slide 24 ===
+Attribute-based access control
+Typically involves a number of different personas
+Catalog A
+Catalog B
+Catalog C
+Schema A.2
+Schema B.3
+Schema B.4
+Schema C.1
+Schema C.2
+Schema C.3
+Schema A.1
+Table A.2.1
+Table A.1.1
+HR
+PII
+PII
+HR
+Table A.2.1
+PII
+
+=== Slide 25 ===
+Attribute-based access control
+Two types of policies
+Row filters and
+column masks
+GA in Q1
+GRANT and DENY
+Coming soon
+
+=== Slide 26 ===
+ABAC access policies: GRANT & DENY
+Control access, e.g.,
+entire
+catalogs, schemas, tables, or volumes
+Future
+model1
+Catalog:
+ariba_prod
+table4
+model2
+table5
+function1
+function2
+table1
+table2
+table1
+volume1
+table3
+table4
+volume2
+Schema:
+logistics
+Schema:
+digital
+Schema
+:
+office
+Policy
+GRANT
+SELECT
+FOR TABLES tagged
+SUPPLY
+in
+SCOPE
+catalog `ariba_prod`
+TO `sales_team` EXCEPT `new_joiners`
+supply
+supply
+supply
+supply
+restricted
+supply
+→
+Policies
+define more granular access within a specified
+scope
+than regular grants by referencing users & resources by their
+attributes
+→ Fewer policies
+for the same outcome compared to regular grants
+→
+Scales access controls across
+complex hierarchies
+and many
+object types
+
+=== Slide 27 ===
+Unity Catalog core governance framework
+2
+ABAC policies
+Attribute-based access control for scale & flexibility
+1
+Permission model
+Define least privilege access based on granular permissions that can be granted independently
+3
+RBAC / exclusive access
+Create isolation boundaries & allow role switching
+
+=== Slide 28 ===
+Problem statement
+Users work on multiple “projects”, but only one at a time
+Clinical trials
+Consulting for multiple clients
+Restricted/unrestricted data
+Country-specific data
+Users need high privilege permissions, but not always
+Access and resolve data access issues
+Make grant decisions
+Audit data access
+See PII
+Alice
+Project 1 data
+Project 2 data
+Data Science data
+isMember
+READ
+READ/WRITE
+MANAGE
+Project 2
+Data Scientists
+isMember
+isMember
+Project 1
+Use cases requiring exclusive access or isolation
+
+=== Slide 29 ===
+Permissions “follow the user”
+Permissions granted to users, or groups, inherited by members
+Union semantics:
+Alice ∪ Group 1 ∪ Group 2 ∪ Group 3
+Alice
+Project 1 data
+Project 2 data
+Data Science data
+isMember
+READ
+READ/WRITE
+MANAGE
+Project 2
+Data Scientists
+isMember
+isMember
+Project 1
+Problems
+Over time users accumulate a lot of permissions
+Users can query and join data across multiple projects they are members of
+Hard for admins to reason about the composition of permissions users have
+Users can create artifacts derived from project data and share with other users
+…
+Permission model: Union semantics
+
+=== Slide 30 ===
+Exclusive group* w/
+canAssume
+allow users to act as a group they assume
+Alice either
+Acts as herself, assumes Project 1 or assumes Project 2
+Alice
+Project 1 data
+Project 2 data
+Data Science data
+canAssume
+READ
+READ/WRITE
+MANAGE
+Project 2
+Data Scientists
+canAssume
+isMember
+Project 1
+RBAC for exclusive access
+Users can switch role in the workspace/via 3rd party tools
+*
+naming under discussion
+
+=== Slide 31 ===
+Putting it all together
+The power of granular permissions, ABAC and RBAC combined
+2
+ABAC policies
+Attribute-based access control for scale & flexibility
+1
+Permission model
+Define least privilege access based on granular permissions that can be granted independently
+3
+RBAC / exclusive access
+Create isolation boundaries & allow role switching
+
+=== Slide 32 ===
+Example: Debugging access control issues
+The power of granular permissions, ABAC and RBAC combined
+How to best model
+Create group
+debugAccessControl
+GRANT VIEW ADMIN METADATA on all catalogs to
+debugAccessControl
+Grant
+canAssume
+on
+debugAccessControl
+to SRE
+→ For debugging, the SRE picks
+debugAccessControl
+from the workspace role picker.
+
+=== Slide 33 ===
+Example: Make PII visible to HR person
+The power of granular permissions, ABAC and RBAC combined
+→ To inspect PII, HR person assumes
+PII_viewer
+group
+
+=== Slide 34 ===
+Example: Over-privileged object owner
+The power of granular permissions, ABAC and RBAC combined
+→ For managing grants, gov admins pick
+gov-admin
+from the workspace role picker.
+
+=== Slide 35 ===
+Unvarnished Truth & Roadmap
+
+=== Slide 36 ===
+When to use ABAC
+Rules apply across many data sets
+General rules can be defined based on attributes
+You want dynamic and default access behavior
+New objects inherit access as soon as tagged
+Frequent changes and fast growth
+Many teams, many objects, many changes
+You want/need separation of duties
+One group classifies data, another manages policies
+You have tagging taxonomy and discipline
+Owners add tags, audits exist, drift is monitored
+Small and stable access needs
+Simple grants for few users/objects, rare changes
+One off exceptions
+Strict per table, or case by case entitlements; many special cases that do not fit general rules
+Teams cannot tolerate policy opacity
+Users and admins need simple, obvious rules
+Attributes are missing or unreliable
+Tags are incomplete, or easy to misapply
+You lack governance rigor
+No clear owners for tagging, weak change control
+Use ABAC when
+Don’t use ABAC when
+
+=== Slide 37 ===
+Gotchas
+Tagging becomes a security boundary
+If someone can change tags, they can change access
+Wrong or missing tags cause over/under access
+Data can become exposed/blocked w/ no obvious error
+Policy sprawl still happens
+ABAC reduces grants, but high policy count is also hard to manage, e.g., if each team invents custom attributes
+Mixed models can create surprises
+ABAC grant policies can be superseded by regular grants due to permissions UNION
+Performance and evaluation complexity
+Large numbers of policies and conditions can slow authorization checks.
+Attribute-based access controls
+→
+Tighten who can set attributes and audit changes, use RBAC
+→
+Add validation checks and fallback rules, e.g. by use “not verified” tags
+→
+Standardize attributes and naming and put in place as small of a permission set as you can
+→
+Avoid mixing without clear guidelines
+→
+Keep conditions simple and reusable
+
+=== Slide 38 ===
+Limitations
+Unvarnished truth
+ABAC and Views
+Low policy limits
+Pipeline refresh only with excluded principal
+Struct masking difficulties
+No Policies in information schema
+No policies above catalog level
+Policy conflict if > one policy applies for a user
+Delta sharing only if provider exempt from policy
+→ Session identity in Q1, ABAC on views in H2
+→ Higher limits coming in Q1 FY’27
+→ Resolved in Q1 FY’27
+→ Struct to variant casting added to DBR 18.1
+→ Tentative Q1/Q2 FY’27
+→ Path finding on account/metastore-level policies
+→ Path finding on policy composition
+→ N/A
+
+=== Slide 39 ===
+Permissions, ABAC & RBAC: What’s next
+May be subject to change
+Today
+ABAC RLS/CM Public
+Preview
+Policy management (UI / API / SQL / Terraform)
+RLS/CM policy based on governed tags
+H1 FY’27
+ABAC RLS/CM GA
+- Q1 (increased limits)
+More built-in functions
+User attributes
+DENY MANAGE GRANTS
+Permissions:
+INSERT/UPDATE/DELETE,
+VIEW ADMIN METADATA, MANAGE GRANTS
+RBAC
+: Beta/Public Preview
+H2 FY’27
+ABAC GRANT policies
+ABAC DENY (selected privileges)
+Context attributes
+Permissions:
+Manage descriptive metadata
+RBAC
+GA
+
+=== Slide 40 ===
+Competitors & Partners
+SUPPORTING TEXT
+
+=== Slide 41 ===
+TL;DR on competition
+→ We are adding privilege granularity where it really matters
+→ Databricks leads on ABAC row and column security at Catalog and Schema scopes, rather than only table-level as some competitors
+→ Competitors mostly stop at tag-based column masking, not tag-based row filtering
+→ With ABAC access policies, we move beyond data policies (where most competitors stop), into full attribute-based access control like Lake Formation or Google Cloud IAM
+→ RBAC completes the model w/o added complexity (like others do): it enforces strict isolation when needed, preserves attribute based policies flexibility & scale
+Permissions, ABAC, RBAC
+
+=== Slide 42 ===
+Competition detailed
+
+=== Slide 43 ===
+Competition detailed
+
+=== Slide 44 ===
+Governance Partners
+Partners such as Immuta and Privacera offer advanced ABAC capabilities
+If your customer is
+happily
+using Immuta or Privacera
+→ DO NOT TRY TO TAKE THEM OUT. Emphasize customer choice.
+If your customer is
+unhappy
+using Immuta and Privacera
+→ Understand the nature of their usage and issues. Engage UC SMEs to advise positioning.
+If your customer
+doesn’t yet have a way to perform ABAC
+→ Position UC ABAC
+
+=== Slide 45 ===
+Summary,  Call to Action
+
+=== Slide 46 ===
+Make use of all governance primitives
+Allow to model simpler solutions when combined!
+2
+ABAC policies
+Attribute-based access control for scale & flexibility
+1
+Permission model
+Define least privilege access based on granular permissions that can be granted independently
+3
+RBAC / exclusive access
+Create isolation boundaries & allow role switching
+
+=== Slide 47 ===
+Questions, Feedback: #apa-unity-catalog
+Chris Grabiel
+UC Product Specialist
+Adriana Ispas
+Product Management
+ABAC, Permissions
+Scott Van Woudenberg
+Product Management
+RBAC
+
+
+############################################################
+# Hyperscalers Positioning
+############################################################
+
+=== Slide 1 ===
+Databricks Positioning on Hyperscalers
+David Meyer
+
+=== Slide 2 ===
+AWS, Azure, GCP
+Multi-cloud and AI reality
+
+=== Slide 3 ===
+CSPs Data and AI Services are Fragmented
+Siloed data, AI, and governance = lots of ongoing integration work
+
+=== Slide 4 ===
+Build once, operate everywhere
+Our operational advantage
+
+=== Slide 5 ===
+Unified Governance at the core
+Access Control
+Tables
+TRADITIONAL CATALOGS
+Unified governance for
+all assets
+And more…
+50…
+
+=== Slide 6 ===
+Multi-AI is Real
+Just look at any of our top customers
+Multi-Cloud is Real
+Global UC
+Multi-cloud accounts
+Compute Flex
+
+=== Slide 7 ===
+every AI model
+
+=== Slide 8 ===
+Scheduling time over the next 2 weeks to further dig deep on this.
+
+=== Slide 9 ===
+Microsoft Fabric
+Unvarnished Truth
+
+=== Slide 10 ===
+Memes aside - OneLake is
+just storage
+If your customer has data in OneLake → you can federate and read it from UC
+Upgrade that data to UC for all the Databricks Lakehouse benefits - they can access UC data in Fabric just as easily
+
+=== Slide 11 ===
+Microsoft AI
+Microsoft Fabric
+Microsoft 365
+Power Platform
+Github
+VSCode
+Power BI
+OneLake
+Data Factory
+Microsoft Foundry
+CoPilot Studio
+Entra ID
+Azure Data Lake Storage
+Azure Virtual Machines
+Azure Networking
+Microsoft Teams
+Agent 365
+every AI model
+embedded into the tools of every user
+|
+|
+data
+zero
+copy
+agents
+
+=== Slide 12 ===
+Straight talk
+OneLake integration coming slow; OK to read OneLake (but store in ADLS).
+ADF Deprecation > move to LakeFlow
+“Free” Mirroring > We will announce similar for CDC
+Power BI DirectQuery is good. Reyden will be better.
+FabricIQ has hype; UC drives enterprises in production.
+
+=== Slide 13 ===
+Use our unfair advantages
+Best technical field in the world
+All the top Azure customers. Use their names. 				(Big incentives for Fabric takeout stories)
+We have the best product and out-innovate everyone.
+Multi-Cloud. Multi-AI.
+
+=== Slide 14 ===
+Databricks
+Our unfair advantage
+
+=== Slide 15 ===
+We’ve already covered multi-cloud and every AI model
+
+=== Slide 16 ===
+Those are just 2 of our unfair advantages
+Databricks extends the clouds
+
+=== Slide 17 ===
+Use what the cloud doesn’t have
+Every AWS customer has data in BigQuery
+And needs Gemini and OpenAI
+And needs a better AI Database
+Every Azure customer needs Claude
+And has data in BigQuery
+And needs a better AI Database
+Every Google business user uses Power BI
+Genie in Teams, Genie in Slack
+A/B Test against Claude and OpenAI
+
+=== Slide 18 ===
+Lakebase:
+Create the category
+Genie:
+Win business users
+FY27 Priorities are your
+Cloud
+secret weapons
+
+=== Slide 19 ===
+Genie
+Microsoft owns the business user
+This is how they got traction with Power BI, Fabric
+We need to establish a beachhead
+Genie in Teams, Genie in CoPilot
+Start here and pull into Databricks One & Mobile
+Databricks One, Genie, Apps, Mobile
+Get it in every account now
+It accelerates the strategic leverage of UC
+
+=== Slide 20 ===
+1.65M
+data practitioners
+
+=== Slide 21 ===
+1.65M
+data practitioners
+1.
+83
+M
+
+=== Slide 22 ===
+1.79Mdata practitioners
+100M+
+businessanalysts
+1B+
+businessusers
+
+=== Slide 23 ===
+1.79Mdata practitioners
+100M+
+businessanalysts
+1B+
+businessusers
+~136M Azure users already addressable through AIM
+
+=== Slide 24 ===
+AIM isn’t just Azure!!!
+Entra PrPr AWS & GCP
+Okta in development
+SSO + JIT the rest
+I AM ONCE AGAIN ASKING YOU TO
+LET THEM IN !!!!!
+
+=== Slide 25 ===
+Business user spiff
+New SPIF
+MAU of users using Databricks One, Genie, AIBI, Apps, Mobile
+Significant growth of eligible accounts
+Details rolled out with SPIF program
+Get Business User Adoption | Get PAID
+
+=== Slide 26 ===
+Lakebase Market Dynamics
+AI is eating the enterprise
+It needs a new database
+Lakebase is unique
+Don’t waste this window
+separated
+base compute
+lake storage
+chasm
+
+=== Slide 27 ===
+Future of OLTP on Azure is Lakebase!
+Make sure everyone knows it!!
+
+=== Slide 28 ===
+OLAP and OLTP together
+Lakebase
+Lakehouse
+Analyze data in the lakehouse
+Serve data from the lakehouse
+Lakebase
+Lakehouse
+Lakebase
+Lakehouse
+
+=== Slide 29 ===
+Biz users
+App devs
+
+=== Slide 30 ===
+And more…
+1
+2
+3
+
+=== Slide 31 ===
+March 2026 FabCon Week
+Announcements
+Free Mirroring into Databricks
+Genie in Teams
+Lakebase Azure GA
+
+=== Slide 32 ===
+Call to action
+Multi-cloud. Multi-AI.
+Unity Catalog as the Foundation.
+Use our incredible field. Help the customer win.
+Establish UC. Seed Lakebase. Get GENIE everywhere.
+1
+2
+3

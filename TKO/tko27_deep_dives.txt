@@ -1,0 +1,5907 @@
+# TKO FY27 - DEEP DIVES
+
+
+
+############################################################
+# AI/BI + Genie
+############################################################
+
+=== Slide 1 ===
+AI/BI Genie
+How to qualify, build, and scale successful Genie spaces
+Eric Lind, SA, AI/BI EPLAfsana Afzal, Sr. SA, AI/BI EPL
+
+=== Slide 2 ===
+Meet Your Speakers
+Afsana Afzal
+Sr. SA + AI/BI EPL for FINS
+Eric Lind
+SA, AI/BI EPL for MFG
+
+=== Slide 3 ===
+Thank you to the many contributors of this presentation through their assets and thought leadership!
+Silviu Tofan, Pulkit Pareek, Frederic Vadon, Anna Sviridova, Homayoon Moradi, Max Marcussen, Hari Selvarajan, Ryan Bates, Adrian Percin-Janda, Vandan Parmar, Kshitiz Sharma, Sean Zhang, Souvik Pratiher, David Huang, Colton Peltier, Esther Craddock-Taylor and more
+
+=== Slide 4 ===
+Agenda
+
+=== Slide 5 ===
+Genie Scoping and Best Practices
+AI/BI + GENIE
+
+=== Slide 6 ===
+Unvarnished Truth #1
+Talking with your data doesn’t mean it answers the right questions
+
+=== Slide 7 ===
+Many Genie failures are a result of poor or incomplete scoping
+
+=== Slide 8 ===
+Why Genie Best Practices Matter
+Genie performs best within a clear, narrow domain
+Over-broad scopes lead to unreliable or confusing answers
+Evaluation early prevents loss of trust later
+Many Genie failures are scoping problems
+
+=== Slide 9 ===
+Qualifying a Genie Use Case
+Single, well-defined business topic (Sales, Finance, Ops, etc.)
+Exploring data for decisions that have value for the business
+Many similar questions asked repeatedly by business users
+Data already governed and understandable in Unity Catalog
+Mixing unrelated domains in one space
+Audit-grade deterministic reporting
+Poorly modeled, undocumented, or overly large schemas
+Can business users list 10–20 real questions today?
+Which decisions lose value if answers are delayed?
+Who owns correctness: business or technical stakeholder?
+Are dashboards slow, rigid, or abandoned for this topic?
+Strong Genie fits
+Red flags
+Quick qualification checks
+Start with the right topic, users, and decisions
+
+=== Slide 10 ===
+What actually improves Genie quality
+Clear business questions and narrow scope
+Well-described tables and columns
+Example SQL that reflects real usage
+Simple, predictable joins and grain
+Long or complex instructions
+Too many tables added upfront
+Over-prompting edge cases
+Treating Genie as “set and forget”
+High-impact levers
+Where to invest time for the biggest impact
+Low-impact (yet common) levers
+
+=== Slide 11 ===
+Other Genie failures are a result poor execution & evaluation
+
+=== Slide 12 ===
+Two broad patterns for Genie builders
+Primary goals are testing features and experience, simple queries.
+Not evaluating overall accuracy.
+Bottom Up:
+data -> questions
+Table 1
+Table 2
+Table N
+…
+Random Question 1
+Random Question 2
+Random Question 3
+…
+
+=== Slide 13 ===
+Two broad patterns for Genie builders
+Primary goals are testing features and experience, simple queries.
+Not evaluating overall accuracy.
+Primary goal is serving defined end user needs for analytics.
+Evaluating overall accuracy.
+Bottom Up:
+data -> questions
+Top Down:
+questions -> data
+Table 1
+Table 2
+Table N
+…
+Random Question 1
+Random Question 2
+Random Question 3
+…
+Table 1
+Table 2
+Table N
+Real Question 1
+Real Question 2
+Real Question 3
+…
+…
+
+=== Slide 14 ===
+business users start with
+questions
+, seek
+answers
+from
+data
+they don’t start with
+data
+to seek
+questions
+it
+answers
+
+=== Slide 15 ===
+Two broad patterns for Genie builders
+Primary goals are testing features and experience, simple queries.
+Not evaluating overall accuracy.
+Primary goal is serving defined end user needs for analytics.
+Evaluating overall accuracy.
+Bottom Up:
+data -> questions
+Top Down:
+questions -> data
+Table 1
+Table 2
+Table N
+…
+Random Question 1
+Random Question 2
+Random Question 3
+…
+Table 1
+Table 2
+Table N
+Real Question 1
+Real Question 2
+Real Question 3
+…
+…
+
+=== Slide 16 ===
+Success is more likely with Top Down
+Primary goals are testing features and experience, simple queries.
+Not evaluating overall accuracy.
+Primary goal is serving defined end user needs for analytics.
+Evaluating overall accuracy.
+Bottom Up:
+data -> questions
+Top Down:
+questions -> data
+
+=== Slide 17 ===
+Encourage evaluation from the get-go
+Primary goals are testing features and experience, simple queries.
+Not evaluating overall accuracy.
+Recommended Actions for the Field
+Share Best Practices Documentation
+Workshops
+Shift customer thinking ----->
+Primary goal is serving defined end user needs for analytics.
+Evaluating overall accuracy.
+Recommended Action for the Field
+Encourage customers to define benchmarks
+Iteratively develop the space with benchmark evaluation
+Bottom Up:
+data -> questions
+Top Down:
+questions -> data
+
+=== Slide 18 ===
+Testing vs Production Support
+Primary goals are testing features and experience, simple queries.
+Not evaluating overall accuracy.
+Recommended Actions for the Field
+Share
+Best Practices
+Documentation
+Workshops
+Shift customer thinking ----->
+Primary goal is serving defined end user needs for analytics.
+Evaluating overall accuracy.
+Recommended Action for the Field
+Encourage customers to
+define benchmarks
+Iteratively develop the space with benchmark evaluation
+Bottom Up:
+tables -> questions
+Top Down:
+questions -> tables
+How to Use -
+Awareness of
+all platform capabilities
+(tools at your disposal) + general recommendations
+How to Evaluate -
+Use Benchmarks.
+If customers are unwilling to use - or unable to generate - Benchmarks, your use case has a very low chance of success/positive feedback.
+
+=== Slide 19 ===
+Designing & Iterating a Genie Space
+Design fundamentals
+Start with 1–5 well-understood tables or views
+Prefer views to simplify joins and logic
+Use a single, clear grain for fact tables
+Define PK/FK relationships and naming clearly
+Iteration & QA loop
+Build against a benchmark of real questions
+Review thumbs-down feedback regularly
+Fix issues via metadata, views, and examples
+Get business and technical sign-off before broad rollout
+Start small, validate early, and improve continuously -
+and read docs
+
+=== Slide 20 ===
+Leverage Metric Views in Genie
+Metrics provide determinism while tables augment with flexibility
+What it is
+Use Metric views (reusable KPIs through measures and dimensions) for business analysis, augment it with tables for open data exploration
+Why it matters
+Genie will have more
+deterministic answers
+with Metric Views
+Generated queries will be simpler to interpret and validate
+Key Benefits/Use Cases
+Improve Trust
+for end-users
+Better reusability of business KPI definitions across spaces and use cases
+Easier maintenance in the long run (one central definition)
+Stable KPIs, Aggregation and Grouping
+Flexible aggregations and grouping
+Analytics needs?
+Deterministic KPI Analysis
+Open Data Exploration
+Quick questions about a table in UC
+Explore Complex Data Model
+Question in UC Sample Data Tab
+Genie Space based on Tables
+Genie Space based on Metric Views
+AI/BI Dashboard
+Setup time
+Result Determinism
+
+=== Slide 21 ===
+AI/BI + GENIE
+Evaluation Flow
+
+=== Slide 22 ===
+Unvarnished Truth #2
+Successful Genie implementations require legwork! It’s not plug-n-play.
+
+=== Slide 23 ===
+Challenges with Holistic Genie Guides
+Not all customers are at the same place so there is no one size fits all approach
+Some customers already have rich metadata, others have none/little
+Some customers don’t give all users ability to edit metadata, others do
+Some customers already have rich analytics solutions in place, others have none/little
+This may mean great understanding of user questions/patterns, or little/none for new projects
+Some customers may have use-case specific needs for Genie vs others
+I.e. UC metadata may not be specific enough, need Knowledge Store
+Some customers already have standard data model, others do not
+Some may want to explore Metric Views, others may not
+
+=== Slide 24 ===
+In Unity Catalog
+Challenges
+Wrong table or column selected
+Incorrect or poor data modelling
+Duplicate or similar values across columns
+Add Table/View
+Metadata
+Define Benchmark
+against Real Business Questions
+1
+Hallucinations
+Not identifying correct filter values
+Misunderstood business definition
+Wrong calculation
+For a given Question, identify
+the Challenge
+2
+Add
+Gold-level
+aggregate Tables and Views
+Does user have
+metadata permission
+in UC?
+3
+In Genie Space
+Define Joins
+Utilize
+the Knowledge Store
+N
+Add PK/FK Relationships
+Y
+Enable
+Prompt Matching
+Add
+Example
+Queries / SQL Functions
+Add instructions
+to fill gaps in context
+Highly Recommended
+Optional but Recommended
+Is the
+new benchmark accuracy
+satisfactory?
+4
+Y
+Promote to UAT
+N
+
+=== Slide 25 ===
+Evaluation Flow
+Define Benchmark questions, aiming for 10-20
+This requires a business domain expert and a technical data expert. They may be the same person, but rarely are
+Note this step requires both the natural language question and SQL query pair, along with other domain-specific information that will be applied as context
+Annotate/add context that address gaps from benchmark questions and user expectations
+Move left to right UC > SQL Queries > Text Instructions
+Iteratively address gaps in the benchmarks based on errors analysis
+Repeat step 3 until the accuracy levels are satisfactory (80+ percent)
+Move to UAT and iterate based on feedback
+Working in Top Down method, establish evaluation metrics
+
+=== Slide 26 ===
+How do I know which option to choose?
+Table and Column Descriptions, including when to choose column A vs column B
+Entity Matching (formerly known as Value Sampling)
+Data relationships
+Limiting columns for context
+KPIs/Metric definitions
+UC Functions
+Business logic directly applied on data (ex. high/medium/low risk, good/bad segmentation, etc.)
+Rules for the Genie Agent behavior (formatting, tone, output fields, etc.)
+Global filters/rules that should apply for all queries (ex. filter out null records from table X, custom fiscal dates, etc.)
+UC/Knowledge Store
+SQL Queries
+Text Instructions
+
+=== Slide 27 ===
+Genie in Production
+AI/BI + GENIE
+
+=== Slide 28 ===
+Jefferies: Agentic Equity Research in Production
+The problem
+Analysts ask exploratory, open-ended research questions
+Answers must be fast, but also verifiable
+No single data source is sufficient on its own
+The architecture
+Genie spaces provide domain-specific financial data access
+A supervisor agent:
+Decomposes the question
+Calls Genie where structured data is needed
+Cross-checks results with other sources
+Final synthesis happens outside Genie
+Why this works
+Genie stays focused on deep, domain-specific retrieval
+Corroboration happens across multiple trusted sources
+The system optimizes for research depth, not breadth
+Genie as a structured data expert within a supervised research workflow
+Jefferies Equity Research Analyst AI Application Architecture
+
+=== Slide 29 ===
+World Bank: Supervised Multi-Genie Architecture
+The problem
+Users ask questions that span programs, regions, and funding
+No single dataset or domain team owns the full answer
+Incorrect synthesis carries real policy and operational risk
+The architecture
+Separate Genie spaces per domain of ownership
+A supervisor agent:
+Breaks broad questions into domain-specific sub-questions
+Routes each to the appropriate Genie
+Assembles a final answer with explicit traceability
+Evaluation focuses on system-level correctness, not just answers
+Why this works
+Domain boundaries remain intact
+Cross-domain reasoning is explicit and auditable
+The system scales without creating a “mega-Genie”
+Handling cross-domain questions with orchestration and evaluation
+IMAGE
+
+=== Slide 30 ===
+AstraZeneca: Brand & Commercial Intelligence Assistant
+The problem
+Commercial and brand teams need fast answers without SQL or BI expertise
+Data spans multiple brands, therapeutic areas & markets
+Strict governance and access controls are mandatory
+The architecture
+Separate Genie spaces per brand / therapeutic area
+Strong Unity Catalog governance (data, functions, permissions)
+Progressive rollout: pilot - limited users - broader adoption
+Genie used directly by business users via the UI
+Why this works
+Clear domain boundaries prevent cross-brand confusion
+Business users get autonomy without sacrificing control
+Adoption grows without overloading central BI teams
+Scaling Genie safely for non-technical business users (see more
+here
+)
+
+=== Slide 31 ===
+GSK: Scaling Genie via Observability, Performance & Factory Patterns
+The problem
+Genie adoption needed to scale across many AI/BI use cases and teams
+Early Genie usage lacked:
+End-to-end observability
+Performance safeguards (latency, retries, throttling)
+A repeatable path from dev to prod
+Central platform teams needed visibility into usage, cost, and quality at workspace scale
+The architecture
+Embedded Genie into AIGA v2, GSK’s internal AI/BI Agent Factory
+Focused on production hardening, not just UX:
+Genie API best practices (retries, backoff, truncation)
+Semantic caching using Vector Search & Lakebase
+CI/CD for Genie Spaces via Import/Export APIs
+Integrated fine-grained tracing and monitoring:
+Workspace-level dashboards for QPM, latency, error codes
+Application-level tracing via Weave (W&B)
+Why this works
+Makes Genie observable, debuggable, and governable at scale
+Enables teams to:
+Detect quality or performance regressions early
+Safely roll out Genie to new domains in “factory mode”
+Shifts Genie from single demo rooms to a managed production capability
+Operationalizing Genie across a regulated, multi-team environment
+
+=== Slide 32 ===
+Qualcomm: Intent-Driven Routing for Genie
+The problem
+Users ask incomplete or ambiguous questions
+Multiple specialized Genie spaces exist
+Direct calls to Genie were costly and unreliable
+The approach
+4 domain-specific Genie spaces
+A routing agent that:
+Clarifies user intent first
+Gathers missing inputs
+Routes a well-formed question to the right Genie
+Configuration-driven (easy to add new spaces)
+Why this works
+Avoids expensive Genie calls on bad inputs
+Improves latency and answer quality
+Lets Genie focus on clean natural language to SQL translation
+Improving quality, latency, and cost before calling Genie
+
+=== Slide 33 ===
+Tools to Productionize Genie Spaces
+AI/BI + GENIE
+
+=== Slide 34 ===
+From one-off demos to repeatable systems
+Example chatbot showing how to integrate Genie into a chat UI
+Handles:
+Conversation state per user
+Follow-up questions and clarifications
+Formatting Genie results for chat (tables, text)
+Built as learning / reference code to understand:
+Genie Conversation API usage
+Multi-user chat flows
+UX considerations for Genie in chat tools
+How it differs from Copilot
+ChatX: Genie is the main intelligence
+Copilot: Genie is one tool among many
+Orchestration lives with Genie, not the host platform
+Production scaffolding for teams building with Genie
+Databricks App for improving Genie quality
+Analyzes existing Genie Spaces against best practices
+Highlights gaps in instructions, metadata, trusted assets, benchmarks
+Optimize workflow
+Runs benchmark questions
+Captures human feedback on answers
+Proposes concrete space improvements
+Previews changes via JSON diffs
+Can create a new Genie Space with updates
+This can be some helpful tooling for evaluation-driven iteration
+ChatX
+Reference implementation for chat-based Genie experiences
+GenieRX
+Genie Space review and optimization assistant
+Additional tools:
+Prompt-to-genie
+Genie Integration with Google Chat
+Databricks Adoption Dashboard
+Features covered by ChatX will soon be rolled into the Product - use ChatX only for existing / short term projects
+
+=== Slide 35 ===
+From one-off demos to repeatable systems
+Production scaffolding for teams building with Genie
+Databricks App for improving Genie quality
+Analyzes existing Genie Spaces against best practices
+Highlights gaps in instructions, metadata, trusted assets, benchmarks
+Optimize workflow
+Runs benchmark questions
+Captures human feedback on answers
+Proposes concrete space improvements
+Previews changes via JSON diffs
+Can create a new Genie Space with updates
+This can be some helpful tooling for evaluation-driven iteration
+GenieRX
+by David Huang
+Genie Space review and optimization assistant
+Additional tools:
+Prompt-to-genie
+A Databricks Assistant
+agent skill
+that lets you create and manage AI/BI Genie spaces using natural language — directly from the Databricks Assistant in agent mode.
+AI Dev Kit
+Genie Integration with Google Chat
+Databricks Adoption Dashboard
+Blog: Use Genie Everywhere with Enterprise OAuth
+
+=== Slide 36 ===
+Unvarnished Truth #3
+architecture decisions matter far more than user count
+
+=== Slide 37 ===
+Reduces latency and throttling. Also
+reduces overhead for IT teams when troubleshooting poor performance.
+Optimising Genie Agent Performance
+Building features for scale
+1
+Genie Performance & Monitoring
+API Best Practices (retries & exponential backoff)
+Fine-grained tracing of API polling results
+Space-level monitoring dashboards
+Static FAQ Queries cache
+Parameterised SQL Query Tools / UDFs
+Semantic cache with Vector Search / Lakebase  + pg_vector
+2
+Results Caching
+Long term memory storage using Lakebase
+Supporting Semantic, Episodic and Procedural memories
+3
+Agent Memory
+Reduces response turnaround time by up to
+80%
+for frequently and recently asked questions.
+Use learned preferences, knowledge,  contextual summaries to provide continuity, personalized and more contextual responses
+
+=== Slide 38 ===
+Credit Kshitiz Sharma
+
+=== Slide 39 ===
+Credit: Ben Doan (SSA)
+
+=== Slide 40 ===
+Current Free Tier
+No commitment required
+Best effort availability
+Free of charge up to 5 QPM / workspace
+Dedicated Capacity Tier
+30-day reservation with a 15-day advance notice
+Pre-provisioned capacity
+Increments of 10 QPM / workspace at $35k / month (list price)
+5 QPM Best Effort
+5 QPM Best Effort
+10 QPM Dedicated Capacity Tier
+10 QPM Dedicated Capacity Tier
+5 QPM Best Effort
+10 QPM Dedicated Capacity Tier
+5 QPM Best Effort
+10 QPM Dedicated
++ 5 QPM Best Effort
+Free
+20 QPM Dedicated
++ 5 QPM Best Effort
+$35k/mo
+$70k/mo
+NEW
+No Commitment
+1 Reservation Unit
+2 Reservation Units
+
+=== Slide 41 ===
+Key Reminders on Throughput
+The vast majority of Genie business use cases do
+not
+require dedicated high-volume throughput
+IF
+the application is
+architected well
+Architecture drives cost far more than user count (
+go/aibi/faq
+)
+Throughput sizing has a cost trade-off
+TLDR -
+go/aibi/genie-api-pricing
+
+=== Slide 42 ===
+Resources
+Consult our Genie resources
+go/aibi
+go/aibi/faq
+go/aibi/office-hours
+go/aibi/genie-api-pricing
+Help us scale
+Contribute to various Genie projects via
+FEIP
+Raise
+blockers
+to help prioritize Genie roadmap
+Where to go from here?
+
+
+############################################################
+# Lakebase AI
+############################################################
+
+=== Slide 1 ===
+Lakebase Deep Dive
+
+=== Slide 2 ===
+Meet Your Speakers
+Yanic Motte
+SSA
+Firas Farah
+SA, DNB
+
+=== Slide 3 ===
+Agenda
+Introduction to Lakebase
+Architecture Deep Dive
+Lakebase Autoscaling Demo
+Field Considerations
+
+=== Slide 4 ===
+What is
+Lakebase?
+
+=== Slide 5 ===
+Lakebase is
+PostgreSQL
+
+=== Slide 6 ===
+Postgres database engine
+Postgres Engine
+Rich ecosystem
+Fastest growing database engine of last decade
+
+=== Slide 7 ===
+… with a few
+twists
+
+=== Slide 8 ===
+Disaggregated storage and compute
+Instantaneous PITR
+History retention
+Read replicas
+Pageserver
+Safekeeper
+Object Storage
+STORAGE
+COMPUTE
+
+=== Slide 9 ===
+Branches
+Autoscaling
+Scale to zero
+Only pay for what you use
+Main dataset
+
+=== Slide 10 ===
+Architecture Deep Dive
+
+=== Slide 11 ===
+When you run an INSERT/UPDATE/DELETE, Postgres modifies pages in
+shared buffers
+(memory), not the data files on disk directly.
+Every change is also appended to a sequential log file called the
+Write-Ahead Log (WAL)
+.
+Postgres only considers a
+COMMIT
+successful once the relevant WAL records are safely flushed to disk, so it can always replay them after a crash.
+Periodically, Postgres performs a
+checkpoint
+: it writes all dirty (modified) pages from memory back to the main data files on disk.
+The WAL plus the latest checkpoint let Postgres reconstruct the exact state of the database if it restarts.
+​Updates and deletes don’t overwrite rows in place; they create new row versions and mark old ones as dead, to support concurrent transactions seeing consistent snapshots (
+MVCC
+).
+A background
+vacuum
+process later cleans up those dead rows.
+Persisting data modification in PostgreSQL
+
+=== Slide 12 ===
+Lakebase Architecture Overview
+Computes
+Multi-tenant Storage
+Writes
+Reads
+
+=== Slide 13 ===
+Writes
+Reads
+
+=== Slide 14 ===
+Storage HA Overview
+Computes
+Multi-tenant Storage
+AZ 1
+AZ 2
+AZ 3
+Failover across AZs
+X
+X
+X
+
+=== Slide 15 ===
+Each Lakebase instance is a microVM running on a Kubernetes cluster
+We don’t store any customer data locally exception made for temp files and unprocessed WAL files.
+Each microVM access the Lakebase Storage layer to retrieve customers data
+Unused Lakebase instances can be automatically suspended
+When an instance is suspended, we destroy the microVM and a new microVM is created when the db starts again
+Compute
+K8S Cluster
+Lakebase
+Storage
+VM
+VM
+VM
+VM
+VM
+VM
+VM
+VM
+K8S node
+K8S node
+
+=== Slide 16 ===
+Autoscaling
+Define minimum and maximum compute size
+Fully automated dynamic resource allocation
+No downtime during scaling operations
+Vertical bidirectional scaling in increments of 1 CU (2GB of RAM)
+Can scale in both directions in ~500ms
+Scaling decision based on CPU load average, memory usage, number of unique page accessed in the cache during the last hour
+
+=== Slide 17 ===
+A branch is a lightweight, copy-on-write clone of your database created from current or historical data and running in an isolated Postgres instance
+It inherits both the schema and data from its parent, but shares the same underlying storage
+A new branch references its parent’s data until changes are made. Then, only the diffs are written
+That means branches are fast to create regardless the dataset size, cost-efficient to run, and safe to discard.
+Branches
+Main dataset
+
+=== Slide 18 ===
+Snapshots capture the state of your branch at a point in time, which can be specified either using a timestamp or a LSN
+They can be created manually, or automatically on schedule
+Schedule applies on a branch level and only applies to root branches
+Snapshots can be preserved for longer than the history retention period defined for the project
+Restoring from snapshot is nearly instantaneous (~1sec)
+Snapshots
+Main dataset
+
+=== Slide 19 ===
+Allows restoring a database to any point in time within the database project's restore window
+The history retention period can be configured for up to 30 days
+Extending retention increases storage usage but provides greater flexibility
+A restore operation typically completes in a few seconds
+During a restore operation, a backup of your current database is automatically created
+Point-In-Time-Restore (PITR)
+🔥
+data loss
+Restore from past timestamp
+
+=== Slide 20 ===
+Demo
+
+=== Slide 21 ===
+Field Considerations
+
+=== Slide 22 ===
+What are we (not) going after (yet)
+Extreme scale OLTP that require sharding:
+Ultra-high write throughput
+Massive working sets
+>> 8 TB of storage (for now)
+OLAP / Analytical workloads: Use DB SQL instead for large scans, heavy joins, aggregations
+Very large, high-risk legacy DB migrations (for now)
+Run away from non-sql (neo4j, MongoDB)
+Hard geo-redundancy / multi region active-active requirements
+Not targeting:
+Reverse ETL / Data Serving / Feature Stores
+Agent and Application State (AI-Native workloads)
+Net-new OLTP apps built next to the lakehouse
+Moderate-scale, high-value operational systems (SaaS backends, internal platforms). Thrive under:
+Bursty workloads
+Tenant isolation
+Targeting
+
+=== Slide 23 ===
+Databricks
+Lakebase
+use cases
+
+=== Slide 24 ===
+Use Cases To Go After
+Reverse ETL - Serve analytical data, such as batch inference results, to a service or application
+Reverse ETL - Real-time feature store: Perform real-time feature lookups
+Agent memory: Short-term (same-session context) and long-term (cross-session) memory
+Application backends:
+External, such as SaaS, consumer apps, public APIs
+Internal, such as workflow and orchestration state, operations tools, configuration systems
+Applications that benefit from offline analytics (ie. postgres -> lakehouse)
+
+=== Slide 25 ===
+Use Cases To Avoid (for now)
+Extreme scale OLTP, that requires sharding with ultra-high throughput and massive working sets
+Practical limits around storage and connections in
+documented Lakebase limits
+Very large, high-risk legacy DB migrations:
+Multi-TB cutovers, heavy reliance on vendor-specific features, or deeply embedded stored-procedure logic.
+OLAP / Analytical workloads: Use DB SQL instead for large scans, heavy joins, aggregations
+(Use judgement) NoSQL or graph-native workloads
+Hard geo-redundancy / multi region active-active requirements
+Check out qualification guide on go/lakebase
+
+=== Slide 26 ===
+(A) Proven Account Strategy
+Land with teams we already work with (Data Platform, Data Eng, AI).
+Reverse ETL, Agent memory, feature store.
+Personas: data platform, data engineer, ML engineer
+Partner with platform / IT to define a paved path.
+Standardize architecture, security, and onboarding.
+Personas: Internal IT, database engineering, enterprise architects, CIO, VP of Infra
+Establish Proof Point
+Become the standard
+Use platform adoption to surface new teams.
+Expand into additional apps and operational systems.
+Personas: product and software engineering, backend/full-stack dev, PM, VP
+Discover and win more workloads
+The trojan horse approach
+
+=== Slide 27 ===
+Personas in the field
+These are the customers we are already familiar with:
+Data Engineers
+Data scientists and ML Engineers
+Analytics Engineers
+They own data centric apps, such as recommendation engines, c360, GenAI apps
+These are often members of internal IT or platform teams:
+Database engineering teams
+Enterprise architects
+CIO / VP of Infra
+They set the standards and influence / gate-keep allowed tools
+Data Innovators
+The Gatekeepers
+The Product Builders
+You will interact with new personas
+Product and software engineer:
+Backend / full-stack developers
+Product managers
+VP of Engineering
+Owners of core products, such as external facing SaaS apps, mobile app backends, and customer experiences
+
+=== Slide 28 ===
+The Data Innovators
+Data platform, data engineer, ML engineer
+Takeaway: Lakebase offers managed, robust ETL sync pipelines
+
+=== Slide 29 ===
+The Gatekeepers
+Platform teams, IT, Enterprise Architects
+Takeaway: Lakebase simplifies management and reduces cost while promoting developer flexibility.
+
+=== Slide 30 ===
+Product Builders
+App developers, product managers, software engineers
+Takeaway:
+Lakebase is designed for the modern developer workflow which enhances productivity and decreases time to value
+
+=== Slide 31 ===
+Common pitfalls, tips, and considerations
+When syncing on a schedule, consider using Snapshot mode over triggered mode when the source table changes more than 10%
+When sizing, choose Capacity Unit w/ Local File Cache greater than working set data size. See monitoring tab to see working set data size.
+You lose the cache when compute scales to zero, so consider disabling for critical workloads.
+CMK is currently our strategy for objections to data in our serverless data plane.
+Lakebase stores all changes so balance usage of PITR and backups to reduce costs.
+If using sql to query lakebase federated catalogs, you can only use serverless compute.
+From the field…
+
+=== Slide 32 ===
+Unvarnished Truths (as of now)
+
+=== Slide 33 ===
+Call To Action
+Get enabled (go/lakebase)
+Identify personas in the account
+Get to developers by winning first proof point (if you haven’t already)
+Could be with data teams
+Partner with platform teams and architects to evaluate Lakebase
+Become approved development standard
+
+=== Slide 34 ===
+Pricing
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space above for an icon
+These columns have space above for an icon
+Your subtitle here
+
+=== Slide 35 ===
+go/lakebase
+
+=== Slide 38 ===
+Disaggregated storage and compute
+Autoscaling
+Scale to Zero
+History retention
+Copy-On-Write branches
+Storage deduplication
+Read Replicas
+Instantaneous PITR
+Instantaneous snapshots
+Battle tested for AI and agentic workloads
+Sub-second provisioning time
+Usage based consumption
+Pageservers
+Safekeepers
+Object Storage
+STORAGE
+COMPUTE
+
+=== Slide 39 ===
+[Internal Only Slide]
+[This slide will not be shown to Partners]
+Databricks Internal Only - Do Not Share
+
+=== Slide 40 ===
+Applications are  becoming
+intelligent and AI-driven
+Analytics and operational use cases are
+starting
+to
+converge
+
+=== Slide 41 ===
+Apps allow you to truly
+d
+emocratiz
+e intelligence
+in the line of business
+
+=== Slide 42 ===
+Applications have evolved
+Applications have become stateless
+,
+serverless, and intelligent
+Databases remain monolithicand impossible to move
+Databases haven’t
+
+=== Slide 43 ===
+Expensive to manage
+Development is cumbersome
+Locked in to vendors/clouds
+Challenges with legacy databases
+Agents compound the problem
+
+=== Slide 44 ===
+Traditional database architecture is constrained
+
+=== Slide 45 ===
+Traditional database architecture is constrained
+
+=== Slide 46 ===
+COMPUTE
+STORAGE
+Separates compute and storage
+Fully-managed, serverless Postgres
+
+=== Slide 47 ===
+LowerTCO
+No
+lock-in
+Multi cloud,open source Postgres
+Autoscaling, elasticity, severless
+Great Developer Experience
+Branching& snapshots
+
+=== Slide 48 ===
+AI is turning everyone into
+Application developers…
+
+=== Slide 49 ===
+.. and applicationsneed a
+modern database
+
+=== Slide 50 ===
+Existing database architectures don’t serve modern needs
+Resources are provisioned  and have capacity limits
+Operational data is siloed on inflexible architectures
+Data platform integration requires fragile, ungoverned ETL
+Agentic developer workflows create data safety hazards
+Support for operational AI is bolted on, not built-in
+Monolithic, proprietary architectures
+Costly to create and run
+Difficult to integrate operational and analytical data
+Not built for modern developer/AI workflows
+
+=== Slide 51 ===
+Architecture before Lakebase
+Complexity
+increases, security loosens
+
+=== Slide 53 ===
+Databases for the AI era need a new architectural foundation.
+OLTP on the Lake.
+Lakebase
+is that foundation.
+
+=== Slide 54 ===
+Three-column text
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Here’s a column subheader
+Here’s a column subheader
+Here’s a column subheader
+Your subtitle here
+
+=== Slide 55 ===
+“The advance of technology is based on making it fit in so that you don’t really even notice it, so it’s part of everyday life.”
+—Bill Gates, Co-founder of Microsoft
+
+=== Slide 56 ===
+Three column card
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+Card number one
+Card number two
+Card number three
+Your subtitle here
+
+=== Slide 57 ===
+Righthand card
+Add your content here.
+Bullet one
+Bullet two
+Bullet three
+This spot is great for a diagram, image, small table, code snippet or screenshot
+Your subtitle here
+
+=== Slide 58 ===
+Lefthand card
+Add your content here
+Bullet one
+Bullet two
+Bullet three
+This spot is great for a diagram, image, small table, code snippet or screenshot
+Your subtitle here
+
+=== Slide 59 ===
+For more guidance, reference the assets linked below
+Resource deck
+
+=== Slide 60 ===
+Dark Mode
+There are also dark versions of these layouts. To access these layouts, create a new slide immediately after this one, right click on its slide thumbnail and select an option under
+Apply
+Layout
+
+
+############################################################
+# Lakebridge
+############################################################
+
+=== Slide 1 ===
+Deep Dive - Lakebridge
+Guenia Izquierdo, Hiro Nakazato, Jonathan Brito
+
+=== Slide 2 ===
+End-to-end assessment of legacy source system
+Assessment
+Lakebridge
+Free, open, and AI-powered tooling
+Conversion for SQL & ETL code from
+10+ sources
+Conversion
+Accurate data reconciliation & validation
+Reconciliation
+Data Migration
+Lakeflow Connect
+
+=== Slide 3 ===
+Lakebridge was launched
+at DAIS 2025, including:
+Analyzer (30 sources)
+Converter (9)
+Reconciler (4)
+What happened since DAIS?
+Lakebridge Launch
+June 2025
+V0.11.0
+Nov 2025
+R&D Funding
+Oct 2025
+Key Features
+Desktop User Interface
+Redshift Converter (Bladebridge)
+SSIS Converter (Bladebridge)
+V0.12.0
+Feb 2026
+Key Features
+Synapse Profiler
+LLM Converter (Switch)
+Secured R&D funding to accelerate Lakebridge roadmap
+Today
+
+=== Slide 4 ===
+Current Status
+Assessment
+Conversion
+Data Migration
+Reconciliation
+
+=== Slide 5 ===
+go/lakebridge/roadmap
+Lakebridge is E2E - from assessment to validation
+Prioritization is key. Still many gaps
+Lakebridge is freely available - DBLabs
+Busting Lakebridge Myths
+It’s like an Easy button
+It’s just a wrap of BladeBridge
+You need a PS package
+Roadmap is hard to find
+
+=== Slide 6 ===
+Assessment
+Profilers & Analyzer
+
+=== Slide 7 ===
+What do we have today?
+Profiler
+run locally, providing insights on usage to estimate cost savings:
+Schema, table structures, and object definitions
+Query execution metrics, resource utilization data, and query profiles
+Analyzer
+measures the level of effort, which is used to calculate migration costs:
+Inventory and cataloging
+Complexity of SQL and ETL jobs
+Assessment
+Make Migrations Predictable & Successful
+What is in your code?
+Lakebridge UI
+Assessment
+
+=== Slide 8 ===
+Demo time!
+Assessment: Profiler
+Collect usage
+data
+Review inventory
+Calculate TCO
+Win the migration!
+
+=== Slide 9 ===
+Demo time!
+Assessment: Profiler
+
+=== Slide 10 ===
+Generating a TCO Estimate has never been easier!
+Coming soon!
+
+=== Slide 11 ===
+Conversion
+Transpilers
+
+=== Slide 12 ===
+Conversion options
+Lakebridge deterministic converters - BladeBridge and Morpheus
+Lakebridge LLM converter - Switch
+Internal converter accelerators (there are more than 10 in various stages!)
+Partner tooling
+In-product,
+/migrate
+command in DB assistant
+
+=== Slide 13 ===
+What is supported today?
+Comprehensive code conversion with support for
+SQL dialects and ETL
+frameworks
+Lakebridge offers both
+deterministic and LLM-powered
+converters:
+Morpheus: SQL Dialects
+Bladebridge: ETL, SQL
+Switch (Prompt-based LLM converter): Complex transformations otherwise not supported
+Converters are customizable
+to meet project-specific requirements
+Code Conversion - Lakebridge
+Lakebridge
+Converter
+Sources
++ more
+Code Conversion
+
+=== Slide 14 ===
+Deterministic converters demo
+
+=== Slide 15 ===
+Switch: What It Is & What We’ll Cover
+LLM-based code converter in Lakebridge | 100+ customers
+1
+2
+3
+How
+to run it
+When
+to use it
+How to
+tune
+it
+
+=== Slide 16 ===
+Getting Started with Switch
+Three commands to your first conversion
+databricks
+labs install lakebridge
+Install Lakebridge
+Install Switch
+databricks
+labs lakebridge install-transpile \
+--include-llm-transpiler
+true
+Trigger Conversion
+databricks
+labs lakebridge llm-transpile \
+--input-source
+/local/path \
+--output-ws-folder
+/Workspace/path \
+--source-dialect
+snowflake
+(Other params)
+1
+2
+3
+Uploads Switch module to workspace
+Creates
+Lakebridge_Switch
+Job
+Prerequisites: Databricks CLI
+Uploads source to UC Volume
+Run
+Lakebridge_Switch
+Job
+Outputs notebooks/files to workspace
+Syntax check appended (Notebook)
+Delta table per run for traceability
+
+=== Slide 17 ===
+The 2-Layer Migration Strategy
+Start with Rule-based, use Switch for the rest
+Switch
+LLM-based converter
+Flexible, custom prompts
+Custom
+Scripts
+Optional;
+AI coding assisted
+BradeBridge / Morpheus
+Rule-based converter
+Deterministic, free, fast
+LAYER 1
+LAYER 2
+Edge cases
+Unconverted
+Not Supported by rule-based
+Supported
+Input
+
+=== Slide 18 ===
+Case 1: Snowflake Migration PoC
+Japanese Retail Customer | June 2025 | ~1 week
+RULE-BASED
+LLM-BASED
+CUSTOM
+
+=== Slide 19 ===
+Case 2: IBM DB2 + DataStage Migration PoC
+Japanese Banking Customer | January 2026 | ~ 1 week
+RULE-BASED
+LLM-BASED
+CUSTOM
+
+=== Slide 20 ===
+Custom Prompts: Tuning Switch for Your Project
+It’s just an LLM prompt. Use AI tools to build it in hours, not days!
+📝 What to include in your custom prompt
+Built-in prompt:
+Your baseline - start from Switch’s default prompts
+You can find them:
+/Workspace/Users/{user_name}/.lakebridge/switch/resources/builtin_prompts
+Source code samples:
+Real patterns from the customer’s codebase
+Guidelines:
+Type mappings, migration rules etc.
+💡 Option: For SQL projects
+Run source SQL through
+EXPLAIN
+on Databricks → errors tell you what patterns to add prompts
+🤖 Use an AI coding tool
+e.g. Claude Code; Point it at your local project and iterate fast
+
+=== Slide 21 ===
+Switch Documentation
+Customer Facing Deck
+Summary of Switch
+
+=== Slide 22 ===
+Roadmap
+FY27 Priorities
+
+=== Slide 23 ===
+Inventory Dashboard
+Lakebridge Profiler
+FY27 Roadmap
+Inventory Dashboard
+Estimated Cost Savings
+Launched!
+FY27 Roadmap
+
+=== Slide 24 ===
+Interactive Results Dashboard
+Lakebridge Analyzer
+Code Complexity Assessment
+Better Effort Estimation
+Discovery and Cataloging
+Comprehensive Inventory
+Q1
+Insights and Analysis
+Better Migration Sequencing
+FY27 Roadmap
+Note:
+Analyzer results will continue to be output to a spreadsheet
+
+=== Slide 25 ===
+Lineage Tracking
+Lineage Tracking
+Q1
+FY27 Roadmap
+Lineage Tracking
+Better Migration Sequencing
+
+=== Slide 26 ===
+2. Run code conversion
+Runs deterministic converter in batch. Then,
+Conversion Agent (    )
+iteratively validates and fixes issues
+1. Choose source code to convert
+Selects a legacy codebase for code conversion in the Lakebridge Databricks application
+3. Review evaluation metrics
+After the agent completes, the user is presented with summary statistics on the conversion. The user can choose to deploy the converted code to a Databricks workspace.
+1
+2
+3
+Modernizing with Agents
+FY27 Roadmap
+Agentic Converter
+DAIS
+
+=== Slide 27 ===
+What can I use now?
+Where is Lakebridge today?
+H1
+H2
+FY27 Roadmap
+> 80%
+70% - 80%
+< 70%
+Est. Coverage
+Use
+Switch
+as a fallback
+for all sources
+
+=== Slide 28 ===
+What can I use now?
+> 80%
+70% - 80%
+< 70%
+Est. Coverage
+Where is Lakebridge today?
+H1
+H2
+FY27 Roadmap
+Use
+Switch
+as a fallback
+for all sources
+What alternatives exist?
+We are
+benchmarking partner tools
+in Q1
+
+=== Slide 29 ===
+LakeFlow has
+two types
+of connectors for data migrations:
+Query-based:
+Uses JDBC to materialize the source table as a streaming table; cursor column to track changes
+Great for PoCs/demos
+CDC-based:
+Establishes a snapshot, track changes, and replicates changes to the target table
+Small & medium tables
+Unvarnished truth
+: Snapshots use parallel JDBC queries; limits scale
+Data Migration
+Data Migration
+
+=== Slide 30 ===
+Reconciliation
+Data Validation Reports
+Trusted Final Results
+Did my data move correctly?
+Reconciliation
+FY27 Roadmap
+Reconciler supports source and target comparisons
+across types, form, and rules
+
+=== Slide 31 ===
+Lakebridge Desktop UI
+Easy-to-use user interface
+Lakebridge is now available via
+Desktop app
+and
+CLI
+Simple and intuitive user interface to run the Profiler, Analyzer, and Code Converter
+Easy set up via a packaged Databricks app
+Lakebridge Desktop UI
+Desktop UI
+Databricks Application
+Q1
+
+=== Slide 32 ===
+Lakebridge Roadmap
+Assessment
+Conversion
+Data Migration
+Reconciliation
+DAIS 2026
+
+=== Slide 33 ===
+Call(s) to Action
+
+=== Slide 34 ===
+Calls to action
+Get Involved!
+Review your customer’s usage
+
+=== Slide 35 ===
+Contribution Examples
+SSA Team: Lakebridge profiler - Synapse
+EMEA DW Migration SME group:
+Function mapping/parity investigation per source system
+Priorities: TSQL, Redshift, Oracle, Teradata
+Partner team: Created demos for Employee Academy courses
+Getting involved
+
+=== Slide 36 ===
+Contribution Needed
+Profilers - Teradata
+Profilers - Auto-generate TCO deck
+Snowflake function parity
+In-depth, publicly available demos
+Public Docs feedback/fixes
+Many open issues in repos (many marked as good-first-issues ;) )
+Getting involved
+
+=== Slide 37 ===
+Lakebridge metrics and telemetry
+go/lakebridge/dash
+
+=== Slide 38 ===
+THANK YOU!
+
+
+############################################################
+# Lakeflow SDP
+############################################################
+
+=== Slide 1 ===
+SDP Deep Dive
+Tomasz Bacewicz, Lakeflow Product Specialist (EMEA)
+
+=== Slide 2 ===
+Agenda
+Fundamental SDP Components
+Common Questions and Scenarios
+Resources
+SDP Deep Drive
+
+=== Slide 3 ===
+Connect
+Spark
+Declarative Pipelines
+Jobs
+Unified data engineering
+
+=== Slide 4 ===
+Unified data engineering
+
+=== Slide 5 ===
+Building blocks for a pipeline
+Where the data lives
+Incremental processing
+Exactly once
+Streaming tables
+Cached query results w/scheduled refresh
+Pre-computed for fast access
+Can be incremental
+Materialized views
+Best For
+Data ingestion
+Append-only workloads
+Low latency streaming
+Complex transformations
+Analytical queries
+Always-correct results
+Best For
+Flows
+Powers both Streaming Tables & Materialized Views
+Supports both streaming and batch semantics
+
+=== Slide 6 ===
+Building blocks for a pipeline
+Where the data lives
+Incremental processing
+Exactly once
+Streaming tables
+Cached query results w/scheduled refresh
+Pre-computed for fast access
+Can be incremental
+Materialized views
+Best For
+Data ingestion
+Append-only workloads
+Low latency streaming
+Complex transformations
+Analytical queries
+Always-correct results
+Best For
+Flows
+Powers both Streaming Tables & Materialized Views
+Supports both streaming and batch semantics
+Streaming tables
+do not require
+the pipeline to be continuously streaming.
+STs process data
+incrementally
+meaning they only pick up the newest records from the source for each run.
+Hence they require
+append-only sources
+.
+
+=== Slide 7 ===
+Incremental Processing
+What does it mean?
+Batch
+Incremental
+
+=== Slide 8 ===
+Batch vs Streaming/Incremental
+Streaming means more than just low latency workloads
+
+=== Slide 9 ===
+Building blocks for a pipeline
+Where the data lives
+Incremental processing
+Exactly once
+Streaming tables
+Materialized
+results w/scheduled refresh
+Pre-computed for fast access
+Can be incremental
+Materialized views
+Best For
+Data ingestion
+Append-only workloads
+Low latency streaming
+Complex transformations
+Analytical queries
+Always-correct results
+Best For
+Flows
+Powers both Streaming Tables & Materialized Views
+Supports both streaming and batch semantics
+Materialized views use batch semantics (eg.
+spark.read()
+, not spark.readStream())
+MVs produce “always-correct” results in that the MV
+will always reflect the current state of the source
+when it is refreshed.
+This is
+unlike a Streaming Table
+which does not re-process rows which have already been processed (even if those source rows have changed).
+
+=== Slide 10 ===
+Building blocks for a pipeline
+Where the data lives
+Incremental processing
+Exactly once
+Streaming tables
+Cached query results w/scheduled refresh
+Pre-computed for fast access
+Can be incremental
+Materialized views
+Best For
+Data ingestion
+Append-only workloads
+Low latency streaming
+Complex transformations
+Analytical queries
+Always-correct results
+Best For
+Flows
+Powers both Streaming Tables & Materialized Views
+Supports both streaming and batch semantics
+Flows consist of a query and a target. They include
+append
+flows and
+AutoCDC
+flows.
+When using the
+@dp.table
+decorator, an
+append flow is created implicitly
+by default. In this case, the flow will have the same name as the target table.
+Flows can also be
+explicitly defined
+allowing for multiple flows to write to the same target. This is the recommended approach when multiple sources need to be appended in the same target table (rather than using UNION).
+
+=== Slide 11 ===
+Flows
+@
+dp
+.
+table
+()
+def
+customers_silver
+():
+return
+spark.readStream.
+table
+(
+"customers_bronze"
+)
+dp
+.
+create_streaming_table
+(
+"customers_silver"
+)
+@dp.append_flow(
+target =
+"customers_silver",
+name =
+"customer_flow"
+)
+def
+customer_silver
+():
+return
+spark
+.
+readStream
+.
+table
+(
+"customers_bronze"
+)
+@dp.append_flow(
+target =
+"customers_silver",
+name =
+"customer_flow_source_2"
+)
+def
+customer_silver
+():
+return
+spark
+.
+readStream
+.
+table
+(
+"customers_source_2"
+)
+Implicit Flow
+Explicit Flow (with multiple sources)
+Query + Target
+
+=== Slide 12 ===
+Flows
+@
+dp
+.
+table
+()
+def
+customers_silver
+():
+return
+spark.readStream.
+table
+(
+"customers_bronze"
+)
+dp
+.
+create_streaming_table
+(
+"customers_silver"
+)
+@dp.append_flow(
+target =
+"customers_silver",
+name =
+"customer_flow"
+)
+def
+customer_silver
+():
+return
+spark
+.
+readStream
+.
+table
+(
+"customers_bronze"
+)
+@dp.append_flow(
+target =
+"customers_silver",
+name =
+"customer_flow_source_2"
+)
+def
+customer_silver
+():
+return
+spark
+.
+readStream
+.
+table
+(
+"customers_source_2"
+)
+Implicit Flow
+Explicit Flow (with multiple sources)
+Query + Target
+Creates
+both a flow and a table
+with the name “customers_silver” implicitly.
+
+=== Slide 13 ===
+Flows
+@
+dp
+.
+table
+()
+def
+customers_silver
+():
+return
+spark.readStream.
+table
+(
+"customers_bronze"
+)
+dp
+.
+create_streaming_table
+(
+"customers_silver"
+)
+@dp.append_flow(
+target =
+"customers_silver",
+name =
+"customer_flow"
+)
+def
+customer_silver
+():
+return
+spark
+.
+readStream
+.
+table
+(
+"customers_bronze"
+)
+@dp.append_flow(
+target =
+"customers_silver",
+name =
+"customer_flow_source_2"
+)
+def
+customer_silver
+():
+return
+spark
+.
+readStream
+.
+table
+(
+"customers_source_2"
+)
+Implicit Flow
+Explicit Flows (with multiple sources)
+Query + Target
+Multiple flows can be created explicitly to write to the same target table.
+
+=== Slide 14 ===
+Common Questions/Scenarios
+SDP
+
+=== Slide 15 ===
+How can I join and transform data ingested from a Lakeflow Connect connector?
+Examples of this include ingesting a
+fact table
+like
+orders
+or
+transactions
+, transforming it, and joining it with a
+dimension table
+such as info about the customer.
+
+=== Slide 16 ===
+Option 1: Use a Materialized View
+This option is
+recommended
+for most cases as it leverages batch semantics (ex. spark.read()) while refreshing the table incrementally if it is possible.
+
+=== Slide 17 ===
+Using an MV
+Example: Lakeflow Connect as Source
+CDF
+A
+CDC
+SourceST
+Flow:
+AutoCDC
+Transform:
+Data Cleansing and Join
+Target MV
+Dim Table (Delta or ST)
+Join
+*Example if join needed to dim table
+CDC
+
+=== Slide 18 ===
+Using an MV
+Example: Lakeflow Connect as Source
+CDF
+A
+CDC
+Transform:
+Data Cleansing and Join
+Using an MV is the simplest way to transform and join with the data coming from the AutoCDC ST.  If using Serverless, Enzyme can *
+potentially*
+make this transformation incremental.
+Target MV
+Dim Table (Delta or ST)
+Join
+*Example if join needed to dim table
+As the MV has
+always-correct
+query results, this means that if any of the rows in the dim table are updated, they will be reflected in the MV during a refresh.
+This is unlike STs which process each row
+exactly-once
+.
+SourceST
+Flow:
+AutoCDC
+CDC
+
+=== Slide 19 ===
+Option 2: Use an AutoCDC flow into another ST
+This option will preserve the
+dimension table values in the target table
+at the time of the join (rather than update as the source dim table updates with the MV).
+
+=== Slide 20 ===
+Using an ST
+Example: Lakeflow Connect as Source
+CDF
+A
+CDC
+CDF
+SourceST
+Flow:
+AutoCDC
+Flow:
+AutoCDC
+Transform:
+Data Cleansing and Join
+Dim Table (Delta or ST)
+Join
+*Example if join needed to dim table
+CDC
+
+=== Slide 21 ===
+Using an ST
+Example: Lakeflow Connect as Source
+CDF
+A
+CDC
+CDF
+SourceST
+Flow:
+AutoCDC
+Flow:
+AutoCDC
+Transform:
+Data Cleansing and Join
+Because an AutoCDC flow into a Streaming Table
+does not create an append-only source
+, the CDF of the Source ST has to be read by the downstream Target ST.
+Dim Table (Delta or ST)
+Join
+*Example if join needed to dim table
+
+=== Slide 22 ===
+Using an ST
+Example: Lakeflow Connect as Source
+CDF
+A
+CDC
+CDF
+SourceST
+Flow:
+AutoCDC
+Flow:
+AutoCDC
+Transform:
+Data Cleansing and Join
+It is not possible to set the option “
+readChangeFeed
+” directly in the AutoCDC function so a Temp View is needed before it (where this option can be set).
+.
+option
+(
+"readChangeFeed"
+,
+"true"
+)
+Dim Table (Delta or ST)
+Join
+*Example if join needed to dim table
+
+=== Slide 23 ===
+Using an ST
+Example: Lakeflow Connect as Source
+CDF
+A
+CDC
+CDF
+SourceST
+Flow:
+AutoCDC
+Flow:
+AutoCDC
+Transform:
+Data Cleansing and Join
+Dim Table (Delta or ST)
+Join
+*Example if join needed to dim table
+If a join or any other transformations are needed prior to the AutoCDC function, it can be done in the Temp View as well.
+As an ST processes data
+exactly-once
+, if a field on the dim table changes, it will not be reflected on already processed records in the Target ST.
+
+=== Slide 24 ===
+Using an ST
+Example: Lakeflow Connect as Source
+One more thing to keep in mind:
+Change Data Feed creates 4 operation types:
+insert, preimage, postimage, delete
+Hence, if using AutoCDC to create
+customers_clean
+,
+filter out the preimage operation:
+.filter
+(
+"
+_change_type
+!=
+'update_preimage'"
+)
+CDF
+SourceST
+Flow:
+AutoCDC
+Flow:
+AutoCDC
+Transform:
+Data Cleansing and Join
+Dim Table (Delta or ST)
+Join
+*Example if join needed to dim table
+
+=== Slide 25 ===
+Demo
+
+=== Slide 26 ===
+How do I backfill a ST table from historical data source?
+Customers often have historical data they may have archived in another source system and they would like to backfill a Streaming Table with this data
+once
+.
+
+=== Slide 27 ===
+Incremental Processing
+Adding a Backfill from a Historical Table
+CDF
+A
+CDC
+Historical Backfill Table
+(Delta or ST)
+Flow:
+AutoCDC
+(
+Once=True)
+CDF
+SourceST
+Flow:
+AutoCDC
+Transform:
+Data Cleansing and Join
+Dim Table (Delta or ST)
+Join
+*Example if join needed to dim table
+Flow:
+AutoCDC
+
+=== Slide 28 ===
+Incremental Processing
+Adding a Backfill from a Historical Table
+CDF
+A
+CDC
+Historical Backfill Table
+(Delta or ST)
+Flow:
+AutoCDC
+(
+Once=True)
+CDC
+CDF
+SourceST
+Flow:
+AutoCDC
+Transform:
+Data Cleansing and Join
+Dim Table (Delta or ST)
+Join
+*Example if join needed to dim table
+This option
+Once=True
+will enforce that this flow runs on the first run of the pipeline OR during a Full Refresh.
+Flow:
+AutoCDC
+
+=== Slide 29 ===
+Incremental Processing
+Adding a Backfill from a Historical Table
+CDF
+A
+CDC
+Historical Backfill Table
+(Delta or ST)
+Flow:
+AutoCDC
+(
+Once=True)
+CDC
+CDF
+Flow:
+AutoCDC
+Transform:
+Data Cleansing and Join
+Dim Table (Delta or ST)
+SourceST
+Join
+*Example if join needed to dim table
+If the Delta Table or ST is outside of the pipeline, creating a Temp View allows us to see it in the SDP DAG.
+Flow:
+AutoCDC
+
+=== Slide 30 ===
+How can I control the frequency and type of refresh being used in a Materialized View?
+Customers often ask for the ability to better understand and control the methods by which MVs are refreshed.
+
+=== Slide 31 ===
+MVs Refresh Observability
+EXPLAIN CREATE MATERIALIZED VIEW -
+this will return whether the MV can be incrementalized.
+Specifically it checks prerequisites for incrementalization such as:
+Only incrementalizable operations included in the query
+Row tracking enabled on source table (dependent on the operations included in the query)
+EXPLAIN
+CREATE
+MATERIALIZED
+VIEW
+AS
+SELECT
+avg
+(total_amount),status,
+CONCAT
+(
+month
+(check_in),
+'-'
+,
+year
+(check_in))
+FROM
+users
+.
+tomasz_bacewicz
+.bookings
+GROUP BY
+ALL
+Incremental Update Eligibility with EXPLAIN
+This query will determine if the MV is
+eligible
+to be refreshed incrementally using Enzyme.
+However, unless
+INCREMENTAL STRICT
+is set for the MV, it is still possible that a full refresh occurs if the cost is calculated to be less than an incremental refresh.
+Note: Enzyme works only on Serverless!
+
+=== Slide 32 ===
+MVs Refresh Policy
+AUTO (default)
+- Use automatic, cost-based selection.
+INCREMENTAL
+- Prefer incremental refresh. This will run the refresh incrementally as long as it’s possible, even if the cost is calculated to be higher than a full refresh.
+INCREMENTAL STRICT
+- Strictly require incremental refresh. The refresh will fail if incremental is not possible.
+FULL
+- Always perform full refreshes. Databricks never performs incremental refresh, even when the query is incrementalizable.
+CREATE
+MATERIALIZED
+VIEW
+IF
+NOT
+EXISTS
+my_mv
+REFRESH
+POLICY
+INCREMENTAL
+AS
+SELECT
+a,
+sum
+(b)
+FROM
+users
+.
+tomasz_bacewicz
+.bookings
+GROUP BY
+a;
+New Knobs for Enzyme Control
+If a customer is very cost conscious or wants to avoid a full refresh for SLA requirements,
+INCREMENTAL STRICT
+is recommended. Else,
+AUTO (default)
+should work for most customers.
+
+=== Slide 33 ===
+MVs Refresh Scheduling
+SCHEDULE
+- Refresh the Materialized View on a schedule such as
+EVERY 1 hour
+or
+EVERY 1 day
+TRIGGER ON UPDATE (Beta)
+- Refresh the Materialized View whenever upstream data has been updated
+CREATE
+MATERIALIZED
+VIEW
+mv1
+TRIGGER
+ON
+UPDATE
+AS SELECT
+avg
+(total_amount), status,
+CONCAT
+(
+month
+(check_in),
+'-'
+,
+year
+(check_in))
+FROM
+users
+.
+tomasz_bacewicz
+.bookings
+GROUP BY
+ALL
+;
+SCHEDULE or TRIGGER ON UPDATE for DBSQL MVs
+TRIGGER ON UPDATE will allow the MV to have the
+most up to date
+data but can also be
+more expensive
+if
+upstream updates occur very often.
+Note:
+There is a STATEMENT_TIMEOUT setting which can be set on the MV. This will fail a refresh if it is taking longer than the set timeout time.
+The default is 2 days
+.
+
+=== Slide 34 ===
+Demo
+
+=== Slide 35 ===
+How can I read an MV or an ST using an external Iceberg reader?
+SDP
+used to
+be out of reach for customers who standardized on Iceberg.
+
+=== Slide 36 ===
+ST and MV Interoperability
+Compatibility Mode:
+Required full copies of the MVs/STs to make them external reader compatible
+Limitations:
+Refreshed hourly so data being read from an external reader could be stale
+Copying large tables would take up a lot more storage leading to higher costs
+Smart Clones:
+No data copy required!
+They work by only
+generating the metadata
+needed for external readers
+Data read by the reader is
+always the most up-to-date
+version
+Created for modern Iceberg and Delta readers:
+For Iceberg
+: Require Iceberg V3 Specification
+For Delta
+: Require Delta 4.0.0 and above and understand Deletion Vectors
+From
+Compatibility Mode
+to
+Smart Clones
+NEW!
+
+=== Slide 37 ===
+ST and MV Interoperability
+@
+dp
+.
+table
+(
+table_properties
+=
+{
+'delta.columnMapping.mode'
+:
+'name'
+,
+'delta.enableIcebergCompatV3'
+:
+'true'
+,
+'delta.universalFormat.enabledFormats'
+:
+'iceberg'
+,
+'delta.enableChangeDataFeed'
+:
+'false'
+})
+def
+customers_gold
+():
+return
+spark.read.
+table
+(
+"customers_silver"
+)
+For Iceberg Reader
+
+=== Slide 38 ===
+ST and MV Interoperability
+@
+dp
+.
+table
+(
+table_properties
+=
+{
+'delta.columnMapping.mode'
+:
+'name'
+,
+'delta.enableIcebergCompatV3'
+:
+'true'
+,
+'delta.universalFormat.enabledFormats'
+:
+'iceberg'
+,
+'delta.enableChangeDataFeed'
+:
+'false'
+})
+def
+customers_gold
+():
+return
+spark.read.
+table
+(
+"customers_silver"
+)
+For Iceberg Reader
+Currently this requires CDF to be turned off for the table. But this is being fixed soon!
+
+=== Slide 39 ===
+How can I write to a native Delta table or a Kafka instance from SDP?
+
+=== Slide 40 ===
+SDP Sinks
+Kafka Sink
+Use case:
+stream processing between two Kafka topics
+Delta Sink
+Use case:
+migration from Spark to SDP w/o reprocessing existing data
+Note
+: AutoCDC is not available for Delta Sink
+foreachBatch() Sink
+Use case:
+custom destination (e.g. OLTP), custom merge, fan-out to multiple locations
+Writing to destinations that are not STs and MVs
+
+=== Slide 41 ===
+SDP Sinks
+dp.
+create_sink
+(
+name
+=
+"opportunity_account_joined_delta_sink"
+,
+format
+=
+"delta"
+,
+options
+=
+{
+"tableName"
+:
+"users.tomasz_bacewicz.opportunity_account_joined_delta"
+})
+@
+dp
+.
+append_flow
+(
+name
+=
+"write_opportunity_account_joined_to_delta"
+,
+target
+=
+"opportunity_account_joined_delta_sink"
+,
+)
+def
+write_opportunity_account_joined_to_delta
+():
+return
+spark.readStream.
+table
+(
+"opportunity_account_joined"
+)
+Delta Sink Example
+
+=== Slide 42 ===
+SDP Sinks
+dp.
+create_sink
+(
+name
+=
+"opportunity_account_joined_delta_sink"
+,
+format
+=
+"delta"
+,
+options
+=
+{
+"tableName"
+:
+"users.tomasz_bacewicz.opportunity_account_joined_delta"
+})
+@
+dp
+.
+append_flow
+(
+name
+=
+"write_opportunity_account_joined_to_delta"
+,
+target
+=
+"opportunity_account_joined_delta_sink"
+,
+)
+def
+write_opportunity_account_joined_to_delta
+():
+return
+spark.readStream.
+table
+(
+"opportunity_account_joined"
+)
+Delta Sink Example
+Target of the flow is the
+sink name, not table name!
+
+=== Slide 43 ===
+Other Tips
+
+=== Slide 44 ===
+Last Minute Tips
+Use
+pipelines.reset.allowed
+as
+false
+on on Streaming Tables properties where it should
+never be fully refreshed.
+This is important to use when the source does not persist all the historical data, such as a Kafka instance or an S3 bucket where data is regularly archived
+Python and SQL can be used interchangeably between parts of an SDP pipeline. This can work for scenarios where there is a lack of feature parity between the two.
+For example, if you want to use a PySpark Custom Data Source with SQL, use Python for the initial ingestion with the custom data sources, and SQL for the other downstream components
+Other common questions/concerns
+
+=== Slide 45 ===
+Last Minute Tips
+DML operations
+can be performed manually
+on Streaming Tables. This is a good method to fix data which may have not passed constraints checks.
+Keep in mind that downstream STs must have
+skipChangeCommits
+set to true as performing DML operations changes an ST to not be an append only source. Those downstream STs also have to be manually updated.
+Other common questions/concerns
+Source
+ST
+User DML Operations
+skipChangeCommits = true
+
+=== Slide 46 ===
+Resources
+
+=== Slide 47 ===
+SDP Resources
+go/Lakeflow ->
+All things Lakeflow
+NEW! Practitioner's Guide on SDP Section of go/Lakeflow
+Qualification Guide
+SDP Primitives
+Design guidance such as load balancing pipelines and performance optimizations
+Let us know what resources you need in the practitioner’s guide!
+Where to learn more about SDP
+NEW!
+
+=== Slide 48 ===
+[Deep Dive]
+[Subtitle if needed]
+[Speaker Name, Title]
+
+=== Slide 50 ===
+SUPPORTING TEXT
+Lakeflow SDP
+
+=== Slide 51 ===
+Meet Your Speaker
+[Name]
+[Role]
+
+=== Slide 52 ===
+Learning Outcomes
+
+=== Slide 54 ===
+[Internal Only Slide]
+[This slide will not be shown to Partners]
+Databricks Internal Only - Do Not Share
+
+=== Slide 55 ===
+SUPPORTING TEXT
+Section Title
+
+=== Slide 56 ===
+Two-column content
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Here’s a column subheader
+Here’s a column subheader
+Your subtitle here
+
+=== Slide 57 ===
+Two column with icon space
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space above for an icon
+These columns have space above for an icon
+Your subtitle here
+
+=== Slide 60 ===
+Three-column text
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Here’s a column subheader
+Here’s a column subheader
+Here’s a column subheader
+Your subtitle here
+
+=== Slide 61 ===
+Three-column with icon space
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space for an icon
+These columns have space for an icon
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space for an icon
+Your subtitle here
+
+=== Slide 62 ===
+“The advance of technology is based on making it fit in so that you don’t really even notice it, so it’s part of everyday life.”
+—Bill Gates, Co-founder of Microsoft
+
+=== Slide 63 ===
+“The advance of technology is based on making it fit in so that you don’t really even notice it, so it’s part of everyday life.”
+—Bill Gates, Co-founder of Microsoft
+
+=== Slide 64 ===
+Three column card
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+Card number one
+Card number two
+Card number three
+Your subtitle here
+
+=== Slide 65 ===
+Righthand card
+Add your content here.
+Bullet one
+Bullet two
+Bullet three
+This spot is great for a diagram, image, small table, code snippet or screenshot
+Your subtitle here
+
+=== Slide 66 ===
+Lefthand card
+Add your content here
+Bullet one
+Bullet two
+Bullet three
+This spot is great for a diagram, image, small table, code snippet or screenshot
+Your subtitle here
+
+=== Slide 67 ===
+Full width card
+This card is good for larger diagrams, tables or other general use
+Your subtitle here
+
+=== Slide 68 ===
+For more guidance, reference the assets linked below
+Resource deck
+
+=== Slide 69 ===
+Dark Mode
+There are also dark versions of these layouts. To access these layouts, create a new slide immediately after this one, right click on its slide thumbnail and select an option under
+Apply
+Layout
+
+
+############################################################
+# Apps
+############################################################
+
+=== Slide 1 ===
+Databricks Apps Deep Dive
+Pascal Vogel, Vivian Xie, Ivan Trusov
+Architecting Secure and Performant Apps
+
+=== Slide 2 ===
+Agenda
+Where Databricks Apps fit
+Infrastructure and architecture
+Identity and governance
+Build with Lakebase and Agents
+Vibe coding Databricks Apps
+Ship and operate your app
+Resources
+What we’ll cover today
+
+=== Slide 3 ===
+Deep Dive - Databricks Apps
+Where Databricks Apps Fit
+
+=== Slide 4 ===
+Building Data & AI apps with Databricks Apps
+Why use Databricks Apps?
+Why is building Data & AI apps hard?
+Steep tech learning curve, slow to go live and iterate
+Self-managed compute, patching, high ops load
+DIY auth, inconsistent governance, permissions silos
+Complex and slow
+Ops-heavy
+Risky and ungoverned
+
+=== Slide 5 ===
+Where Apps Fit and Where They Don’t
+✅ Fit
+❌ No fit
+Business logic on top of data & AI
+Data exploration UIs, complex visualizations
+Data capture, file uploads, writeback
+UI for chatbots / RAG / LLMs
+Simple dashboards
+Public apps (not yet)
+Mobile apps
+Static content hosting
+
+=== Slide 6 ===
+Apps Infrastructure and Architecture
+Deep Dive - Databricks Apps
+
+=== Slide 7 ===
+Where do Databricks Apps run?
+Compute infrastructure
+Serverless compute
+Classic compute
+DatabricksVPC
+CustomerVPC
+Databricks Apps
+Serverless SQL
+Model
+Serving
+Classic
+cluster
+Classic SQL
+Classic SDP
+Control plane
+Serverless egress controls
+: limit public internet egress
+Network connectivity configurations (NCCs)
+for stable egress IPs
+IP ACLs, front-end private link
+: restrict app network access
+
+=== Slide 8 ===
+Run any
+Python
+or
+NodeJS
+app
+Code sourced from workspace or Git
+Custom packages from public or private pip and npm
+Application source code
+Serverless container
+Where do Databricks Apps run?
+App container environment
+Ubuntu 22.04
+Python 3.11 + pip
+NodeJS 22.16 + npm
+Application source code
+Pre-installed packages
+Custom packages
+requirements.txt
++ pip
+Custom packages
+package.json
++ npm
+Workspace file system
+Git repository
+New!
+Deploy
+
+=== Slide 9 ===
+Compute size and horizontal scaling
+High-availability and high concurrency for Databricks Apps
+PrPr
+Compute sizes
+Horizontal scaling
+2 vCPUs
+6 Gb RAM
+0.5 DBU / h
+4 vCPUs
+12 Gb RAM
+1 DBU / h
+Two compute sizes
+Medium
+M
+Large
+L
+L
+L
+L
+L
+L
+Manual scaling, up to 5 nodes
+Stateful apps w/ session affinity
+Zero-downtime deployments
+Load balancer
+
+=== Slide 10 ===
+Apps integrate with your data and AI stack
+Connect seamlessly with internal and external services
+👩‍💻
+👨‍💻
+SQL warehouse
+Agent Bricks
+Interactive/jobs compute
+Serving endpoint (ML/AI)
+Lakebase
+Python
+SDK
+REST API
+Unity Catalog connections
+AI/BI Genie and Dashboards
+Databricks Apps
+User interface
+Cloud provider services
+Vector Search
+Tables
+AI Models
+Files
+Notebooks
+Dashboards
+Unified governance for apps
+
+=== Slide 11 ===
+Pythonic or JavaScript-driven UI?
+What tech stack should I pick?
+Reflex
+
+=== Slide 12 ===
+Pythonic or JavaScript-driven UI?
+What tech stack should I pick?
+Reflex
+
+=== Slide 13 ===
+Python backend & JavaScript frontend
+Flexible and scalable architecture
+Lakebase
+Postgres
+Workspace
+Resources
+Databricks
+Control Plane
+Cookie
+Auth
+Login/SSO
+Token
+Auth
+Bearer Token
+User
+Web browser
+Service Principal / Agents
+/api/
+call
+Frontend
+ReactHTML/JS
+Backend
+FastAPIpsycopg2
+
+=== Slide 14 ===
+Identity and Governance
+Deep Dive - Databricks Apps
+
+=== Slide 15 ===
+Service principal authorization
+Perform actions using the app’s service principal identity
+Service principal authorization
+
+=== Slide 16 ===
+User authorization
+User authorization
+Perform actions on behalf of (OBO) app users
+PuPr
+
+=== Slide 17 ===
+Service principal vs. user authorization
+Connect to Lakebase
+Accessing shared configuration
+Usage of external APIs / secrets on the server side
+Read / write UC data
+Using compute (Databricks Connect, jobs)
+Calling model serving or agent endpoints
+Using Genie APIs
+When to use which authorization mode?
+Service principal
+User (OBO)
+Apps can and should use both modes
+- choose depending on app feature
+
+=== Slide 18 ===
+Build with Lakebase and Agents
+Deep Dive - Databricks Apps
+
+=== Slide 19 ===
+Lakebase integration for Databricks Apps
+Serve analytical data
+Frontend
+React
+Backend
+FastAPI
+Synced table
+Postgres table
+Managed table
+Databricks table
+Reverse ETL
+Databricks Asset Bundles (DABs)
+
+=== Slide 20 ===
+Lakebase integration for Databricks Apps
+Store application state
+Frontend
+React
+Backend
+FastAPI
+Synced table
+Postgres table
+Managed table
+Databricks table
+Managed
+pipeline
+Databricks Asset Bundles (DABs)
+
+=== Slide 21 ===
+Lakebase Autoscaling
+Data APIs
+Frontend
+HTML/JS
+Backend
+FastAPIpsycopg2
+Databricks            App
+Lakebase Autoscaling Environment
+HTTP Requests
+HTTP Response (JSON Data)
+Lakebase Postgres
+Database
+Lakebase Data API
+Authenticator Role
+Schema Cache
+public.users
+public.items
+RLS
+Database
+Queries (SQL)
+Data Results
+
+=== Slide 22 ===
+Deploy Agents on Apps
+Production-ready architecture
+
+=== Slide 23 ===
+Build MCP Servers on Databricks Apps
+Native Databricks OAuth
+Easy to build, easy to plug-in
+User authorization (OBO) is also supported!
+Full compatibility with MCP protocol and modern tooling
+from
+mcp.server.fastmcp
+import
+FastMCP
+# Create an MCP server
+mcp
+=
+FastMCP(
+"MCP Server on DBX Apps"
+)
+# Add a tool
+@mcp.tool
+()
+def
+add
+(a:
+int
+, b:
+int
+) ->
+int
+:
+"""Add two numbers"""
+return
+a
++
+b
+Example code
+on apps-cookbook.dev
+
+=== Slide 24 ===
+Vibe Coding Databricks Apps
+Deep Dive - Databricks Apps
+
+=== Slide 26 ===
+LLMs are good but
+They need hyperfocus on the task
+
+=== Slide 27 ===
+Vibe coding 101
+Context-Rules-Tools
+
+=== Slide 28 ===
+Vibe-coding apps - toolkits
+Experimental
+Node + express backend
+TS + React frontend
+Strongly opinionated, comes with prepared blocks for common tasks
+Written in Rust
+Python + FastAPI backend
+TS + React frontend
+Provides common addons
+appkit
+by Databricks Engineering
+apx
+by FE, in Databricks Solutions
+
+=== Slide 29 ===
+apx
+Opinionated tech stack
+🐍 Python + FastAPI in the backend
+⚛️ React + shadcn/ui in the frontend
+Scaffold new projects via CLI
+AI assistant rules built-in (Cursor, Claude Code)
+Powerful development server (incl. user auth)
+MCP servers (dev server, SDK docs)
+Simple DABs-based deployments
+Field-developed Databricks Apps development toolkit
+go/apx
+Used by customers such as
+
+=== Slide 30 ===
+AI Dev Kit
+Rich context for building on Databricks
+go/ai-dev-kit
+
+=== Slide 31 ===
+AppKit
+Node.js + React SDK for Databricks Apps. Built for humans and AI.
+go/appkit
+
+=== Slide 32 ===
+Ship and Operate Your Apps
+Deep Dive - Databricks Apps
+
+=== Slide 33 ===
+Databricks Asset Bundles for Apps
+Seamless developer experience and deployments
+Develop app code and resource definition in one repository
+Define permissions and grants in code
+Simple deployments across multiple target environments
+CLI interface for any CI/CD provider
+bundle
+:
+name
+:
+"databricks-app-bundle"
+resources
+:
+apps
+:
+awesome-app
+:
+name
+:
+"awesome-app"
+description
+:
+"My awesome app"
+resources
+:
+-
+name
+:
+"sql-warehouse-resource"
+description
+:
+"SQL Warehouse for App"
+sql_warehouse
+:
+id
+:
+"warehouse_id"
+permission
+:
+"CAN_USE"
+permissions
+:
+-
+group_name
+:
+"analysts"
+permission_level
+:
+"CAN_USE"
+-
+group_name
+:
+"admins"
+permission_level
+:
+"CAN_MANAGE"
+user_api_scopes
+:       -
+"iam.current-user:read"
+-
+"sql"
+targets
+:
+dev
+:
+default
+:
+true
+workspace
+:
+host
+:
+"https://<dev-workspace-url>"
+prod
+:
+workspace
+:
+host
+:
+"https://<production-workspace-url>"
+databricks bundle deploy -t prod
+
+=== Slide 34 ===
+CI/CD for Databricks Apps
+Pattern for reproducible deployments
+Keep your application code in Git
+Use DABs to define app resources and overall setup
+Use Databricks CLI in CI/CD pipelines
+CI: Work in feature branches and merge into main when ready
+CD: Trigger a release pipeline with release tag
+
+=== Slide 35 ===
+App observability
+Logs and metric insights for your Databricks Apps
+PrPr
+Application logs
+OpenTelemetry support
+Real-time app logs (stdout, stderr)
+Deleted when app is stopped
+Low-latency log ingestion to UC
+System logs and system usage events (coming soon)
+Custom telemetry with any OTEL SDK
+# Example logging configuration
+import
+logging
+logging.
+basicConfig
+(
+level
+=
+logging.INFO,
+format
+=
+"
+%(asctime)s
+-
+%(name)s
+-
+%(levelname)s
+-
+%(message)s
+")
+logger
+=
+logging.
+getLogger
+(
+__name__
+)
+logger.
+info
+("
+Logging some event
+")
+
+=== Slide 36 ===
+Resources
+Deep Dive - Databricks Apps
+
+=== Slide 37 ===
+Join the discussion in
+#apa-apps
+Databricks Apps Resources
+L100 - L300 decks, FAQs
+Competitive battlecard
+Customer references
+Blogs, resources, previews
+Request engagement
+Join office hours
+SME Flight School
+go/apps
+go/apps/sme
+Dive deeper, get support, and get involved
+Interactive demo app, code snippets
+Apps resources
+Apps gallery
+apps-cookbook.dev
+🧙
+⭐
+🍳
+
+=== Slide 39 ===
+Build API-only applications
+Non-interactive, token-based authentication
+Frontend
+HTML
+Backend
+FastAPI
+Model serving
+SQL
+warehouse
+Jobs
+Workspace
+resources
+Databricks
+Control Plane
+Cookie
+Auth
+Login/SSO
+Token
+Auth
+OAuth 2.0
+Bearer token
+3rd-party apps
+Databricks Apps
+Web browser
+my-app.aws.databricksapps.com
+🔗
+Learn more: Connect external app to Databricks App
+
+=== Slide 40 ===
+New App Resources: Genie and Lakebase
+Grant app service principal access to Databricks resources
+🔗 Learn more about app resources
+Grant app service principal access to the specified resources
+Resources make it easier to move apps to new environments
+Can also manually assign permissions to the service principal
+Genie spaces
+and
+Lakebase
+resources now available
+
+=== Slide 41 ===
+Rapidly ship AI agents to business users
+From agent to end user in hours instead of weeks
+Deploy a chat UI in minutes using templates
+Agent Bricks serving endpoint as app resource
+(Vibe) customize templates to fit CI
+Quickly build quality AI agents
+Use cases: Knowledge Assistant, multi-agent supervisor, information extraction, custom LLM
+Deploy as Model Serving endpoint
+Curated front door for business users for Apps and AI/BI
+Backed by consumer entitlement
+
+=== Slide 42 ===
+Model Context Protocol (MCP) on Databricks
+3rd party MCP Server
+Unity Catalog functions
+Managed MCP Server
+Vector search
+Genie space
+Databricks Apps
+Custom MCP Server
+AI Agent
+External
+Unity Catalog connections
+🔗 Learn more about MCP on Databricks
+🔗 Custom MCP server app template
+
+=== Slide 43 ===
+Git-backed apps
+Deploy your Databricks Apps directly from a Git repository
+Deploy app from Git repo instead of workspace file system
+Deploy from branch, tag, or commit
+Code governance: enforce Git-only deployments
+Beta
+
+=== Slide 44 ===
+Databricks Apps Cookbook
+20+ recipes for common Apps use cases
+Interactive demos, code snippets
+Deploy to Databricks or run locally
+Apps Gallery: curated example apps
+apps-cookbook.dev
+Reflex
+Ready-to-use code snippets for building data and AI applications
+
+=== Slide 45 ===
+Databricks Apps Gallery
+Databricks-curated example applications
+Source code available
+Submit your app! #apps-cookbook
+apps-cookbook.dev/gallery
+apps-cookbook.dev/gallery
+
+
+############################################################
+# Enablement AI Engineering
+############################################################
+
+=== Slide 1 ===
+Enablement AI Engineering on Databricks
+Databricks on Databricks: AI Agents for Curriculum Development
+Matthew McCoy, Sr. Technical Curriculum Development
+
+=== Slide 2 ===
+Using AI Agents for Content Development
+How Minerva integrates with Medallion Labs (5 mins)
+Introduction to Minerva (10 mins)
+Architecture Deep Dive (10 mins)
+Demo (
+available on Medallion Labs after TKO
+) (20 mins)
+Leveraging Agent Framework for building training content
+
+=== Slide 3 ===
+Meet Your Speaker
+Matthew McCoy
+Sr. Technical Curriculum Developer
+
+=== Slide 4 ===
+Project Minerva
+Enablement on Databricks
+
+=== Slide 5 ===
+Current Curriculum Development Model
+Problem - Waterfall approach, customer course is priority (9 - 14 weeks)
+PRIVATE PREVIEW
+BETA
+Monitor Databricks
+NEW FEATURE
+Course Release
+4-6 weeks
+Determine
+when we can
+implement
+this in our training workspaces to
+support scaled delivery.
+
+=== Slide 6 ===
+New Curriculum Development Model
+New Timelines
+Identified Workspaces:
+Free Edition, Vocareum, Sandbox
+Pillar leads must
+parallelize learning and development
+All identified Workspace environments are captured in initialization script
+Comprehensive testing is performed before Alpha stage is considered
+complete
+.
+1-2 Days
+
+=== Slide 7 ===
+Current Curriculum Development Model
+Result: High-quality data in the form of content
+CUSTOMERS
+Product-specific SME review occur much earlier before the final release
+Crowdsource reviews to all internals and partners
+Content from the curriculum team is uniquely positioned for agentic workloads
+Final release of our content inherently has human-feedback reviews - which is
+essential for retrieval agent workloads
+
+=== Slide 8 ===
+Minerva Goals
+Key Objective: Accelerate field enablement
+on Databricks using Databricks
+Leverage
+high-quality notebooks
+for RAG applications
+Leverage Databricks to tackle development cold-start problem
+Technical Lab Writing that is Databricks-Native
+Build
+new level-based (e.g. L300) labs
+leveraging tables from UC
+Make updates to
+existing labs
+Refine and centralize prompts with
+prompt banking
+Curriculum Brick
+Automated workflow with
+DABs
+for parsing and storing notebooks within
+Vector Search
+Leverages
+Agent Bricks
+for curriculum development and tasks
+Integrated with
+Databricks Apps
+Building Technical Content with Agents
+
+=== Slide 9 ===
+Current Curriculum Development Model
+Language-Specific Goals
+Aligned formatting
+Layout (html, markdown)
+Tone
+Pedagogy Assessment
+SME Feedback
+“Fix messaging…”
+“DLT -> Lakeflow Pipelines”
+“Actually, Lakeflow Pipelines is now Lakeflow Spark Declarative Pipelines”
+etc.
+Databricks
+on
+Databricks
+
+=== Slide 10 ===
+Current Curriculum Development Model
+Because of our structured format, we easily implement a parsing strategy for an
+Agent Bricks Knowledge Assistant (NOW GA!)
+Internal User
+
+=== Slide 11 ===
+Current Curriculum Development Model
+Internal User
+“I’m looking for demos on Lakebase with AI Integration and I’m also interested in Lakeflow SDP. What notebooks are available?”
+
+=== Slide 12 ===
+Project Minerva
+Minerva: A Lightweight Framework for Content Creation
+
+=== Slide 13 ===
+Stored Prompts
+Scenario: Dev Team needs consistency
+Developer 1 uses prompt 1
+Output 1
+Local
+Dev Team with overlapping, common tasks
+Output 2
+Output 3
+Developer 2 uses prompt 2
+Developer 3 uses prompt 3
+Reviewers
+Drift
+
+=== Slide 14 ===
+Stored Prompts
+Developer 1 uses updated prompt 1
+New Output 1
+Local
+Dev Team
+Output 2
+New Output 3
+Developer 2 uses prompt 2
+Developer 3 uses updated prompt 3
+Reviewers
+Actually, I found a better prompt!
+Actually, I found a better prompt!
+Drift
+Mine is fine…
+Scenario: Dev Team needs consistency
+
+=== Slide 15 ===
+Stored Prompts
+Developer 1 uses AI Tool 1
+New Output 1
+Local
+Dev Team
+Output 2
+New Output 3
+Developer 2 uses AI Tool 2
+Developer 3 uses AI Tool 3
+Reviewers
+I love ChatGPT!
+Drift
+Claude Code will rule all!
+Glean
+anyone?
+Scenario: Dev Team needs consistency
+
+=== Slide 16 ===
+Stored Prompts
+Developer 1 uses agent 1
+New Output 1
+Local
+Dev Team
+Output 2
+New Output 3
+Developer 2 uses agent 2
+Developer 3 uses agent 3
+Reviewers
+Actually, I have a
+new agent
+!
+Drift
+Agent 1
+Agent 2
+Agent 3
+Actually, I have a
+new agent
+!
+Scenario: Dev Team needs consistency
+
+=== Slide 17 ===
+Stored Prompts
+Developer 1 uses updated prompt 1
+New Output 1
+Local
+Dev Team
+Output 2
+New Output 3
+Developer 2 uses prompt 2
+Developer 3 uses updated prompt 3
+Reviewers
+Actually, I found a better prompt!
+Actually, I found a better prompt!
+Drift
+fx
+1
+fx
+2
+fx
+3
+Agent 1
+Agent 2
+Agent 3
+Sprawling Swamp of Agents and prompts, all attempting the same output
+Scenario: Dev Team needs consistency
+
+=== Slide 18 ===
+Proposed Solution
+Agent
+fx
+System
+Prompt
+A
+single
+agent
+with a
+single
+function
+and a
+single
+system prompt
+to capture all the nuanced use-cases for the whole team.
+Dev Team
+Mosaic AI Agent Framework
+
+=== Slide 19 ===
+Proposed Solution
+Agent
+Prompt Registry
+Prompt
+Bank
+Test and Version Control
+fx
+System
+Prompt
+A
+single
+agent
+with a
+single
+function
+and a
+single
+system prompt
+to capture all the nuanced use-cases for the whole team.
+Returns the
+baseline
+prompt
+needed for assisting with <use_case>. The available values are <filter_values>.
+SELECT content
+FROM minerva.technical_writing.prompt_bank WHERE
+prompt_type == prompt_type_given
+Dev Team
+Mosaic AI Agent Framework
+
+=== Slide 20 ===
+prompt
+Example 1
+Agent
+Prompt Registry
+Prompt Bank
+Test and Version Control
+fx
+System
+Prompt
+Can you format and evaluate this demo? I want it to appeal to L300 ML practitioners.
+SELECT
+prompt
+FROM minerva.technical_writing.prompt_bank WHERE
+prompt_type
+== prompt_type_given
+prompt_id
+prompt_type
+format_prompt
+user_level_prompt
+notebook_structure
+1
+2
+3
+The user is asking for… I need to get…
+Mosaic AI Agent Framework
+
+=== Slide 21 ===
+prompt
+Example 1
+Agent
+Prompt Registry
+Prompt Bank
+Test and Version Control
+fx
+System
+Prompt
+Can you format and evaluate this demo? I want it to appeal to L300 ML practitioners.
+SELECT
+prompt
+FROM minerva.technical_writing.prompt_bank WHERE
+prompt_type
+== prompt_type_given
+prompt_id
+prompt_type
+format_prompt
+user_level_prompt
+notebook_structure
+1
+2
+3
+The user is asking for… I need to get…
+Mosaic AI Agent Framework
+Ahh… now I know what they’re looking for…
+
+=== Slide 22 ===
+prompt
+Example 2
+Agent
+Prompt Registry
+Prompt Bank
+Test and Version Control
+fx
+System
+Prompt
+I need you to translate this lab to Spanish please.
+SELECT
+prompt
+FROM minerva.technical_writing.prompt_bank WHERE
+prompt_type
+== prompt_type_given
+prompt_id
+prompt_type
+format_prompt
+user_level_prompt
+notebook_structure
+1
+2
+3
+The user is asking for… I need to get…
+Ah… now I know how this needs to be translated…
+Mosaic AI Agent Framework
+
+=== Slide 23 ===
+prompt
+Identify an Evaluator to own the bank
+Prompt Registry
+Prompt Bank
+Test and Version Control
+prompt_id
+prompt_type
+format_prompt
+user_level_prompt
+notebook_structure
+1
+2
+3
+Response
+Evaluation
+Evaluator
+Dev Team
+Input
+
+=== Slide 24 ===
+prompt
+What’s Next?
+Prompt Bank
+prompt_id
+prompt_type
+format_prompt
+user_level_prompt
+notebook_structure
+1
+2
+3
+Evaluation
+fx
+AI Engineer
+Dev Team
+System Prompt
+LLM
+Databricks App
+
+=== Slide 25 ===
+prompt
+What’s Next?
+Prompt Bank
+prompt_id
+prompt_type
+format_prompt
+user_level_prompt
+notebook_structure
+1
+2
+3
+Evaluation
+prompt
+Prompt Bank Sync
+prompt_id
+prompt_type
+format_prompt
+user_level_prompt
+notebook_structure
+1
+2
+3
+Dev Team
+Evaluator
+
+=== Slide 26 ===
+Hands-On with Minerva
+Demo
+
+=== Slide 27 ===
+prompt
+Prompt Bank v1
+prompt_id
+prompt_type
+data_analyst
+c_suite
+1
+2
+Version 1
+Optimize
+GepaPromptOptimizer
+prompt
+Prompt Bank v2
+prompt_id
+prompt_type
+data_analyst
+c_suite
+1
+2
+Inputs/Expectations
+Form inputs and expectations
+
+=== Slide 30 ===
+prompt
+What’s Next?
+Prompt Bank
+prompt_id
+prompt_type
+format_prompt
+user_level_prompt
+notebook_structure
+1
+2
+3
+Evaluation
+fx
+AI Engineer
+Dev Team
+System Prompt
+LLM
+Databricks App
+
+=== Slide 31 ===
+prompt
+Iterate Throughout Development
+Prompt Bank
+prompt_id
+prompt_type
+format_prompt
+user_level_prompt
+notebook_structure
+1
+2
+3
+Dev Team
+Agent
+fx
+System
+Prompt
+Databricks
+on
+Databricks
+
+=== Slide 32 ===
+prompt
+Share/Sync to Other Workspaces
+Prompt Bank
+prompt_id
+prompt_type
+format_prompt
+user_level_prompt
+notebook_structure
+1
+2
+3
+Evaluation
+prompt
+Prompt Bank Sync
+prompt_id
+prompt_type
+format_prompt
+user_level_prompt
+notebook_structure
+1
+2
+3
+Dev Team
+Evaluator
+
+=== Slide 33 ===
+ICONS
+
+=== Slide 34 ===
+Learning Outcomes
+
+=== Slide 36 ===
+[Internal Only Slide]
+[This slide will not be shown to Partners]
+Databricks Internal Only - Do Not Share
+
+=== Slide 37 ===
+Two-column content
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Here’s a column subheader
+Here’s a column subheader
+Your subtitle here
+
+=== Slide 38 ===
+Two column with icon space
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space above for an icon
+These columns have space above for an icon
+Your subtitle here
+
+=== Slide 39 ===
+Three-column text
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Here’s a column subheader
+Here’s a column subheader
+Here’s a column subheader
+Your subtitle here
+
+=== Slide 40 ===
+Three-column with icon space
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space for an icon
+These columns have space for an icon
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space for an icon
+Your subtitle here
+
+=== Slide 41 ===
+“The advance of technology is based on making it fit in so that you don’t really even notice it, so it’s part of everyday life.”
+—Bill Gates, Co-founder of Microsoft
+
+=== Slide 42 ===
+“The advance of technology is based on making it fit in so that you don’t really even notice it, so it’s part of everyday life.”
+—Bill Gates, Co-founder of Microsoft
+
+=== Slide 43 ===
+Three column card
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+Card number one
+Card number two
+Card number three
+Your subtitle here
+
+=== Slide 44 ===
+Righthand card
+Add your content here.
+Bullet one
+Bullet two
+Bullet three
+This spot is great for a diagram, image, small table, code snippet or screenshot
+Your subtitle here
+
+=== Slide 45 ===
+Lefthand card
+Add your content here
+Bullet one
+Bullet two
+Bullet three
+This spot is great for a diagram, image, small table, code snippet or screenshot
+Your subtitle here
+
+=== Slide 46 ===
+Full width card
+This card is good for larger diagrams, tables or other general use
+Your subtitle here
+
+=== Slide 47 ===
+For more guidance, reference the assets linked below
+Resource deck
+
+=== Slide 48 ===
+Dark Mode
+There are also dark versions of these layouts. To access these layouts, create a new slide immediately after this one, right click on its slide thumbnail and select an option under
+Apply
+Layout
+
+
+############################################################
+# Lakeflow Connect Community Connectors
+############################################################
+
+=== Slide 1 ===
+Extending
+Lakeflow Connect
+Getting Started with Community Connectors
+Manjul Singhal, Solutions ArchitectRomy Li, Solutions Architect
+
+=== Slide 2 ===
+Meet Your Speakers
+Romy Li
+Solutions Architect
+Manjul Singhal
+Solutions Architect
+
+=== Slide 3 ===
+Agenda
+Intro to Community Connectors
+How to build a Community Connector
+Winning the Hackathon with Zoho CRM
+Demo: End-to-end User Experience
+What’s next and how to get started
+
+=== Slide 4 ===
+Data Intelligence Platform
+LAKEFLOW
+Connect
+“Point and click” or API
+INGEST
+LAKEFLOW
+Connect
+Efficient data ingestion
+Into your lakehouse
+
+=== Slide 5 ===
+Lakeflow Connect’s roadmap
+Top 50 connectors requested by customers
+©2026 Databricks inc. - All rights reserved
+Top 50 connectors ~ 89% of customer demand
+
+=== Slide 6 ===
+Lakeflow Connect’s roadmap - The reality
+The full connector backlog requested by customers
+©2026 Databricks inc. - All rights reserved
+300+ sources, mainly used by only 1–2 customers
+
+=== Slide 7 ===
+Customers have few options to ingest data from their sources
+
+=== Slide 8 ===
+Lakeflow Connect’s roadmap - The reality
+These will be built by Engineering Team as managed connectors
+Top 50 most in-demand sources are prioritized to be built as
+managed
+connectors
+©2026 Databricks inc. - All rights reserved
+
+=== Slide 9 ===
+Lakeflow Connect’s roadmap - The reality
+Breadth of coverage is the number 1 blocker for customers
+What about ‘long-tail’ sources ?
+©2026 Databricks inc. - All rights reserved
+
+=== Slide 10 ===
+Launching
+Community Connectors
+
+=== Slide 11 ===
+What are Community Connectors?
+Self-service integrations with enterprise foundations
+
+=== Slide 12 ===
+Why Community Connectors matter
+Self-service data ingestion for niche sources, with production quality
+
+=== Slide 13 ===
+The Community Connector Framework
+Fork or clone the repo
+1
+Vibe-code your connector with AI
+2
+Test & Iterate Locally
+3
+Deploy your pipeline in Databricks
+4
+Clean and document the code
+5
+Create a Pull Request
+6
+Use the same structure and standard  interface,
+focus only on the data source logic
+
+=== Slide 14 ===
+Deploy your pipeline in Databricks
+Clean and document the code
+5
+Create a Pull Request
+6
+The Community Connector Framework
+Vibe-code your connector with AI
+2
+Test & Iterate Locally
+3
+Fork or clone the repo
+1
+
+=== Slide 15 ===
+Deploy your pipeline in Databricks
+4
+The Community Connector Framework
+Fork or clone the repo
+1
+Test & Iterate Locally
+3
+Clean and document the code
+5
+Create a Pull Request
+6
+Vibe-code your connector with AI
+2
+
+=== Slide 16 ===
+Deploy your pipeline in Databricks
+4
+The Community Connector Framework
+Fork or clone the repo
+1
+Vibe-code your connector with AI
+2
+Clean and document the code
+5
+Create a Pull Request
+6
+Test & Iterate Locally
+3
+
+=== Slide 17 ===
+The Community Connector Framework
+Fork or clone the repo
+1
+Vibe-code your connector with AI
+2
+Test & Iterate Locally
+3
+Deploy your pipeline in Databricks
+4
+Clean and document the code
+5
+Create a Pull Request
+6
+
+=== Slide 18 ===
+Deploy your pipeline in Databricks
+4
+The Community Connector Framework
+Fork or clone the repo
+1
+Vibe-code your connector with AI
+2
+Test & Iterate Locally
+3
+Clean and document the code
+5
+Create a Pull Request
+6
+
+=== Slide 19 ===
+Deploy your pipeline in Databricks
+4
+The Community Connector Framework
+Fork or clone the repo
+1
+Vibe-code your connector with AI
+2
+Test & Iterate Locally
+3
+Clean and document the code
+5
+Create a Pull Request (
+for DBx only
+)
+6
+
+=== Slide 20 ===
+The Community Connector Framework
+Fork or clone the repo
+1
+Vibe-code your connector with AI
+2
+Test & Iterate Locally
+3
+Deploy your pipeline in Databricks
+4
+Clean and document the code
+5
+Create a Pull Request
+(for DBx only)
+6
+
+=== Slide 21 ===
+Community Connector
+Framework
+Under the hood
+
+=== Slide 22 ===
+Community Connector Framework - Under the hood
+Foundational components in the framework
+Don’t wait months for Product prioritization
+
+=== Slide 23 ===
+LakeflowConnect Interface
+Don’t wait months for Product prioritization
+Standardize how connectors behave for ingestion
+The 5  Methods to implement
+:
+list_tables() -
+which objects are available to ingest.
+get_table_schema() -
+for column names and types.
+read_table_metadata()
+- returns the Ingestion Type
+read_table() -
+for incremental loading.
+read_table_deletes() -
+(Optional) Used for syncs that need to capture hard deletes
+.
+
+=== Slide 24 ===
+2) Pyspark Python Source
+Don’t wait months for Product prioritization
+Wrap the Python connector as a native Spark data source
+(using Python Data Source API)
+
+=== Slide 25 ===
+3) The Connector
+Don’t wait months for Product prioritization
+A single Python file that extends the LakeflowConnect interface
+
+=== Slide 26 ===
+4) SDP Pipeline
+Don’t wait months for Product prioritization
+SDP orchestrates data ingestion end-to-end
+
+=== Slide 27 ===
+Ingestion Logic
+Uses apply_changes for high-fidelity upserts
+A simple streaming flow for immutable logs
+Batch read that overwrites or refreshes the target automatically
+CDC
+Append
+Snapshot
+Easily configure which Spark flow to use
+
+=== Slide 28 ===
+5) The Merge Script
+Don’t wait months for Product prioritization
+Bundles the connector and framework into a single file
+
+=== Slide 29 ===
+6) The Test Suite
+Don’t wait months for Product prioritization
+Shared test suite to validate locally your connector against real source data
+Tests for:
+Connector initialization
+Table discovery
+Schema correctness
+Incremental ingestion
+Deletion flow
+
+=== Slide 30 ===
+How to build a
+Community Connector?
+
+=== Slide 31 ===
+Pre-requisites
+Install
+Cursor
+or Claude locally for Vibecoding - Visit:
+go/
+build-with-ai
+1
+Get Access to dev/trial instance of the
+data source
+for sample data and API access
+2
+
+=== Slide 32 ===
+Step 1: Document the API
+Complete step 1 in @prompts/README.md to generate a zoho crm documentation. Only use https://www.zoho.com/crm/developer/docs/api/v8/ for source API reference
+
+=== Slide 34 ===
+Step 2: Implement the Connector
+Based on the source API Documentation @sources/zoho_crm/zoho_crm_api_doc.md , please complete only step 2 in @prompts/README.md . Do not run any tests yet
+
+=== Slide 36 ===
+Step 3: Test and fix the Connector
+Follow @prompts/README.md and only finish step 3 to generate test for zoho crm. Do not run any tests yet
+(after adding credentials ) Run the tests for zoho_crm
+
+=== Slide 38 ===
+Step 4: Create new Connection and Ingestion pipeline
+
+=== Slide 40 ===
+Demo:
+End to End User Experience
+
+=== Slide 42 ===
+What did we do differently for Zoho CRM?
+Winning the Hackathon
+
+=== Slide 43 ===
+Competitor parity validation
+1
+>
+Revealed source-specific constraints and practical limitations:
+Hostname depends on data center location
+Rate limited, credit-based API access
+Junction tables needed to extract many-to-many relationships
+Completeness & Functionality
+
+=== Slide 44 ===
+Enabling OAuth
+>
+Interim notebook solution until native OAuth support
+Enter your credentials
+Follow the notebook to authorize the OAuth app
+Copy / Paste the final tokens to use in the UC Connection
+2
+Completeness & Functionality
+
+=== Slide 45 ===
+Refactoring and enhancing the code
+Analyze the other connectors in the repo to get inspiration for refactoring
+Separate auth from data retrieval
+Enable reusability across Zoho systems
+Default class for user-friendly error messages
+Leverage documented Zoho error codes
+Eliminate code duplication for pagination logic
+API Authentication client
+API Error Handling
+Pagination Helper
+>
+3
+Code Quality & Efficiency
+
+=== Slide 46 ===
+Reusability across the Zoho ecosystem
+Build once and scale easily for other Zoho Applications
+All Zoho products share the
+same core API
+structure and authentication mechanism
+Modular architecture
+separates API interface from business logic, enabling easy extension to other Zoho products
+4
+Methodology & Reusability
+
+=== Slide 47 ===
+What’s next
+and how to get started
+Call to Action
+
+=== Slide 48 ===
+Built during Hackathon
+35
++
+C
+ommunityConnector
+s
+
+=== Slide 49 ===
+Need inspiration?
+Try these
+Ready to build a Connector?
+go/connector/backlog
+
+=== Slide 50 ===
+What’s coming next
+Databricks Labs repo open sourced
+Hackathon connectors merged into main repo
+Field teams can build and publish new connectors
+Agents to automate, improve and scale connector creation
+Customers and partners can build connectors
+Aim to have 20+ Community Connectors released per Quarter
+Release plans
+How to get started
+Choose a connector to build and fork the repo
+Reach out in #community-connector for support
+Check out the FAQ:
+go/community-connectors/faq
+Early Q2
+March
+Starting Q1
+©2026 Databricks inc. - All rights reserved
+
+=== Slide 51 ===
+Unvarnished Truth
+As of Feb 2026
+Databricks Internal Only - Do Not Share
+The Framework is early stage and still maturing
+Hackathon feedback is still being incorporated into the framework
+The building process is still being improved and standardized to guarantee connector quality from the start
+Repo was restructured to enable Python package publishing for easier consumption
+Free instances used during the Hackathon did not allow stress-testing
+→ Continue to share feedback to the Engineering team through #community-connector
+Debugging the deployed pipeline is painful
+Code needs to be updated locally, then re-generated with a script, then synced in DBx
+SDP logging is difficult to work with
+→ Goal: If the Framework test suite passes locally, the deployed pipeline should not fail
+Simplicity comes with limitations
+The current structure requires a single .py file, which does not allow for modularity
+(ex: separate the API client, schema structure and source-specific processing)
+Only supports REST API at the moment
+Designed for single-partition fetching by default (unless you write your own Python source implementation)
+Requires Claude or Cursor, which customers may not have access to
+
+
+############################################################
+# Open Lakehouse
+############################################################
+
+=== Slide 1 ===
+Michelle Leon, Sr Staff Product Manager
+Ryan Cicak, Sr Solutions Architect
+Alex Jiang, Associate Product Manager
+Open Lakehouse
+
+=== Slide 2 ===
+Agenda
+How interoperability helps us win the catalog
+Unified governance across catalogs and engines
+Format unification
+
+=== Slide 3 ===
+How interoperability helps us win the catalog
+
+=== Slide 4 ===
+Make Unity Catalog the center of governance
+Goal
+
+=== Slide 5 ===
+Challenges in the market today
+Fragmented discovery and governance across tools and platforms
+1
+2
+False choice of table formats - major vendors support only one or the other
+
+=== Slide 6 ===
+Our goals
+Unify governance across catalogs and engines
+Interoperability across the catalog and data asset landscape
+Unified governance in UC
+Unify Delta and Iceberg formats
+Partner with the community to resolve format and version incompatibilities across ecosystems
+Co-evolve the formats going forward
+
+=== Slide 7 ===
+Unified governance across catalogs and engines
+
+=== Slide 8 ===
+Unify the lakehouse with
+Unity Catalog
+Delta
+Clients
+Iceberg
+Clients
+Iceberg REST
+Unity REST
+Federation
+Glue
+Horizon
+REST
+Govern all your data with Federation
+Access Foreign Tables
+in HMS, Glue, Snowflake Horizon, or Iceberg REST Catalogs from Unity Catalog (and vice-versa)
+Access from any tool with Open APIs
+Create, DDL, write, and read Managed Tables from DBR or any external Delta or Iceberg client via open APIs
+Unify the governance layer with UC
+Enforce FGAC / ABAC on external engines
+HMS
+BQ
+
+=== Slide 9 ===
+Catalog
+Federation
+
+=== Slide 10 ===
+Govern tables in Foreign Catalogs
+Catalog Federation
+AWS Glue
+Apache Hive
+Snowflake Horizon
+Key features
+Read
+Delta, Iceberg, Parquet
+tables managed by foreign catalogs
+Apply
+UC fine-grained access controls
+,
+lineage
+, and
+auditing
+Tables are
+read-only
+in Databricks
+Query Federation
+Use
+Lakehouse Federation
+to access and govern data in foreign Catalogs
+Iceberg REST
+
+=== Slide 11 ===
+Bi-directional catalog federation is the standard
+Salesforce
+
+=== Slide 12 ===
+AWS Glue as the Producer
+Databricks
+Lakehouse Federation
+Reads table
+Read all tables in AWS Glue via
+Lakehouse Federation
+Using Glue APIs for access to all data Parquet/Iceberg/Delta/etc.
+Limitations
+No support planned for S3 Tables as it is a proprietary catalog/interface
+Parquet
+ORC
+Avro
+Common pattern:
+Customers use federation as an on-ramp to Unity Catalog
+
+=== Slide 13 ===
+Convert foreign table to ‘native’ UC
+Full benefits of UC
+- Delta Sharing, Quality Monitoring, etc.. in addition to ACLs, Discovery, Lineage, Cost Controls
+Better performance
+- foreign catalog no longer in query path
+Unity becomes source of truth
+✅
+✅
+✅
+How to:
+ALTER TABLE
+federated_hms.schema.table1
+SET MANAGED | EXTERNAL
+Note:
+“In-place” conversion - namespace stays the same, and no data movement if converting to external
+Only runs on HMS external tables. Must first convert HMS managed tables to HMS external
+(optional)
+Sync metadata back
+to the foreign catalog w/ migration tooling
+federated_hms
+table1
+table2
+Gated PuPr
+
+=== Slide 14 ===
+AWS Glue as Consumer
+AWS Reading from Unity Catalog tables
+AWS services can read from UC managed tables (Iceberg or Delta with UniForm)
+GA today
+Retrieves latest metadata location
+Federation
+Common migration pattern:
+Data is in UC managed tables, but do not want to disrupt downstream consumers
+
+=== Slide 15 ===
+Bi-directional interoperability with Catalog federation
+Salesforce
+GA
+GA
+
+=== Slide 16 ===
+FAQ: Why is catalog federation read-only?
+Unreliable pattern for enterprise production workloads
+UC cannot guarantee reliability or write correctness in foreign catalogs
+E.g. commit issues in 3p catalog can cause failures with long-running jobs, or changes in the foreign catalog can cause upstream issues in UC
+Bi-directional read federation is the standard – other vendors including AWS Glue, MSFT OneLake, and BigQuery have embraced
+Bottom line
+Bi-directional read federation is the industry standard for interoperability.
+
+=== Slide 17 ===
+Demo: Athena reading from UC managed tables
+
+=== Slide 18 ===
+Demo: Federating to Glue and converting to UC managed
+
+=== Slide 19 ===
+Learn more at
+go/lhf-faq
+
+=== Slide 20 ===
+External access to managed tables
+
+=== Slide 21 ===
+Access managed tables from any engine
+Key Features
+Write and read from:
+DBR
+External Delta engines via
+Unity REST APIs
+External Iceberg engines via
+Iceberg REST Catalog API
+Full Databricks platform support
+Predictive optimization runs:
+Vacuum, file compaction
+Liquid clustering
+(if enabled)
+Spark
+Trino
+Flink
+Create or Update table
+Delta Lake
+Iceberg
+AI-driven
+Predictive Optimization
+DBX
+Unity REST
+Iceberg REST
+
+=== Slide 22 ===
+Drive managed tables adoption with external access
+→ Alleviate customer lock-in concerns - any engine can read/write to managed tables with open APIs
+→ Ingestion workloads from external engines land data in UC managed tables which opens up downstream use cases
+→ Opening up to compute from other engines gets a wedge in accounts, land and expand from there
+Example: Winning a major DNB with managed Iceberg
+Foot in the door with UC managed tables and PO
+Unlocks downstream use cases for $DBUs
+EMR Spark workloads are future takeout opportunities
+
+=== Slide 23 ===
+Example:
+Streaming ingestion with
+Flink
+
+=== Slide 24 ===
+Ingest to UC Managed tables using Flink
+Ingestion
+bronze
+Cloud Storage
+Stor
+age
+Ingest
+Source
+Event Streaming
+Governance
+Iceberg REST
+
+=== Slide 25 ===
+Use any client
+Choose the right tool for the workload across the Delta and Iceberg ecosystems
+Transformation in DBX (or OSS Spark)
+Ingestion
+ETL and Process Engine
+bronze
+silver
+gold
+Cloud Storage
+Stor
+age
+Ingest
+Transform
+Source
+Event Streaming
+Governance
+Iceberg REST
+Unity REST
+Unified governance
+Discover and govern all your data using a single catalog
+
+=== Slide 26 ===
+Interoperate across formats
+Access Delta and Iceberg tables for analytics, AI/ML/ and sharing use cases
+Unified Serving Layer
+Data Warehousing
+Machine Learning
+Ingestion
+ETL and Process Engine
+bronze
+silver
+gold
+Cloud Storage
+Stor
+age
+Ingest
+Transform
+Serve
+Source
+Event Streaming
+Notebooks
+Feature Engineering
+Model Serving
+Feature Serving
+Governance
+Collaboration
+Delta Sharing
+Iceberg REST
+Unity REST
+DBSQL
+
+=== Slide 27 ===
+Demo: Flink ingestion to UC managed tables
+
+=== Slide 28 ===
+Learn more at
+go/external-access-faq
+
+=== Slide 29 ===
+Cross-platform governance
+
+=== Slide 30 ===
+Problem
+Customers want to define policies once, and enforce them where data is accessed
+Credential vending via UC / IRC APIs is
+coarse-grained
+.  Cannot enforce fine-grained policies (ABAC / RLS / CM) across engine boundaries.
+
+=== Slide 31 ===
+Cross-engine governance
+Two approaches
+For “untrusted” engines - External engines (like DuckDB) can use UC/Iceberg REST scan APIs backed by Filtering Fleet to sanitize the data and apply row filters/column masks
+[PrPr today]
+For “trusted” engines - developing a cross-vendor standard for tag-based policy exchange which can be synced with federation
+[Exploring now with AWS and others]
+
+=== Slide 32 ===
+Cross-engine governance
+Two approaches
+For “untrusted” engines - External engines (like DuckDB) can use UC/Iceberg REST scan APIs backed by Filtering Fleet to sanitize the data and apply row filters/column masks
+[PrPr today]
+For “trusted” engines - developing a cross-vendor standard for tag-based policy exchange which can be synced with federation
+[Exploring now with AWS and others]
+
+=== Slide 33 ===
+Define policies once, enforce everywhere
+Key Features
+ABAC / FGAC policies in UC are enforced on external engines with centralized governance
+Supports all UC managed tables - Delta and Iceberg
+Customers get a single, scalable security model
+Private Preview today
+Spark
+Starburst
+DuckDB
+Read filtered data
+Managed tables
+Centralized governance
+via Iceberg REST Catalog
+
+=== Slide 34 ===
+ABAC on external engines: How it works
+If ABAC policies are detected, the external client will call the Scan API and sanitize the data
+User
+OSS Spark
+2
+1
+Run query
+on table t1
+Call
+Scan API
+7
+Process
+query and
+return results
+Define access policies
+Cloud Storage (S3, ADLS, GCS)
+Storage access
+3
+Check user permissions on t1
+Table t1
+Filtered table files
+4
+Filter t1 according to the user’s FGAC policies
+
+=== Slide 35 ===
+ABAC on external engines
+Key features
+✅ Read from all managed tables with FGAC enforced
+✅ Supports ABAC, row filters, column masks
+✅ Engines supported: Delta Spark today – Trino, DuckDB, Starburst support coming soon
+✅ Built on open standards - Iceberg REST catalog scan/plan APIs
+💰Cost: serverless compute $DBUs for filtering the data
+Uses the same filtering service that powers FGAC in Databricks
+*Free during Private Preview
+Private Preview
+
+=== Slide 36 ===
+Cross-engine governance
+Two approaches
+For “untrusted” engines - External engines (like DuckDB) can use UC/Iceberg REST scan APIs backed by Filtering Fleet to sanitize the data and apply row filters/column masks
+[PrPr today]
+For “trusted” engines - developing a cross-vendor standard for tag-based policy exchange which can be synced with federation
+[Exploring now with AWS and others]
+
+=== Slide 37 ===
+Future: Tag-based policy exchange
+Future
+Goal: Catalog interoperability with policy and tags synced automatically
+Approach
+Develop a shared standard in IRC for exchanging tags as table metadata
+Tags and coarse-grained policies are synced with catalog federation
+And “trusted engines” enforce governance natively
+In discussion now with others in the Iceberg community. This is a long-term effort which requires cross-vendor agreement
+
+=== Slide 38 ===
+Demo: ABAC with Spark
+
+=== Slide 39 ===
+Learn more at
+go/external-abac-faq
+
+=== Slide 40 ===
+Format unification
+
+=== Slide 41 ===
+Required for:
+Change Data Feed
+Lakeflow Declarative Pipelines
+Vector Search
+Collations
+Some differences between formats today
+Required for:
+Writes from Iceberg engines
+Managed
+Iceberg
+Managed
+Delta
+
+=== Slide 42 ===
+Open Table Format Co-evolution
+Deletion Vectors
+Row tracking
+Variant Data Type
+Combining the best of Delta Lake and Iceberg
+Catalog Commits
+Variant Data Type
+4.0
+v3
+
+=== Slide 43 ===
+Open Table Format Co-evolution
+Managed Table
+Unified Metadata
+Parquet
+Unify table metadata across Delta and Iceberg
+Interoperate without rewriting data or delete files
+Data Unification
+Iceberg v3
+Metadata Unification
+Iceberg v4 & Delta 5
+Milestone
+Goal
+Delta Clients
+Iceberg Clients
+Read and write with any client using a
+single copy of data and metadata
+
+=== Slide 44 ===
+Lab: Iceberg v3 in Databricks
+Get hands on after this talk!
+
+=== Slide 45 ===
+Iceberg Roadmap
+
+=== Slide 46 ===
+Key takeaways
+
+=== Slide 47 ===
+Drive UC and managed tables adoption with catalog interoperability
+Federation as an on-ramp to UC
+All managed tables are open and interoperable
+Own the governance layer across engines with ABAC on external engines
+
+
+############################################################
+# Expo MFG
+############################################################
+
+=== Slide 1 ===
+Driving Lakebase in Manufacturing
+Reishin Toolsi, Sr. Solutions Architect
+Jackson Turek , Solutions Architect
+David Morten, Solutions Architect
+
+=== Slide 2 ===
+Meet Your Speaker
+Reishin Toolsi
+Sr, Solution architect
+
+=== Slide 3 ===
+The $80B Question
+Why Operational Data Is Worth Billions
+But Still Locked in Silos ?
+
+=== Slide 4 ===
+Highly transactional:
+Real-time rules, strict consistency
+Fragmented systems:
+ERP, MES, MOM, CMMS—each with its own schema
+Multiple "truths"
+:
+Shop floor vs. analytics often disagree
+Hard to govern:
+Recalls and audits need full traceability
+The Data challenge
+The problem : Rich Data , Hard challenges
+
+=== Slide 5 ===
+Work order releases
+A goods issue
+A quality inspection result
+A machine cycle count
+Aa purchase order receipt
+Operational Data in Manufacturing
+Current WIP status
+live OEE dashboard
+Current inventory levels
+Mmachine status from sensors
+Transactional
+Operational
+
+=== Slide 6 ===
+Engineering
+Manufacturing and plant operations
+Procurement and supply chain
+Service, warranty, and quality
+Supported Domains
+Types of Data
+Key challenge
+Industry example : General Autos
+Master data:
+part numbers, multi‑language descriptions
+Structural data:
+BOM links,, supersessions
+Supply data:
+suppliers, approved  vendors, pricing
+Operational context:
+which plants and lines use the parts
+A
+transactional
+system of record for apps where engineers, buyers, BOMs, and supplier mappings.
+A core
+analytical
+system for planning, inventory optimization, quality analytics, and AI models that join parts with telemetry, warranty, and plant performance
+The Master parts list  challenge
+
+=== Slide 7 ===
+Hosts
+Master Parts, BOMs, supplier assignments, and related objects for engineering
+Optimized
+for OLTP: low‑latency reads/writes, strong consistency, business rules in stored procedures or services.
+Operational SQL DB
+Databricks Lakehouse
+Integration Layer
+Before Lakebase
+Stores
+curated parts tables in Delta and joins them with plant data, supply‑chain events, warranty, and telemetry.
+Powers
+BI dashboards, planning use cases, and ML for demand, inventory, and quality.
+ETL
+jobs copy parts and BOM data from SQL into Delta; reverse‑ETL jobs push analytical outputs or reference data back into SQL.
+CDC
+or batch syncs try to keep the two worlds aligned.
+Split between SQL and Lakehouse
+
+=== Slide 8 ===
+Master Parts, BOMs, suppliers, and related transactional objects move into Lakebase
+Engineering, procurement, and manufacturing apps connect directly to Lakebase via Databricks Apps
+Lakebase as the operational store
+Lakehouse as the analytical plane
+After Lakebase
+Lakebase tables are synced into Delta for analytics and ML via managed mechanisms, not custom ETL forests.
+Planners and data teams see near‑real‑time parts and BOM data naturally integrated with telemetry, warranty, and supply‑chain feeds.
+Unified Operational + Analytical Stack
+
+=== Slide 9 ===
+Reference Architecture
+
+=== Slide 10 ===
+Meet Your Speaker
+Jackson Turek
+Solution architect
+
+=== Slide 11 ===
+Batch &
+Streaming
+Analytics relied on “offline” Excel data
+Data Management
+Collaboration
+Stor
+age
+Data Science & Machine Learning
+(Mosaic AI)
+Date Engineering & Processing
+Automation & Orchestration
+Data and AI Governance
+(Unity Catalog)
+Data Warehousing
+Data Intelligence Engine
+(Databricks IQ)
+Federation
+Data Intelligence Platform
+Ingest
+Transform
+Analyse
+Sources
+Serve
+Query / Process
+Data Analysis
+Spark /Photon
+Delta Live Tables
+Apps
+Delta        Lake
+ETL
+UniForm
+CI/CD tools
+DataOps
+Workflows
+Access Control
+Catalog & Lineage
+…
+…
+Multiple processes & applications to manage separately
+Offline copies of data
+
+=== Slide 12 ===
+Batch &
+Streaming
+Data Management
+Collaboration
+Stor
+age
+Data Science & Machine Learning
+(Mosaic AI)
+Date Engineering & Processing
+Automation & Orchestration
+Data and AI Governance
+(Unity Catalog)
+Data Warehousing
+Data Intelligence Engine
+(Databricks IQ)
+Federation
+Now, data is always live and more accessible
+Data Intelligence Platform
+Ingest
+Transform
+Analyse
+Sources
+Serve
+Query / Process
+Data Analysis
+Spark /Photon
+Delta Live Tables
+Apps
+Delta        Lake
+ETL
+UniForm
+CI/CD tools
+DataOps
+Workflows
+Access Control
+Catalog & Lineage
+…
+Lakebase
+App/Report
+
+=== Slide 13 ===
+Meet Your Speaker
+David Morton
+Solution architect
+
+
+############################################################
+# FINS Lakebase
+############################################################
+
+=== Slide 1 ===
+TKO
+Driving Lakebase in Financial Services
+Anindita Mahapatra, Principal Solutions Architect
+Mar 2026
+
+=== Slide 2 ===
+Meet Your Speaker
+Anindita Mahapatra
+Principal Solutions Architect
+
+=== Slide 3 ===
+Learning Outcomes
+What Financial Institutions already
+have
+Vs Where they
+lack
+Architectural Challenges that were
+not
+addressed by Lakehouse
+Lakebase Fit for Purpose
+Expansion Lever: New Use Cases & How this expands Databricks adoption
+Demo
+Fin Services customers positioned for change
+
+=== Slide 4 ===
+Data Lake -> Data Warehouse -> Database
+—---------------------------------------    —----------
+OLAP                         OLTP
+
+=== Slide 5 ===
+Data & AI problems extend to
+FINS customers already have:
+Mature data platforms (EDW + Lakehouse)
+Strong governance, lineage, and controls
+Clear separation of duties (model dev vs validation vs ops)
+Existing AI/ML in
+narrow but critical workflows
+But what they lack
+A
+unified operational substrate
+for:
+Real-time features
+Stateful services
+Model + data co-deployment
+AI agents that must be
+auditable
+Coordination & control problem
+Lakebase is the missing operational layer between governed data and intelligent applications
+
+=== Slide 6 ===
+FINS Architecture
+Data Lake / Warehouse (already on DBX or adjacent)
+Streaming (Kafka / Kinesis)
+Feature Stores (often bespoke)
+Online stores (Redis, DynamoDB, Cosmos)
+Model serving (SageMaker, Vertex, custom K8s)
+Governance split across tools
+Online vs Offline Drift
+Features eng offline ≠ features used in prod
+Multiple “sources of truth” for risk, fraud, pricing
+Governance Breaks at the Edge
+Lineage stops once data leaves the lake
+Model decisions are hard to explain end-to-end
+Time-to-Production is the Bottleneck
+Weeks to wire new features into real-time apps
+Heavy dependency on infra teams
+Agentic AI Raises the Bar
+Stateful interactions
+Tool invocation
+Memory + audit requirements
+Regulators ask:
+“Who decided what, using which data?”
+A
+governed, low-latency operational layer natively tied to the Lakehouse
+.
+Key architectural differentiators to emphasize:
+Same data + governance plane (Unity Catalog)
+SQL-first access for real-time workloads
+Low-latency reads/writes for stateful apps
+Seamless integration with:
+Delta tables
+MLflow models
+Feature engineering pipelines
+Agent frameworks
+Apps
+Typical FINS Architecture
+Core Pain Points
+Lakebase is not
+‘yet another DB’
+From governed data to governed decisions
+
+=== Slide 7 ===
+Lakebase  $DBU
+Land (pure OLTP) Vs Expand(with reverse ETL)
+
+=== Slide 8 ===
+What does the data show
+Usage Dashboard
+UseCase Dashboard
+
+=== Slide 9 ===
+Use Case Object Stages
+
+=== Slide 10 ===
+Metrics
+Compute
+(time)
+Essentially maps 1:1 to DBUs
+It is a function of 2 things - active time x AVG CUs
+AVG CUs
+(instance size)
+The average compute units the instances had while they were running
+If it decreases => customer reduced the Compute Units on their instances - less Compute power
+Active H
+(active time)
+Total # of hours the instances were running
+Either fixed instances or variable (with autoscaling).
+AVG GB
+(database size)
+The average size of all databases (in GB) together - decrease means a decrease in data stored
+Lakebase KPIs
+
+=== Slide 11 ===
+Lakebase enables
+new use cases
+on Databricks
+
+=== Slide 12 ===
+Banking: Fraud  detection & prevention
+Offline model training
+Online inference using stale or partial context
+Hard to audit post-incident
+Transaction events land → streaming + Lakebase
+Real-time feature lookup (velocity, exposure, behavior)
+Model inference + decision logged back to Lakebase
+Full lineage from raw event → feature → model → decision
+Replaces Redis / DynamoDB/ CosmosDB
+Brings fraud ops fully into Lakehouse governance
+Strong Unity Catalog + audit story for regulators
+Problem
+Lakebase Pattern
+Expands Databricks
+Realtime Fraud & AML decisioning
+
+=== Slide 13 ===
+Cap Market: Faster Decisioning
+Complex joins across customer, exposure, collateral
+Separate systems for:
+Feature computation
+Decision services
+Regulatory reporting
+Pre-computed & real-time features stored in Lakebase
+Pricing/risk APIs served directly from DBX
+Same features reused for:
+Model training
+Backtesting
+Regulatory explanation
+This collapses the distance between ‘model risk’ and ‘model ops’
+Problem
+Lakebase Pattern
+Expands Databricks
+Credit Risk & Pricing
+
+=== Slide 14 ===
+Insurance: Agentic AI for Claims
+Adjuster copilots
+Fraud detection Agents
+Operations exception resolution agents
+Regulatory inquiry response bots
+Agents need:
+Memory (conversation, decisions, prior actions)
+Fast state reads/writes
+Access to governed enterprise data
+Explainability
+Lakebase as the agent memory + state store
+Store:
+Conversation state
+Tool outputs
+Decision checkpoints
+Queryable via SQL
+Fully governed
+Problem
+Lakebase Pattern
+Expands Databricks
+Ride the Gen AI wave with competitive differentiation
+
+=== Slide 15 ===
+Regulatory Reporting & Explainability
+Use case
+“Explain why customer X was declined”
+“Show all data used in model version Y on date Z”
+Decision state persisted alongside features
+Unified
+lineage
+across:
+Data
+Model
+Decision
+Reduces audit response time from weeks → minutes
+Financial institutions need speed that preserves control!
+Problem
+Lakebase Pattern
+Expands Databricks
+FINS is a regulated industry
+
+=== Slide 16 ===
+Aligning Use Cases to Outcome Maps
+
+=== Slide 17 ===
+FINS Data Intelligence Outcome Maps
+Faster Decisioning
+Eg.
+pre-trade, post-trade
+Portfolio balancing
+Empower end customers as well  with AI based tools for better understanding, analysis and decision making
+Regulatory Reporting & Explainability
+Full traceability
+Fraud detection & Prevention
+Cyber operational alerting (threat detection & prevention) trailing X days
+Agentic AI for Front Office & Ops
+Drive Growth
+Protect the Firm
+Be More Efficient
+Beyond Platform teams & Data/AI teams … to Developer Community
+
+=== Slide 18 ===
+Reference Architecture
+Data Serving (Reverse ETL)
+Agentic Memory
+Applications
+SUPPORTING
+Deck
+
+=== Slide 19 ===
+BI Tools
+Data and AI Governance
+Batch & Streaming
+Data
+Collaboration
+Reverse ETL
+Stor
+age
+Data Science & Gen AI
+Processing, ETL, Real-time Analytics
+Orchestration
+Batch & Streaming
+Data Warehousing
+Data Intelligence Platform on AWS
+Federation
+ETL
+Ingest
+Transform
+Analysis
+Source
+Serve
+Query and Process
+…
+Amazon Bedrock
+Amazon S3
+Amazon Redshift
+AWS DMS
+AWS IoT Core
+Amazon Kinesis
+Amazon AppFlow
+AWS Glue
+Amazon QuickSight
+Hugging Face
+…
+AI Services
+Spark Declarative Pipelines
+Workflows
+Autoloader
+ModelServing
+Vector Search
+ML Modeling
+Mosaic AI
+Unity Catalog
+MLOps
+Gen AI
+Feature Serving
+3rd party
+Business Apps
+Integration
+ID Provider
+Governance
+AI Services
+Domain
+Key capability
+Key
+Databricks  SQL
+Marketplace
+Sensors and IoT
+(unstructured)
+RDBMS(structured)
+Business
+A
+pps
+(structured)
+Media (unstructured)
+Other clouds
+Files / Logs (
+semi-
+structured)
+Biz App
+Data Consumer
+ID Provider
+Enterprise Catalog
+Delta         Sharing
+AI/BI
+Genie
+AI Apps
+AI App
+Dashboards
+Lakeflow Connect
+Operational Databases
+Lakebase
+Lakebase Sync
+1
+2
+3
+
+=== Slide 20 ===
+ADP  Fast Canonical Application -
+Payroll Anomaly
+Old: Redis (caching layer)
+10 min to reach Delta in LH
+Need Real time reports
+ADP teams can build their own data-consuming patterns using the Graph API for real-time reporting.
+For example, ADP clients can get the worker information almost instantly from their ADP SaaS apps. (Change worker salary X -> Y will be reflected instantly).
+A
+B
+C
+D
+
+=== Slide 21 ===
+Demo
+High frequency data landing in Lakebase
+Features/Insights from Lakebase hydrating Apps
+Reverse ETL
+SUPPORTING TEXT
+
+=== Slide 22 ===
+High Frequency Transactional data
+Credit Card Tx Validation, IoT Sensor data
+1
+2
+3
+4
+
+=== Slide 23 ===
+Front to Back Office Collaboration of Business Users on Databricks
+Tasked with Strategic Asset Allocation
+Analyzes current liabilities and assets through
+AI/BI
+and
+Databricks One
+Enriches data with
+Lakeflow Designer Pipelines
+Submits a request for changing target duration
+Gets lists of requests (individual client or actuary) through
+Databricks App
+Runs scenario analysis with agents retrieving latest market details from
+external
+MCP Server
+Translates duration changes into return and sector changes
+Communicates with Portfolio Manager to rebalance portfolio to change expected return to 6.5%
+Reviews IBOR/ABOR records with
+AI/BI
+Identifies mismatches and created adjustment entries through
+Databricks Apps
+Adjustments written to
+a
+Lakebase
+table
+Reviews adjustment entries through
+Databricks Apps
+Creates general ledger entries
+Reviews overall risk through
+AI/BI
+Actuary / Customer
+Front Office
+Middle Office
+Back Office
+Performs IBOR/ABOR Reconciliation
+Reviews overall risks and generates ledger entries for reporting
+Reviews requests and translates to return / sector exposure mandate changes for implementation
+Sarah
+Actuary / Customer
+Dan Ross
+Portfolio Management
+Ben Smith
+Investment Office /
+Finance
+John Kaiser
+Operations / Valuation
+
+
+############################################################
+# Lakebase HLS
+############################################################
+
+=== Slide 1 ===
+Lakebase
+Lakebase Product Lead - HLS
+Surya Sai Turaga
+
+=== Slide 2 ===
+DATA
+AI
+Our mission is to democratize
+Data democratized through AI
+AI democratized through your data
+
+=== Slide 3 ===
+What is Lakebase?
+
+=== Slide 4 ===
+There are so many new applications built everyday with AI!
+OLTP
+We focus on simplifying
+autoscaling
+and app development
+Without doubling your storage costs you can branch away databases!
+
+=== Slide 5 ===
+Lakebase IS
+Postgres
+
+=== Slide 6 ===
+Postgres database engine
+Postgres Engine
+Rich ecosystem
+Fastest growing database engine of last decade
+
+=== Slide 7 ===
+Refresher: OLAP vs. OLTP
+A database system designed to process large amounts of data for the purpose of
+analytics
+.
+A database system designed to quickly process data transactions for the purpose of powering
+applications
+.
+OLAP Database
+(
+O
+n
+L
+ine
+A
+nalytical
+P
+rocessing)
+OLTP Database
+(
+O
+n
+L
+ine
+T
+ransaction
+P
+rocessing)
+DB SQL
+Lakebase
+
+=== Slide 8 ===
+With Lakebase you don’t have to choose
+Fully-managed Postgres
+Automatic data Sync from the Lakehouse
+Moderndevex
+built for AI
+
+=== Slide 9 ===
+AI is turning everyone into
+application
+developers…
+
+=== Slide 10 ===
+Data Intelligence Platform
+Unified governance for data and AI
+
+=== Slide 11 ===
+…And every application needs a
+database
+
+=== Slide 12 ===
+What’s important to customers when selecting a
+database
+technology?
+Reliability & Performance:
+Is it enterprise ready and battle tested?
+Simplicity:
+How well does it integrate with my existing tooling? How hard is it to use?
+Cost:
+Does the pricing model scale as my workloads scale? Is it open-source?
+
+=== Slide 13 ===
+Lakebase Postgres Autoscaling
+
+=== Slide 14 ===
+Branching
+Copy-on-writeclones
+Zero additional cost
+Main dataset
+
+=== Slide 15 ===
+Sync lakehouse tables with a few clicks
+Zero ETL between analytics and applications
+Near real-time data sync
+DB SQL
+Lakebase
+LakehouseTables
+PostgresTables
+
+=== Slide 16 ===
+Autoscaling
+Dynamic compute sizing
+Compute automatically scales based on workload demand, for high performance even during spikes.
+Scale to zero
+Pay only when your database is active. Idle instances drop to zero to keep costs low.
+Instant readiness
+Sub-second start times mean responsive apps and fast setup for dev/testing.
+Fast performance and smart savings, with no manual tuning
+
+=== Slide 17 ===
+Branching and development
+Lakebase Branching
+Instant, zero-copy isolation lets teams safely build and test without touching production and live workloads.
+Git-style workflow for data
+Bring CI/CD to your database for feature branches and rapid experimentation.
+Ephemeral environments
+Create and decommission dev/test branches quickly with no storage duplication.
+Treat your database like code
+
+=== Slide 18 ===
+Recovery and backups
+Scheduled snapshots
+Create instant database backups on a schedule.
+Rapid, precise recovery
+Restore to an exact moment within a managed window (up to 35 days) for quick incident recovery.
+Safe validation
+Use an isolated, zero-copy branch before applying changes to reduce the risk of bad restores to production.
+Precise restoration, at scale
+
+=== Slide 19 ===
+Architecture
+
+=== Slide 20 ===
+BI Tools
+Data and AI Governance
+Batch & Streaming
+Data
+Collaboration
+Reverse ETL - AWS
+Stor
+age
+Data Science & Gen AI
+Processing, ETL, Real-time Analytics
+Orchestration
+Batch & Streaming
+Data Warehousing
+Data Intelligence Platform on AWS
+Federation
+ETL
+Ingest
+Transform
+Analysis
+Source
+Serve
+Query and Process
+…
+Amazon Bedrock
+Amazon S3
+Amazon Redshift
+AWS DMS
+AWS IoT Core
+Amazon Kinesis
+Amazon AppFlow
+AWS Glue
+Amazon QuickSight
+Hugging Face
+…
+AI Services
+Spark Declarative Pipelines
+Workflows
+Autoloader
+ModelServing
+Vector Search
+ML Modeling
+Mosaic AI
+Unity Catalog
+MLOps
+Gen AI
+Feature Serving
+3rd party
+Business Apps
+Integration
+ID Provider
+Governance
+AI Services
+Domain
+Key capability
+Key
+Databricks  SQL
+Marketplace
+Sensors and IoT
+(unstructured)
+RDBMS(structured)
+Business
+A
+pps
+(structured)
+Media (unstructured)
+Other clouds
+Files / Logs (
+semi-
+structured)
+Biz App
+Data Consumer
+ID Provider
+Enterprise Catalog
+Delta         Sharing
+* Private Preview
+AI/BI
+Genie
+AI Apps
+AI App
+Dashboards
+Lakeflow Connect
+Operational Databases
+Lakebase
+Lakebase Sync
+
+=== Slide 21 ===
+BI Tools
+Data and AI Governance
+Batch & Streaming
+Data
+Collaboration
+Reverse ETL - Azure
+Stor
+age
+Data Science & Gen AI
+Processing, ETL, Real-time Analytics
+Orchestration
+Batch & Streaming
+Data Warehousing
+Data Intelligence Platform on AWS
+Federation
+ETL
+Ingest
+Transform
+Analysis
+Source
+Serve
+Query and Process
+…
+Spark Declarative Pipelines
+Workflows
+Autoloader
+ModelServing
+Vector Search
+ML Modeling
+Mosaic AI
+Unity Catalog
+MLOps
+Gen AI
+Feature Serving
+3rd party
+Business Apps
+Domain
+Key capability
+Key
+Databricks  SQL
+Marketplace
+Sensors and IoT
+(unstructured)
+RDBMS(structured)
+Business
+A
+pps
+(structured)
+Media (unstructured)
+Other clouds
+Files / Logs (
+semi-
+structured)
+Biz App
+Data Consumer
+Delta         Sharing
+* Private Preview
+AI/BI
+Genie
+AI Apps
+AI App
+Dashboards
+Lakeflow Connect
+Operational Databases
+Lakebase
+Lakebase Sync
+Entra ID
+Purview
+Hugging Face
+…
+Integration
+ID Provider
+Governance
+AI Services
+Power BI
+Azure Data Lake Storage
+AzureIoT Hub
+Azure Event Hub
+Azure Data Factory
+Fabric Data Factory
+Synapse
+SQL Server
+
+=== Slide 22 ===
+Security
+
+=== Slide 23 ===
+Lakebase Connectivity
+Customers can connect to Lakebase using Databricks native services (notebooks, SQL Editor, REST API) and directly to the PostgreSQL service.
+Direct Connection
+(OAuth / Local Credentials)
+Service
+(OAuth)
+Databricks
+Serverless
+Dedicated PG Compute 1
+Customer Workspace
+Control Plane
+(Web, Rest, Management)
+HTTPS
+Postgresql Wire
+Protocol
+User
+(OAuth)
+Databricks Services
+Lakebase Storage Service
+Token
+IP ACLs
+-
+Private Link
+-
+DDOS protection
+Ingress Security Layer
+HTTPS
+
+=== Slide 24 ===
+Databricks Web UI and REST API access is authenticated via Databricks Identity Management.
+Clients can connect to Lakebase directly using the PostgreSQL Wire Protocol, which supports Databricks Identity and local authentication.
+Administrative operations are authorized and routed to the Lakebase Management Service (LBM). These requests use internal tokens and are transmitted over TLS 1.2 or higher.
+SQL commands issued via notebooks, the Lakehouse SQL Editor are authorized through Unity Catalog or native Postgres and forwarded to the Lakebase server over TLS 1.2+.
+System-initiated actions, such as Reverse ETL jobs and model serving requests, are authenticated using temporary OAuth tokens. All communications occur over TLS 1.2+.
+Lakebase Compute nodes interact with the Lakebase Storage Service to access and serve OLTP data.
+The Lakebase Storage Service manages data persistence, including long-term storage and encryption.
+IP ACLs
+-
+Service Direct Private Link
+-
+DDOS protection
+Lakebase Deep Dive
+Control Plane
+Customer PG Compute VM 0..N
+Customer  PG Compute VM 0..N
+Customer 2’s Workspace
+Long-term Cloud Storage
+Lakebase Storage
+Serverless Compute Plane
+IDEs
+BI Apps
+PSQL
+Users
+Apps
+Lakebase Storage Service
+Lakebase Services
+Customer 1’s Workspace
+Lakebase Connection Lifecycle
+1a
+1b
+1a
+1b
+3
+2
+2
+3
+5
+4
+5
+6
+6
+Ingress Security Layer
+Reverse ETL
+(Optional)
+4
+Can’t access
+Databricks UI
+REST API
+Lakebase Management
+Can’t access
+Users / Services
+Databricks
+Reverse ETL
+(Optional)
+
+=== Slide 25 ===
+LAKEBASE
+Use Cases   Patterns
+
+=== Slide 26 ===
+Serve Analytical Data to Applications (reverse ETL)
+Low-latency dashboards and operational stores backing internal or customer facing applications
+Ex. 1) -commerce company serves recent order info. 2) Customer-facing dashboards for monitoring performance of digital promotions.
+Support Model Serving and Feature Serving (reverse ETL)
+Perform automatic feature store lookups for real-time ML use cases
+Ex. 1) Assess customer likelihood to buy product. 2) Recommend next best action for call center agents.
+Store Application State
+Ex. 1) Chatbot agent stores conversation history and customer preference. 2) Apps that needs a human review element to manage sign offs.
+Ideal Use Cases
+
+=== Slide 27 ===
+Read
+Reverse ETL (Apps)
+Serving analytical data from the Lakehouse to applications
+
+=== Slide 28 ===
+Reverse ETL (Feature Store)
+Read (real-time lookups)
+Serve features to models for real-time lookups
+
+=== Slide 29 ===
+Application / Agent State Store
+Postgres
+Write
+UC
+UC
+LH Federation
+Write application state to Lakebase (and optionally use for analytics)
+
+=== Slide 30 ===
+Reverse and forward ETL
+Postgres
+Read
+UC
+Write / read
+LH Federation
+or
+Note that writes to a
+particular
+table are unidirectional
+Use analytical data in applications AND use operational data for analytics
+
+=== Slide 31 ===
+Caching in Lakebase
+Local File Cache
+Traditional postgres
+Lakebase
+
+=== Slide 32 ===
+20%
+Improvement in organizational efficiency
+Challenge
+Ensemble was operating across 15 fragmented data systems with inconsistent schemas, making it impossible to govern data effectively or power AI-driven revenue-cycle operations.
+Solution
+Ensemble unified over 2PB of provider, payer, and clinical data on the Databricks Data Intelligence Platform. With Lakebase streamlining access, teams gained real-time, self-service insights that powered predictive modeling and AI workflows for proactive denial prevention and optimized revenue cycle operations.
+Impact
+Up to 5%
+Lift in net revenue yield for customers, year over year
+2PB+
+Data enriched within Databricks Platform
+©2025 Databricks Inc. — All rights reserved
+Read the case study >
+
+=== Slide 33 ===
+Customers
+AstraZeneca
+
+=== Slide 34 ===
+Lakebase launch partners

@@ -1,0 +1,2789 @@
+# TKO FY27 - KEYNOTES
+
+
+
+############################################################
+# Builder Culture and AI Transformation
+############################################################
+
+=== Slide 1 ===
+Builder culture and AI transformation
+Arsalan Tavakoli
+March 3, 2026
+
+=== Slide 2 ===
+Maintain
+elite nature
+of field engineering team while
+scaling
+to support broad-based growth and finding opportunities to be
+more efficient and effective
+in delivering value to customers and the business
+Our vision
+
+=== Slide 3 ===
+Our philosophy
+Our approach for reaching
+$100M
+$250M
+$500M
+$1B
+$1.5B
+$3B
+$4.5B
+$6B in ARR won’t be sufficient to get us to
+$500M
+$1B+
+$3B+
+$5B
+$10B
+$15B in ARR...
+Yet that’s not an excuse to forget our DNA or personality; it’s about incremental evolution not revolution.
+
+=== Slide 4 ===
+Lakebase
+FY27 Priorities
+Genie
+
+=== Slide 5 ===
+Third requirement for
+success in FY27:
+AI Transformation
+
+=== Slide 6 ===
+The AI Imperative
+It isn’t just a tool. It’s a fundamental shift in how we operate.
+Every organization will be deeply disrupted by AI
+Shifts in GTM (and FE) will be dramatic
+Change will happen faster than you think
+Smaller companies are already building this way from the start
+Not interested in a “wait and see” approach
+We want to be at the forefront.
+
+=== Slide 7 ===
+To scale AI to 3,500 people
+We need everyone to be a builder
+
+=== Slide 8 ===
+Builder culture
+The standard for FE
+End-to-End Outcome Ownership
+“Show Not Tell” with Quick Iterations
+AI-Fueled Productivity Increase
+
+=== Slide 9 ===
+Builder culture
+What it’s not
+Re-inventing the wheel
+Operating in a
+silo
+Focusing on internal use cases
+Thinking AI use = success
+Limiting AI to small use cases
+X
+X
+X
+X
+X
+
+=== Slide 10 ===
+Builder culture
+How we’re driving it across the FE organization
+Doing >
+Managing / Delegating
+Role & Scope Evolution w/ Clear Metrics
+Overhauling the Hiring Bar
+
+=== Slide 11 ===
+Keep the talent bar high
+Technical problem-solving
+Curiosity & Learning
+AI builder mindset
+
+=== Slide 12 ===
+Your Dual Track Reality
+Balancing AI priorities with platform adoption
+Maintain Platform Momentum
+Continue to drive core product adoption for the foreseeable future, as
+the platform remains our primary engine
+.
+Strengthen the Data Underpinning
+Use platform adoption to
+build the data foundation required
+for AI outcomes.
+Drive Operational Efficiency
+Focus on
+efficient execution
+of the day-to-day
+to fuel our AI shift
+.
+
+=== Slide 13 ===
+AI Transformation
+What it looks like in action
+
+=== Slide 14 ===
+The four phases of AI transformation
+No Real Use of AI
+We’re limited to Gemini, ChatGPT, Perplexity
+1
+2
+3
+4
+AI Sprawl
+AI is everywhere, but impact is nowhere
+Meaningful Adoption
+Incremental, sustained productivity improvements
+Process Redesign
+Leveraging AI from the ground up
+
+=== Slide 15 ===
+The four phases of AI transformation
+No Real Use of AI
+We’re limited to Gemini, ChatGPT, Perplexity
+1
+2
+3
+4
+AI Sprawl
+AI is everywhere, but impact is nowhere
+Meaningful Adoption
+Incremental, sustained productivity improvements
+Process Redesign
+Leveraging AI from the ground up
+
+=== Slide 16 ===
+Productivity is the North Star
+(not AI for the sake of AI)
+
+=== Slide 17 ===
+How do we get there?
+
+=== Slide 18 ===
+Take advantage of AI investments
+Universal Access
+All 3,500+ FE team members can build with AI today
+AI Builder Hub
+Development tools, plug-ins, and resources (go/build-with-ai)
+Evolving GTM
+Betas starting with sAI and Lemma
+Enablement Plans
+"Build with AI" training, TKO, and more
+
+=== Slide 19 ===
+Be builders
+Innovate
+No silos
+Focus on the customer
+Use central resources
+Measure
+Track impact
+No points for volume
+
+=== Slide 20 ===
+Key Takeaways
+There’s no excuse for not leveraging AI
+Your North Star is productivity
+Balance AI with platform adoption
+
+=== Slide 22 ===
+Builder Culture & Business Focus
+Delivering outcomes, not just demos
+BUILD
+LEARN
+SHOW
+Customers demand
+concrete outcomes
+Moving beyond the demo to "showing" real-world value
+
+=== Slide 23 ===
+Operating at AI Velocity
+Transforming process to unlock potential
+Ruthless Automation
+Move beyond "cool tools" to fundamental
+process redesign
+.
+Purposeful Innovation
+Eliminate “walking dictionary” / admin work
+and
+focus on high-value output
+.
+Collaborative Efficiency
+We encourage innovation but
+prioritize scale
+- we don’t need 27 sizing tools
+
+
+############################################################
+# Ali's Keynote
+############################################################
+
+=== Slide 1 ===
+What keeps me up at night
+Ali Ghodsi
+March 2026
+
+=== Slide 2 ===
+Lakebase botched GTM motion
+Absolutely imperative (I trust you!)
+Category creation, shout
+Lakebase
+everywhere all the time
+Sell “reverse ETL”, i.e. Databricks data 🡪 Lakebase 🡪 App
+What really worries me (highly technical sale)
+Finding App Developers using Postgres in Eng, IT, Business
+Convince VP Eng, CTOs, Architects to make Lakebase Postgres Default!
+Need to win Postgres App Dev hearts & minds!
+
+=== Slide 3 ===
+Failing Business Users on Genie
+Need to get Business Users Successful of Genie
+Get AIM turned on (
+go/genie-ready
+) so Business Users can login
+Get Databricks One and OneChat setup
+Branch out the Business Users (Marketing, Finance, HR)
+Setup Instructions, Data, Metrics for Genie Rooms
+Show live demos to business leaders
+Drive DAUs!
+Need AIM, need prepared Genie rooms, need DAUs!
+
+=== Slide 4 ===
+Unity Catalog is about Catalog Based Commits (CBC)
+Crushing it with Unity Catalog, but data is at risk (even managed tables)
+Need customers to move to Catalog Based Commits (CBC), new metric
+Continue driving Managed Iceberg with UC as catalog,
+without UC it’s poison
+!
+Benefits
+Better performance
+Multi table and statement transactions
+FGAC and external engine writes
+Identity column concurrency
+Catalog Based Commits in UC and UC Managed Iceberg!
+
+=== Slide 5 ===
+Agent Bricks + Apps + Lakebase
+Build vertical apps with Agent Bricks + Apps
+Vertical FDE motion
+Supervisor Agent to compose other agents via MCP
+Parse Doc Agent to setup automated doc processing
+Knowledge Assistant to setup doc answering
+Use Apps as frontend
+Let’s vertically build automated agentic apps!
+
+=== Slide 6 ===
+AI Gateway and Multi AI
+Multi-Cloud 🡪 Multi-AI
+Commit to Databricks and spend on Anthropic, OpenAI, Gemini, OSS, …
+Do governance with AI Gateway (OSS)
+Guardrails
+Audit trail
+Cost controls
+A/B testing
+Let’s position Multi AI and AI Gateway in
+every account
+!
+
+=== Slide 7 ===
+What about Lakeflow
+Spark Declarative Pipelines
+Open source standard, huge improvements, position aggressively
+Spark Real Time Mode (RTM)
+Position aggressively against Apache Flink, we have the best latency!!!
+Zerobus
+Big $DBU driver, no need for Kafka for ingest!
+Connect
+Big $DBU driver, SQL Server, Postgres, MySQL, Oracle, 60 connectors
+Position SDP, RTM, Zerobus, Connect
+
+=== Slide 8 ===
+What about Azure?
+Microsoft Interoperability
+We integrate with Teams, Agent 360, Fabric IQ, Entra, …
+We federate to OneLake and OneLake federates to Databricks (interop!)
+Our primary storage is for now ADLS!
+Partner with MSFT sellers, interoperate, make ADB win!
+
+=== Slide 9 ===
+What else?
+Lots of new stuff coming
+Reyden
+Position aggressive for low latency
+Big threats, take seriously
+Security Lakehouse
+Drive customers to RSA
+Position to SOC teams
+Get ready for Reyden & Security Lakehouse!
+
+=== Slide 10 ===
+Summary
+Lakebase GTM motion!
+Make Business Users successful on Genie!
+UC Catalog Based Commits (CBC) & UC Managed Iceberg
+Agent Bricks + Apps for Vertical FDE motion
+Multi AI in every account with AI Gateway at center
+Lakeflow SDP, RTM, Zerobus, Connect! 50% of our revenue!
+Azure interoperability!
+Reyden and Security Lakehouse coming up!
+Super exciting year! Don’t forget Lakebase and Genie!
+
+
+############################################################
+# Day 1 Reyden
+############################################################
+
+=== Slide 1 ===
+Low Latency Queries on Lakehouse
+Reyden
+
+=== Slide 2 ===
+Meet Your Speaker
+Shant
+Narrator
+
+=== Slide 4 ===
+You must see it,
+to believe it
+
+=== Slide 5 ===
+What’s the big deal?
+
+=== Slide 6 ===
+Accepted wisdom:
+copy your data
+Open Lakehouse
+(~1-2 second latency)
+Specialized Formats
+(sub-second latency)
+Copy your data to a new system/format
+
+=== Slide 7 ===
+What if customers don’t have to
+copy their data
+for low latency?
+
+=== Slide 8 ===
+Low Latency Lakehouse
+Sub-second responses
+Consistently fast for any concurrency, with instant query startup and fresh data in seconds. By default.
+No side stack required
+Real time analytics delivered on the same platform you use for AI, BI, and Operational Analytics workloads. No extra data movement needed.
+One governed foundation
+End-to-end governance, security, and access controls applied consistently across workloads
+Apps
+Genie
+AI/BI
+Lakewatch
+
+=== Slide 9 ===
+Current Status and Recap
+Ungated Preview in June
+Just a new type of Warehouse
+Initially read-only queries and simple DDLs
+Not all clients may be supported by June
+Some SQL features will take a bit longer
+DML (MERGE, UPDATE, DELETE)
+Lakehouse Federation
+Non-SQL UDFs
+Everything we know so far
+
+=== Slide 10 ===
+Where Reyden Excels
+If it’s already fast, Reyden will only make it faster.
+Scanning > 10GB means I/O will be the bottleneck.
+Already running in +/- 10s  on a warehouse
+Selective filters within the query
+Reyden can run with much higher concurrency without impacting median latencies.
+Concurrency of 100 to 5,000 queries per second
+How to recognize if Reyden is a good fit
+
+=== Slide 11 ===
+Best Exercise
+Bad Diet
+Reyden
+Bad Data
+Poor Performance
+
+=== Slide 12 ===
+Where Reyden
+Can’t
+Help
+Reyden uses Photon and Predictive I/O, if the query takes minutes you’re likely processing lots of data.
+Managed Tables, Good Clustering, Predictive Optimization
+Query takes minutes on a warehouse
+Table isn’t up to best practices
+For now DML isn’t a performance priority, Lakebase would be the best option for these workloads.
+Many Selective INSERTS, UPDATES, DELETES
+Situations to look out for
+
+=== Slide 13 ===
+Real Example
+
+=== Slide 14 ===
+DBSQL Run
+Total wall-clock time is 6.4s
+Lots of time spent in optimizing and pruning.
+Plenty of filtering predicates.
+Large table but not a lot of data required for the query.
+
+=== Slide 15 ===
+Reyden Run
+538ms versus 6.4s
+123ms in Optimizing and Pruning files
+I/O metrics aren’t correctly propagated at this time so there is under reporting.
+It’s not a trivial query by any means.
+
+=== Slide 16 ===
+Trivial Queries Can Benefit Even More
+Simple query shape.
+4.5GB table with only 3MB needed for the query.
+20x faster!
+
+=== Slide 17 ===
+Real Production Customer Workload
+Replay of 50 queries comparing original runtime with Reyden runtime
+
+=== Slide 18 ===
+Real Production Customer Workload
+Replay of 50 queries comparing original runtime with Reyden runtime
+DBSQL Sub-second sweet spot
+
+=== Slide 19 ===
+Real Production Customer Workload
+Replay of 50 queries comparing original runtime with Reyden runtime
+Reyden Sub-second sweet spot
+
+=== Slide 20 ===
+Real Production Customer Workload
+Replay of 50 queries comparing original runtime with Reyden runtime
+Everything below the red line was faster with Reyden.
+
+=== Slide 21 ===
+Clearing up OLTP and OLAP confusion
+ANSI Spark SQL API
+Slice & Dice on Multiple Columns
+Analytic Aggregates and Star Joins
+PostgreSQL Compliant API
+Point Lookups & Primary Key Scans
+Lots of UPDATEs and DELETEs
+Reyden
+Lakebase
+End of FY27, Best of both worlds. Reyden will be able to Query Lakebase Directly!!!
+
+=== Slide 22 ===
+Reyden Architecture
+
+=== Slide 23 ===
+Spark JVM
+Spark JVM
+Spark JVM
+
+=== Slide 25 ===
+Loki Cache & Predictive I/O
+
+=== Slide 26 ===
+Loki Cache & Predictive I/O
+
+=== Slide 27 ===
+Going from Query Text to Running Query
+Parse and Analyze the text, including checking permissions and table schema.
+Generate an optimized query plan.
+Determine which files needs to be read and processed.
+Break the work up into tasks and get them running!
+Overheads for getting started can dominate runtime.
+What’s needed to run a query.
+
+=== Slide 28 ===
+Three things Reyden Does Differently
+Bottoms-up redesign for predictable performance
+Pragmatic cost-based exploration to prune the search space rapidly.
+File skipping metadata is incrementally updated and cached.
+Learned Indexes maintained over parquet metadata to avoid rereading the same metadata.
+Task startup and shutdown is historically high, penalizes case where a Task starts but only processes limited data.Task splitting and scheduling is more dynamic and based on actually rows consumed instead of estimates.
+Analyzer and Optimizer
+Metadata Indexing
+Smarter Task Scheduling
+Just a subset of all the optimizations we’re working on
+
+=== Slide 29 ===
+#reyden-preview
+go/reyden/faq
+
+=== Slide 31 ===
+What’s a
+Add your content here.
+Bullet one
+Bullet two
+Bullet three
+This spot is great for a diagram, image, small table, code snippet or screenshot
+Your subtitle here
+
+=== Slide 32 ===
+Lakebase Postgres: Upcoming Releases
+Available on AWS unless otherwise specified
+Security and Compliance
+Performance and resilience
+Increased autoscaling limits (Generally Available)
+Product Availability
+
+=== Slide 33 ===
+What differentiates us tomorrow?
+UC Integration
+Cross-Cloud
+Disaster Recovery
+Simplifying Databases
+One URL
+
+=== Slide 35 ===
+Three-column text
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Here’s a column subheader
+Here’s a column subheader
+Here’s a column subheader
+Your subtitle here
+
+=== Slide 36 ===
+Three-column with icon space
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space for an icon
+These columns have space for an icon
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space for an icon
+Your subtitle here
+
+=== Slide 37 ===
+“The advance of technology is based on making it fit in so that you don’t really even notice it, so it’s part of everyday life.”
+—Bill Gates, Co-founder of Microsoft
+
+=== Slide 38 ===
+“The advance of technology is based on making it fit in so that you don’t really even notice it, so it’s part of everyday life.”
+—Bill Gates, Co-founder of Microsoft
+
+=== Slide 39 ===
+Three column card
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+Card number one
+Card number two
+Card number three
+Your subtitle here
+
+=== Slide 40 ===
+Righthand card
+Add your content here.
+Bullet one
+Bullet two
+Bullet three
+This spot is great for a diagram, image, small table, code snippet or screenshot
+Your subtitle here
+
+=== Slide 41 ===
+Lefthand card
+Add your content here
+Bullet one
+Bullet two
+Bullet three
+This spot is great for a diagram, image, small table, code snippet or screenshot
+Your subtitle here
+
+=== Slide 42 ===
+Full width card
+This card is good for larger diagrams, tables or other general use
+Your subtitle here
+
+=== Slide 43 ===
+For more guidance, reference the assets linked below
+Resource deck
+
+=== Slide 44 ===
+Dark Mode
+There are also dark versions of these layouts. To access these layouts, create a new slide immediately after this one, right click on its slide thumbnail and select an option under
+Apply
+Layout
+
+
+############################################################
+# Genie, DB One, AIBI
+############################################################
+
+=== Slide 1 ===
+SUPPORTING TEXT
+Genie,
+DB One, AI/BI
+
+=== Slide 2 ===
+Meet Your Speaker
+Miranda Luna
+Product Management
+
+=== Slide 3 ===
+Business users
+Technical users
+Answers your data questions
+Build things with data
+Genie vs Genie Code
+
+=== Slide 4 ===
+Databricks One
+
+=== Slide 5 ===
+Everything you need in one place.
+At no extra cost.
+AI/BI
+Databricks Apps
+Genie
+Databricks One
+Frontdoor for business users
+
+=== Slide 6 ===
+Bringing BI into the future.
+
+=== Slide 7 ===
+200% YoY Growth
+#1 BI tool
+on AWS
+More $DBU than next two tools combined
+🚀
+FY26 was a breakout year
+
+=== Slide 8 ===
+Agent mode in Genie
+Unlock the answer to every “why”
+
+=== Slide 9 ===
+Genie in Databricks One is evolving
+Single chat entry to all spaces, dashboards and data
+
+=== Slide 10 ===
+AI/BI
+Enterprise ready agentic analytics. Native to the Lakehouse.
+
+=== Slide 11 ===
+Agentic semantic modeling
+With multi-fact, materialization support
+
+=== Slide 12 ===
+Getting the right number is hard
+With
+dates
+AS
+(
+Select
+distinct
+date
+from
+date_spline),
+dailyData
+as
+(
+Select
+A.
+date
+,
+sum
+(opportunities.amount)
+as
+bookings
+From
+dates A
+Left
+Join
+prod.oppo B
+ON
+(B.
+date
+between
+date_sub
+(A.
+date
+,
+6
+)
+and
+A.
+date
+)
+Group
+By
+A.
+date
+Where
+opportunities.stage
+= ‘Won’
+)
+Select
+date
+,
+sum
+(bookings)
+OVER
+(
+ORDER
+BY
+date
+ASC
+ROWS
+7
+-
+1
+preceding
+) * 365 / 7
+`
+AS
+Run-rate`
+From dailyData
+“What is our run-rate ARR?”
+
+=== Slide 13 ===
+Analyst #1: ARR =
+$2.5M
+Analyst #2: ARR =
+$2.8M
+Data Scientist: ARR =
+$3.2M
+AI Agent: ARR =
+$2.6M
+Getting it right
+everywhere
+is even harder
+
+=== Slide 14 ===
+BI Platform
+ARR = $2.8M
+ARR = $2.8M
+ARR = $2.8M
+BI Semantic Model
+ARR = $2.8M
+BI Semantic Layers aim to solve these problems
+
+=== Slide 15 ===
+ARR =
+$2.5M
+Semantic Layer #1
+ARR =
+$2.4M
+Semantic Layer #2
+ARR =
+$2.8M
+ARR =
+$3.1M
+Custom SQL
+Semantic Layer #3
+BI Semantic Layers are tool-specific
+
+=== Slide 16 ===
+Unified semantics and governance
+BI Platform
+Data Governance
+Semantic Models
+BI Dashboards & AI-bots
+Databricks Platform
+Unity
+Catalog
+Data Warehouse
+AI and ML
+Data Engineering
+All your data
+Semantic Models
+Data Governance
+Databricks Platform
+Unity
+Catalog
+Data Warehouse
+AI and ML
+Data Engineering
+All your data
+Semantic Models
+Data Governance
+AI/BI Dashboards & Genie
+Subsets of your data
+One place for your data
+One place for semantics
+One place for data governance
+Multiple places for your data
+Multiple places for semantics
+Multiple places for data governance
+Unified BI
+Standalone BI
+
+=== Slide 17 ===
+Pace of innovation
+No other vendor can keep up
+Databricks Internal Only - Do Not Share
+
+=== Slide 18 ===
+Business
+Users
+Drive
+DBUs
+EMEA-based airline
+Databricks Internal Only - Do Not Share
+
+=== Slide 19 ===
+Business
+Users
+Drive
+DBUs
+EMEA-based search co
+Databricks Internal Only - Do Not Share
+
+=== Slide 20 ===
+Business
+Users
+Drive
+DBUs
+AMER-based aviation co
+Databricks Internal Only - Do Not Share
+
+=== Slide 21 ===
+Business
+Users
+Drive
+DBUs
+AMER-based manufacturer
+Databricks Internal Only - Do Not Share
+
+=== Slide 22 ===
+Profile script
+Conversion script
+More information regarding use available at
+go/bi-migration
+3P BI tool migration support
+Available now
+Databricks Internal Only - Do Not Share
+Similar support for Power BI is in active development and will be broadly available later in H1
+
+=== Slide 23 ===
+Unvarnished truth #1
+Databricks Internal Only - Do Not Share
+Every VP of data, CDAO
+needs to show progress
+adopting AI, but it’s not cut and dry.
+Genie is the easiest way for them to succeed, but it requires
+solid, documented metrics.
+Defining L0 metrics in UC Semantics is key to Genie success and key to
+establishing an AI beachhead.
+
+=== Slide 24 ===
+Unvarnished truth #2
+Databricks Internal Only - Do Not Share
+Success of Genie hinges on
+comprehensive user provisioning/access.
+AIM is your friend.
+Even when everything goes right, expect customers to change slowly.
+Start early.
+Review
+go/genieready
+closely.
+
+=== Slide 25 ===
+Unvarnished truth #3
+Databricks Internal Only - Do Not Share
+Chat in DB One has a lot of promise and is improving rapidly, but it’s still
+early in the development cycle.
+Customers that already have well
+curated Genie spaces
+will have the best experience today.
+Expect to encounter some
+papercuts
+. Report them in
+#unified-chat.
+
+=== Slide 26 ===
+Unvarnished truth #4
+Databricks Internal Only - Do Not Share
+Every visualization and semantic bell and whistle is
+not yet generally available.
+We’re
+closing the gap quickly
+but
+need signal
+from you on what to accelerate!
+Each 3P BI capability will
+not be ported 1-1.
+Customers will have to embrace
+functional equivalents.
+
+=== Slide 27 ===
+Dark Mode
+There are also dark versions of these layouts. To access these layouts, create a new slide immediately after this one, right click on its slide thumbnail and select an option under
+Apply
+Layout
+
+
+############################################################
+# DW
+############################################################
+
+=== Slide 1 ===
+Data Warehousing
+Himanshu Raja
+
+=== Slide 2 ===
+Meet Your Speaker
+Himanshu Raja
+Sr Director, PM
+
+=== Slide 3 ===
+The DWH Business at a Glance
+$1.4B+
+ARR
++
+100
+%
+YoY DBSQL Serverless Growth
+500K
+Users
+#1 activation driver:
+40
+% of customers who hit $1K in spend for the first time are doing it through DBSQL
+BI is 33% of revenue,
+growing +
+95
+%
+YoY
+Analytical Apps
+surging: $186M ARR, +115% YoY
+DBT
+is $120M ARR, growing at +100% YoY
+The best data warehouse is a lakehouse!
+
+=== Slide 4 ===
+FY26 Q1
+FY26 Q3
+FY26 Q2
+FY26 Q4
+Connectivity
+New SQL Editor
+ADBC Driver for Power BI
+SQL Features
+UC Metrics Views
+Variant Shredding
+Collations
+Connectivity
+Power Platform connector
+Google Sheets Connector
+SQL Features
+SQL Scripting
+Performance
+Automatic Liquid Clustering
+Automatics Statistics
+Admin
+Warehouses System Table
+Query History System Table
+Connectivity
+Power BI Tasks Type
+Explore in Tableau
+Migrations
+Lakebridge
+Admin
+Completed Query Count Chart
+“Can View” Permissions
+Performance
+25% Faster Serverless SQL
+SQL Features
+Stored Procedures
+Recursive CTEs
+Spatial SQL
+Admin
+Default Warehouse Setting
+DBSQL finished FY26:
+FY26 Round Up
+The foundation is set. FY27 is about winning.
+ARR:
+1.4B+
+Active Users:
+500K+
+Admin
+Warehouse Activity Details
+Query Tags
+Connectivity
+Genie in Msft. Foundry
+Genie in Copilot Studio
+Dbt Cloud Task
+SQL Alerts
+SQL Features
+Temp TablesCollations + Delta Sharing
+Spatial Join Performance
+ai_parse_document
+
+=== Slide 5 ===
+ACID Semantics
+Atomic commits, consistent snapshots, concurrent read/write isolation
+Lakehouse
+Traditional Data Warehouses
+Why customers choose DBSQL
+The best Data Warehouse is a Lakehouse
+
+=== Slide 6 ===
+DBSQL is now Lakehouse SQL
+Standardizing on the Lakehouse
+The Lakehouse is replacing data warehousing as a category in 2026
+DBSQL
+Data warehousing
+Databricks’ redefined the data warehousing category and is now rebranding as
+Lakehouse SQL
+
+=== Slide 7 ===
+Know Your Competitor
+One message per competitor. Use it.
+
+=== Slide 8 ===
+What are the
+largest growth opportunities
+for DWH in FY27?
+
+=== Slide 9 ===
+Opportunity #1: Migrations
+Sources
+Customers want to migrate from data warehouses to modernize, lower TCO, and consolidate
+
+=== Slide 10 ===
+Opportunity #2: BI and Reporting
+Open Lakehouse
+SOURCES
+ETL
+SERVING
+Data
+Sources
+Chapter 1
+Before
+Snowflake
+Data
+Sources
+Snowflake
+Customers want to migrate for lower TCO and to avoid lock-in
+Customers still get locked-in to legacy data warehouse for serving
+❌
+
+=== Slide 11 ===
+Opportunity #2: BI and Reporting
+Open Lakehouse
+SOURCES
+ETL
+SERVING
+Data
+Sources
+2025
+Prehistoric
+Snowflake
+Data
+Sources
+Snowflake
+Open Lakehouse
+Data
+Sources
+2026
+
+=== Slide 12 ===
+How to win DWH migrations
+from
+all
+sources
+Opportunity #1
+
+=== Slide 13 ===
+Why are migrations important?
+Rarely do accounts grow without migrations
+– 80% of top 100 accounts have completed 1+ more migrations!
+How do DBSQL accounts grow?
+# of migrations by DBSQL Cohort
+Top
+100
+Top
+100 - 1000
+Top
+1001 - 2500
+Top
+2500+
+0%
+20%
+40%
+60%
+80%
+100%
+
+=== Slide 14 ===
+SQL Feature Roadmap
+Product Delivery
+
+=== Slide 15 ===
+Assessment
+Conversion
+Data Migration
+Reconciliation
+Lakebridge Current State
+
+=== Slide 16 ===
+Assessment
+Conversion
+Data Migration
+Reconciliation
+Lakebridge Roadmap
+DAIS 2026
+
+=== Slide 17 ===
+What
+alternatives
+exist for code conversion?
+DataFold
+Synapse, Redshift, SQL Server Snowflake
+Data Switch
+Synapse, SQL Server, Oracle
+Brickify
+(
+go/Lakebridge
+)
+Teradata
+Accelerator
+(
+slides
+,
+git
+)
+BigQuery
+Assessment
+Conversion
+Data Migration
+Reconciliation
+Lakebridge Roadmap
+DAIS 2026
+
+=== Slide 18 ===
+Interactive Results Dashboard
+Lineage Tracking
+Assessment
+Code Complexity Assessment
+Better Effort Estimation
+Discovery and Cataloging
+Comprehensive Inventory
+Q1
+Insights and Analysis
+Better Migration Sequencing
+What is in your code?
+Q1
+Note:
+Analyzer results will continue to be output to a spreadsheet
+Coming Soon
+
+=== Slide 19 ===
+2. Run code conversion
+Runs deterministic converter in batch. Then,
+Conversion Agent (    )
+iteratively validates and fixes issues
+1. Choose source code to convert
+Selects a legacy codebase for code conversion in the Lakebridge Databricks application
+3. Review evaluation metrics
+After the agent completes, the user is presented with summary statistics on the conversion. The user can choose to deploy the converted code to a Databricks workspace.
+Code Conversion
+Modernizing with Agents
+Agentic Converter
+DAIS
+
+=== Slide 20 ===
+Data Migration & Validation
+Data Validation Reports
+Trusted Final Results
+Reconciler supports source and target comparisons
+across types, form, and rules
+Data migration
+Simplified Data Movement
+Query
+CDC
+Query-based:
+Uses JDBC to materialize the source table as a streaming table; cursor column to track changes
+CDC-based:
+Establishes a snapshot, track changes, and replicates changes to the target table
+LakeFlow
+Connect
+Unvarnished truth
+: Snapshots use parallel JDBC queries; limits scale
+
+=== Slide 21 ===
+Unvarnished truth
+: Snapshots use parallel JDBC queries; limits scale
+Migration Best Practices
+
+=== Slide 22 ===
+Unvarnished Truth: Migrations
+What to do about it
+Reality check
+•  Code is the hard part.
+Legacy warehouses hide decades of proprietary SQL, undocumented stored procedures, and tool-specific ETL. It won't convert 1:1 on day one.
+•  Data movement has real limits.
+Snapshot-style JDBC moves don't scale infinitely. Network throughput and source DW concurrency are real bottlenecks.
+•  Big-bang migrations fail.
+Rewrites across BI, ETL, and data models at once almost always slip schedule. Phased is the only approach that works.
+•  Make risk visible first.
+Use Lakebridge Profiler and Analyzer to inventory objects, measure complexity, and estimate effort before committing timelines.
+•  Automate the repeatable 80%.
+Lakebridge converts SQL/ETL and validates data (90%+ for Redshift/Synapse). Humans focus on the 20%.
+•  Migrate in waves.
+Start with 1-2 domains. Use Lakehouse Federation + Lakeflow connect to keep the old DW online while you cut over.
+•  Set honest timelines.
+Migrations run into unforeseen issues
+. Tell customers: plan 3-
+4
+months per domain.
+
+=== Slide 23 ===
+The Databricks formula for migration works
+
+=== Slide 24 ===
+How to win BI and Real-Time Analytics
+Opportunity #2
+Internal only
+
+=== Slide 25 ===
+How to Win POCs: The Playbook
+
+=== Slide 26 ===
+How to Win POCs: Don
+’t do it alone!
+By being proactive.. Don’t loose in silence!
+1
+Log POC details in Salesforce
+Put detailed notes on what the customer is testing, how it's going, and what's at risk. If we don't know about it, we can't help.
+2
+Post questions to#apa-data-warehousing
+The channel is monitored and POC questions get prioritized.
+3
+File an ES ticket atgo/fefileaticket
+This routes directly to R&D. For performance-sensitive POCs, file early, not when the deal is already lost.
+The single biggest thing you can do to
+help your
+win rate is
+make sure EPLs and  R&D knows about the POC.
+Internal only
+
+=== Slide 27 ===
+Reyden: Sub-second Analytics on Your Lakehouse
+A
+zero-config, high-concurrency analytics serving layer
+directly on your Delta/Iceberg data in Unity Catalog.
+What it is
+•  Reads directly
+from the lake
+.
+No data copies, no separate database, no side stack.
+•  Sub-second latency at high concurrency
+for dashboards, apps, and REST APIs.
+•  Serverless.
+Scales up for peak traffic, down when idle. Zero config.
+When to position it
+Use when:
+•  Dashboards or apps need sub-second latency at high concurrency
+•  Queries run <10s on DBSQL and customer needs even lower latency
+Don’t use
+for:
+•  ETL or heavy transforms
+(use       DBSQL / DBR)
+•  OLTP / high-write transactional
+(that's Lakebase)
+•  Massive unoptimized scans
+with    poor filtering
+Say this / Not that
+SAY
+"Sub-second latency, directly on the lakehouse, with Unity Catalog governance."
+SAY
+"If your DBSQL queries are already fast and you're hitting concurrency limits, Reyden is the next step."
+SAY
+"No data copies, no separate database. Your data stays where it is."
+DON'T
+Position Reyden as a solution for all performance issues
+Reyden in Private Preview. Public Preview targeted for DAIS.
+Internal only
+
+=== Slide 28 ===
+Additional Resources:
+Migrations resource center:
+go/edw
+All Lakebridge info in one place:
+go/lakebridge
+Call To Action
+Win Migrations from all sources
+Familiarize yourself with migration sales plays, competitive positioning, and Lakebridge 101s
+Win BI and Reporting workloads
+Elevate from BI to Agentic Analytics
+Collect Customer References
+Encourage customers to provide a quote or reference on migrating to Lakehouse SQL
+(
+go/CustomerReferences
+)
+Internal only
+
+=== Slide 30 ===
+The window of opportunity is narrow:
+Our competitors (Fabric, Snowflake) have mature migration tools targeting legacy sources
+Migration revenue was evenly distributed across:
+Legacy cloud (31%): Redshift & Synapse
+Legacy on-prem (43%): SQL Server, Oracle, & Teradata
+Modern (26%): Snowflake and BQ
+Migration 101
+Redshift and Synapse are the most vulnerable
+Synapse is in maintenance
+Redshift is losing eng talent and receiving less investment
+Both have low switching costs to on-prem
+Fabric Migration Assistant
+Snow Convert
+FY26 Migration Revenue
+
+
+############################################################
+# Agent Bricks
+############################################################
+
+=== Slide 1 ===
+Agent Bricks
+Hanlin Tang, CTO for Neural Networks
+
+=== Slide 2 ===
+Agents are everywhere in enterprise
+Call model
+Think & reason
+
+=== Slide 3 ===
+Agent Sprawl is real
+Jira MCP
+Slack MCP
+Forecast Tool
+Support Agent
+Legal
+Agent
+Marketing Agent
+Review Agent
+Meeting Summary Agent
+⚠️Made-up citation
+⚠️wrong customer ID
+⚠️wrong
+⚠️Made-up citation
+❤️Health: ?
+❤️Health: ?
+❤️Health: ?
+❤️Health: ?
+❤️Health: ?
+⚠️wrong
+Low quality reasoning on enterprise data
+No governance
+Too many vendors
+No measurement of quality
+Customers want one agent platform
+
+=== Slide 4 ===
+Agent Bricks
+
+=== Slide 5 ===
+Agent Bricks
+C
+U
+R
+Contextual reasoning
+Unified catalog and governance
+Runs on any model or framework natively
+E
+Evaluates & improves quality over time
+
+=== Slide 6 ===
+Agent Bricks is that agent platform
+
+=== Slide 7 ===
+Agent Bricks
+|
+Build agents
+Supervisor Agent
+Knowledge Assistant
+Information Extraction
+Structured Data
+Unstructured Data
+Document Processing
+AI Functions in SQL
+Memory
+Orchestration
+Autoscaling
+Tools & MCP
+Data Reasoning & Retrieval
+Agent Factory
+Agent Deployment
+Models
+Build and deploy high quality agents
+Agent Bricks
+
+=== Slide 8 ===
+Agent Bricks
+|
+Build agents
+Supervisor Agent
+Knowledge Assistant
+Information Extraction
+Structured Data
+Unstructured Data
+Document Processing
+AI Functions in SQL
+Memory
+Orchestration
+Autoscaling
+Tools & MCP
+Data Reasoning & Retrieval
+Agent Factory
+Agent Deployment
+Models
+Build and deploy high quality agents
+Agent Bricks
+🏆 Win custom agents that work with data or automate internal processes
+🏆 Win high QPS classical ML and deep learning workloads
+🏆 Win model, agents, and MCP governance with UC
+
+=== Slide 9 ===
+Foundation Models API
+Multi-AI strategy
+:
+we offer all frontier models, both proprietary and open source, natively on Databricks.
+One commit, flexibly switch between models.
+Humanity’s Last Exam
+Terminal Bench
+
+=== Slide 10 ===
+Foundation Models API
+Gaps R&D is closing:
+PT for partner models coming this quarter
+Launching
+agentic OSS models
+(e.g. GLM-5, Deepseek, Qwen) this quarter
+Region expansion to
+in-geo
+for a few specific regions (India, Korea, Singapore, Japan)
+Massive growth this year, but powered by a few whales
+Need your help expanding to
+all enterprises
+, especially for OpenAI and Gemini
+Land with Multi-AI, then make it sticky with AI Gateway features
+ARR
+ARR (ex whales)
+Databricks Internal Only - Do Not Share
+
+=== Slide 11 ===
+Agent Framework
+Build and deploy custom agents
+Build and deploy agents with your favorite framework (LangGraph, OpenAI Agent SDK, CrewAI, etc.)
+Use Memory (Lakebase) and access tools and MCP
+To solve issues with timeouts and UX, recommending users move from
+CPU Model Serving -> Databricks Apps
+for their custom agent building.
+Agent Bricks != Blackbox
+
+=== Slide 12 ===
+Agent Framework
+Databricks Internal Only - Do Not Share
+
+=== Slide 13 ===
+Agent Framework
+Key gaps we are closing before DAIS:
+Agents on Apps GA
+Q1
+Horizontal auto-scaling
+Q1
+Long-running agents / Durable Execution
+Q1
+Trigger-based or scheduled agents
+Q2
+
+=== Slide 14 ===
+Agent Factory
+Supervisor Agent
+Knowledge Assistant
+Information Extraction
+Launch in DAIS,
+thank you all
+for feedback during Beta!
+KA and Supervisor Agent are most popular agent bricks surfaces, and we are excited that they are now
+GA
+Great traction, lots of customers excited and going to production
+We are shipping a lot of tech behind these products!
+Databricks Internal Only - Do Not Share
+
+=== Slide 15 ===
+Actionable insights from every customer call
+Lippert built an AI agent to extract insights from support calls—
+helping teams track quality and spot trends
+in near real time.
+Automatically evaluate call transcripts against SME-labeled benchmarks
+Accelerate accuracy improvements through
+grounding loop feedback.
+Agent Bricks Solution
+Turned a process that used to take weeks of manual review into
+a streamlined pipeline
+Reduced cost of scaling AI
+Delivered
+higher-quality insights
+to improve training and customer experience
+Impact
+Lippert receives over a million customer support calls each year.
+Reviewing them manually for sales quality and product insights was
+slow, expensive, and inconsistent
+—slowing down improvements to training and customer experience.
+Challenge
+
+=== Slide 16 ===
+Smarter, safer health answers
+Flo Health used Agent Bricks to build a
+safer, smarter AI assistant
+—without labeled data or manual tuning.
+Auto-generate and evaluate Q&A using medical safety rules
+Auto-select the best model setup to balance accuracy and cost
+Agent Bricks Solution
+Achieved
+2× improvement
+in medically approved responses vs. base models
+Matched proprietary model quality at
+a fraction of the cost
+Built a foundation to support new use cases like sleep and fertility
+Impact
+Flo Health needed a scalable way to deliver
+medically accurate, personalized responses
+its 420 million users through their new AI assistant, AskFlo.
+Off-the-shelf models
+lacked the reliability, safety, and cost-efficiency
+required for regulated health domains.
+Challenge
+
+=== Slide 17 ===
+Agent Factory: we’ve heard your feedback!
+Need CRUD API and CI/CD support
+Region expansion
+Advanced features: background and deep research agents, built-in evaluation, connection to external data sources (Google Drive, JIRA, etc.)
+All shipping in Q1 + early Q2!
+Shipping this quarter!
+GCP/APJ/EMEA: target is March 31st (see
+go/product/availability
+)
+Supervisor Agent is becoming a powerful agent loop system
+
+=== Slide 18 ===
+SPLICE VIDEO HERE
+
+=== Slide 19 ===
+Data Reasoning & Retrieval
+Top concern we heard from the field last year:
+“Agent Bricks is great, but I can’t get my PDFs and other documents into Databricks to build agents!”
+“I have to send my data elsewhere to do document processing/extraction, but I want to keep it in Databricks”
+“Every IDP pipeline is a new adventure and models are changing so fast… have to re-select, build prompts/validation, etc every time”
+“The pipeline I built is great in POC, but doesn’t scale (in cost or performance)”
+“I need to parse my PDFs to even use IE or KA on Agent Bricks, and I don’t want to plug a third-party API and wire a brittle pipeline”
+
+=== Slide 20 ===
+Intelligent Document Processing
+Turn documents into structured insights
+Document Parsing
+(ai_parse_document)
+Classification
+(ai_classify)
+Extraction
+(ai_extract)
+Built for production IDP
+Research-backed quality on real-world enterprise docs that scales
+Simple & composable
+Chainable SQL functions that run natively in SDP
+Governed
+No data movement and and-to-end lineage and no data movement, everything stays in Unity Catalog
+Ingest and orchestrate with Lakeflow
+
+=== Slide 21 ===
+Turn PDFs/DOCX, images, PPTs, and more into parsed text in
+just
+one line
+.
+We take:
+PDF, PPT, DOCX, PNG, etc.
+We generate:
+Full text parsing, table extraction + figure descriptions
+Bounding box coordinates (figures, text, tables)
+ai_parse_document
+GA in March!
+
+=== Slide 22 ===
+FY27 Q1:
+[shipped] OCR of text in images:
+Capture all text within images (e.g diagrams, charts)
+Key quality improvements:
+Tables, handwriting/signatures, forms, and rotated pages
+More flexible file type support:
+TIFF/TIF (end of March)
+Confidence scores:
+Element-level scores to help flag for review/low confidence
+On the radar:
+Languages:
+Better support for Asian languages.
+Multi-page elements:
+Tables and other elements that cross page boundaries.
+Image cropping:
+Crop images to pass to VLMs for more specific outputs.
+REST API:
+Call document parsing models without SQL execution context.
+Excel support:
+XLSX parsing (tables, text, images)
+ai_parse_document Roadmap
+
+=== Slide 23 ===
+[ai_extract]
+Extract structured insights
+from invoices, contracts, and more
+Takes:
+Text or ai_parse_document output
+A schema + descriptions/instructions
+Generates:
+Structured JSON of extracted entities
+Confidence scores, citations (soon!)
+[Coming soon!]
+ai_extract and ai_classify
+[ai_classify]
+Classify documents or unstructured text for intelligent analysis
+Takes:
+Text or ai_parse_document output
+Up to 500+ classes + descriptions
+Generates:
+Predicted label(s)
+
+=== Slide 24 ===
+ai_extract (March 2026)
+Supports complex, nested JSON schemas, lists, and field descriptions
+Research-backed models specializing in document extraction
+Fast follows: Confidence scores, citations
+ai_classify (March 2026)
+Supports up to 500 labels + descriptions
+Research-backed models specializing in unstructured classification
+Fast follows: Confidence scores, 500+ label support (entity normalization)
+AI Functions Roadmap
+Document Processing AI Functions
+
+=== Slide 25 ===
+SPLICE VIDEO HERE
+
+=== Slide 26 ===
+AI Governance
+Jira MCP
+Slack MCP
+Forecast Tool
+Support Agent
+Legal
+Agent
+Marketing Agent
+Review Agent
+Meeting Summary Agent
+⚠️Made-up citation
+⚠️wrong customer ID
+⚠️wrong
+⚠️Made-up citation
+❤️Health: ?
+❤️Health: ?
+❤️Health: ?
+❤️Health: ?
+❤️Health: ?
+⚠️wrong
+Philip Morris
+: Register internal, external, factory‑hosted, and platform‑hosted agents... Support heterogeneous agent frameworks... avoid vendor lock‑in.
+PepsiCo:
+“Models is a solved problem... Now need a solution for agents and MCPs. Single domain agent don’t both them today. Biggest problem is business automation that leverages multiple agents.”
+Mercedes Benz:
+“Unified layer for agentic discoverability, accessibility, and interoperability... Auditability for agents—agents calling agents... needs to have the user identity maintained throughout.”
+
+=== Slide 27 ===
+Unity Catalog
+Agent
+Agent
+Agent
+Multi-agent system
+IDP
+Data Quality
+UDFs
+Structured data
+Unstructured data
+Federated data
+External LLM
+External MCP
+External Agent
+The “North Star” story
+AI Gateway
+
+=== Slide 28 ===
+Unity Catalog
+Agent
+Agent
+Agent
+Multi-agent system
+IDP
+Data Quality
+UDFs
+Structured data
+Unstructured data
+Federated data
+External LLM
+External MCP
+External Agent
+Where we are today
+AI Gateway
+Core assets are already in UC
+New AI Gateway launched in Beta
+
+=== Slide 29 ===
+AI Gateway
+The Governance & Observability Control Plane for GenAI
+AI Gateway
+Databricks-hosted Models
+GenAI application(batch + real-time)
+Governance
+Observability
+Reliability
+
+=== Slide 30 ===
+First-class product surface:
+Gateway is now first-class within Databricks. More visible in easier to sell!
+One place to observe:
+Single pane of glass into GenAI usage, performance, health, and cost across the platform.
+Flexible routing with full provider capabilities:
+Native provider APIs + first-class support for cross-endpoint, cross-region, and cross-provider routing and fallback. Production-grade GenAI without external routing layers.
+New
+AI Gateway (beta)
+Governed endpoints and global observability
+
+=== Slide 31 ===
+SPLICE VIDEO HERE
+
+=== Slide 32 ===
+AI Gateway Roadmap
+FY27
+Strategic
+Milestones
+Q1
+Set the Foundation
+1
+Cost Observability & Budgets
+2
+Full External Model & Native API Coverage
+Q2
+Win the Admin
+3
+Centralized Account-Level Governance
+▸
+MCP
+Governance
+▸
+Agent
+Governance
+▸
+Unity Catalog (UC) Integration
+▸
+Account-Level sharing & enforcements
+4
+Guardrails That Actually Work
+Q3 – Q4
+Win the Developer
+5
+Intelligent Routing
+▸
+Auto-select model based on cost/quality/speed
+▸
+Auto-optimize prompts
+▸
+A/B Test models/prompts
+GenAI Ops
+: Unify Tracing, Evals and Gateway into one
+Databricks AI Gateway  •  Confidential
+Launch Public Preview
+Launch GA
+Redefine the Category
+Databricks Internal Only - Do Not Share
+
+=== Slide 33 ===
+Unity Catalog
+Agent
+Agent
+Agent
+Multi-agent system
+IDP
+Data Quality
+UDFs
+Structured data
+Unstructured data
+Federated data
+External LLM
+External MCP
+External Agent
+Where we are today
+AI Gateway
+Core assets are already in UC
+New AI Gateway launched in Beta
+
+=== Slide 34 ===
+Unity Catalog
+Agent
+Agent
+Agent
+Multi-agent system
+IDP
+Data Quality
+UDFs
+Structured data
+Unstructured data
+Federated data
+External LLM
+External MCP
+External Agent
+Gaps we are closing by DAIS
+AI Gateway
+Expanding AI Gateway to MCP/Agents
+Adding Agents to UC
+Tools in UC
+Databricks Internal Only - Do Not Share
+
+=== Slide 35 ===
+Agent Bricks
+Agent Bricks
+|
+Build agents
+Supervisor Agent
+Knowledge Assistant
+Information Extraction
+Structured Data
+Unstructured Data
+Document Processing
+AI Functions in SQL
+Memory
+Orchestration
+Autoscaling
+Tools & MCP
+Data Reasoning & Retrieval
+Agent Factory
+Agent Deployment
+Models
+
+=== Slide 36 ===
+🏆
+Win the Agent Platform
+Agent Bricks
+|
+Build agents
+Supervisor Agent
+Knowledge Assistant
+Information Extraction
+Structured Data
+Unstructured Data
+Document Processing
+AI Functions in SQL
+Memory
+Orchestration
+Autoscaling
+Tools & MCP
+Data Reasoning & Retrieval
+Agent Factory
+Agent Deployment
+Models
+Unity Catalog
+Files
+Tables
+Models
+MCP
+Evals
+Agents
+Governance, lineage, audit tracking across agents and tools
+Monitoring, Evaluation, and MLOps
+AI Platform
+|
+Build models
+AI Gateway
+Data Serving
+Feature Store
+Vector Search
+Notebooks
+Continuous Integration
+IDE integration
+CPU
+GPU
+Model lifecycle
+Experiments
+Agent tracing
+LLM Judges
+Model Training & Serving
+Developer Tools
+C
+ontextual Reasoning
+Unified catalog and governance
+Runs on any model or framework natively
+Evaluates & improves quality over time
+U
+nified Governance
+R
+un any model and agent framework
+E
+valuate and improve quality
+
+=== Slide 37 ===
+For more guidance, reference the assets linked below
+Field Guide
+:
+go/agentbricksguide
+FAQ
+:
+go/agentbricksfaq
+(look at document tabs)
+Region Availability
+:
+go/product-availability
+(this is source of truth)
+Pitch Decks
+:
+L100
+/
+L200
+/
+Deep Dive
+Pricing
+:
+Calculator
+Agent Bricks
+
+=== Slide 39 ===
+Classical ML and Deep Learning
+On the rise amid the agent hype
+Serverless GPU Compute
+CPU Serving (Classical ML)
+Feature Store
+Databricks Internal Only - Do Not Share
+
+=== Slide 40 ===
+Deep learning: Databricks is open for business!
+F500 + DNBs investing in GPUs
+$1M+ GPU spend each in F500s + DNBs
+ML is moving to deep learning; enterprises are revisiting ML stacks
+UCOs: RecSys, Vision, NLP, Finetuning
+Problem to Solve
+GPUs are hard to get and manage
+Developer experience is fragmented, GPU training & serving is error-prone
+Doing this with governance and enterprise scale is hard
+Deep Learning
+Enablement Guide
+Serverless GPU
+Pitch Deck
+Deep Learning
+GTM Hub
+Databricks Internal Only - Do Not Share
+
+=== Slide 42 ===
+[Internal Only Slide]
+[This slide will not be shown to Partners]
+Databricks Internal Only - Do Not Share
+
+=== Slide 44 ===
+Three-column text
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Here’s a column subheader
+Here’s a column subheader
+Here’s a column subheader
+Your subtitle here
+
+=== Slide 45 ===
+Three-column with icon space
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space for an icon
+These columns have space for an icon
+Your content goes here.
+Default bulleted list style
+Default bulleted list style
+Default bulleted list style
+These columns have space for an icon
+Your subtitle here
+
+=== Slide 46 ===
+“The advance of technology is based on making it fit in so that you don’t really even notice it, so it’s part of everyday life.”
+—Bill Gates, Co-founder of Microsoft
+
+=== Slide 47 ===
+“The advance of technology is based on making it fit in so that you don’t really even notice it, so it’s part of everyday life.”
+—Bill Gates, Co-founder of Microsoft
+
+=== Slide 48 ===
+Three column card
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+These cards are great for showing a 3-stage process, comparisons between 3 things, or whatever else you like
+Card number one
+Card number two
+Card number three
+Your subtitle here
+
+=== Slide 49 ===
+Righthand card
+Add your content here.
+Bullet one
+Bullet two
+Bullet three
+This spot is great for a diagram, image, small table, code snippet or screenshot
+Your subtitle here
+
+=== Slide 50 ===
+Lefthand card
+Add your content here
+Bullet one
+Bullet two
+Bullet three
+This spot is great for a diagram, image, small table, code snippet or screenshot
+Your subtitle here
+
+=== Slide 51 ===
+Full width card
+This card is good for larger diagrams, tables or other general use
+Your subtitle here
+
+=== Slide 52 ===
+For more guidance, reference the assets linked below
+Resource deck
+
+=== Slide 53 ===
+Dark Mode
+There are also dark versions of these layouts. To access these layouts, create a new slide immediately after this one, right click on its slide thumbnail and select an option under
+Apply
+Layout
+
+
+############################################################
+# Genie Code
+############################################################
+
+=== Slide 1 ===
+Genie Code
+Autonomous AI partner for data practitioners
+(go/geniecode/tko)
+Gal Oshri
+March 2026
+
+=== Slide 2 ===
+Agents are changing the way we work
+
+=== Slide 3 ===
+Databricks Assistant
+Data Science Agent
+Data Engineering Agent
+Dashboard Authoring Agent
+Assistant Agent Mode
+Databricks Agent
+
+=== Slide 4 ===
+Genie Code
+
+=== Slide 5 ===
+Genie Code
+Genie Code
+
+=== Slide 6 ===
+Business users
+Technical users
+Genie brings new AI capabilities to all roles
+Answers your questions with data
+Build things with data
+
+=== Slide 7 ===
+Business users
+Technical users
+Genie brings new AI capabilities to all roles
+
+=== Slide 8 ===
+Vision: Genie Code automates all data practitioner workflows
+
+=== Slide 9 ===
+Vision: Genie Code automates all data practitioner workflows
+Currently: automating data discovery, notebooks, SQL, pipelines, dashboards
+
+=== Slide 10 ===
+Reception
+‘‘
+Agent mode has vastly improved the Notebook experience and … saves me time
+”
+‘‘
+Super impressed with the Assistant stuff. It’s impressive and i’ve done some crazy cool things
+”
+‘‘
+Would give it 9 out of 10 right now it’s pretty cool
+”
+Internal
+‘‘
+The new agent mode in assistant is AWESOME!!
+”
+‘‘
+The dashboard authoring genie has been awesome so far!
+”
+‘‘
+I found it very effective at creating dashboards directly from prompts
+”
+
+=== Slide 11 ===
+Reception
+‘‘
+Agent mode has vastly improved the Notebook experience and … saves me time
+”
+‘‘
+Super impressed with the Assistant stuff. It’s impressive and i’ve done some crazy cool things
+”
+‘‘
+Would give it 9 out of 10 right now it’s pretty cool
+”
+Internal
+‘‘
+The new agent mode in assistant is AWESOME!!
+”
+‘‘
+The dashboard authoring genie has been awesome so far!
+”
+‘‘
+I found it very effective at creating dashboards directly from prompts
+”
+
+=== Slide 12 ===
+Reception
+‘‘
+Agent mode has vastly improved the Notebook experience and … saves me time
+”
+‘‘
+Super impressed with the Assistant stuff. It’s impressive and i’ve done some crazy cool things
+”
+‘‘
+Would give it 9 out of 10 right now it’s pretty cool
+”
+Internal
+‘‘
+The new agent mode in assistant is AWESOME!!
+”
+‘‘
+The dashboard authoring genie has been awesome so far!
+”
+‘‘
+I found it very effective at creating dashboards directly from prompts
+”
+
+=== Slide 13 ===
+Genie Code usage → 26% more consumption
+Internal
+
+=== Slide 14 ===
+Genie Code usage → 26% more consumption
+From human-speed to machine-speed
+Internal
+
+=== Slide 15 ===
+Genie Code usage → 26% more consumption
+From human-speed to machine-speed
+Upleveling everyone
+Internal
+
+=== Slide 16 ===
+Genie Code usage → 26% more consumption
+From human-speed to machine-speed
+Upleveling everyone
+Just getting started
+Internal
+
+=== Slide 17 ===
+Walkthrough
+Genie Code today
+
+=== Slide 18 ===
+Task
+Flight delay analysis. Want to understand the drivers, predict which flights are at risk, and monitor with a dashboard
+
+=== Slide 19 ===
+I need to find the data
+
+=== Slide 20 ===
+Data discovery
+Powerful search
+Uses lineage, description, code samples as signals
+Encourages more UC metadata
+Genie Code
+
+=== Slide 21 ===
+Let’s explore the data for insights
+
+=== Slide 22 ===
+Exploratory Data Analysis
+Ask for insights about a table
+Genie Code
+
+=== Slide 23 ===
+Exploratory Data Analysis
+Agent can create a plan to track tasks
+Genie Code
+
+=== Slide 24 ===
+Exploratory Data Analysis
+Genie Code
+
+=== Slide 25 ===
+Now let’s train the predictive model and deploy it
+
+=== Slide 26 ===
+Model training
+Ideate: what is needed for robust ML?
+Genie Code
+
+=== Slide 27 ===
+Model training
+Truncated
+Genie Code
+
+=== Slide 28 ===
+Model deployment
+Iterates on errors
+Genie Code
+
+=== Slide 29 ===
+We want a dashboard for tracking the insights
+
+=== Slide 30 ===
+Dashboard authoring
+Creates datasets and charts automatically
+Giving extra context through @notebook (or pipeline, dashboard, table, file, etc.)
+Genie Code
+
+=== Slide 31 ===
+The data needs to stay up-to-date. Let’s build a pipeline
+
+=== Slide 32 ===
+Spark Declarative Pipelines
+
+=== Slide 33 ===
+Spark Declarative Pipelines
+Iterates and validates automatically
+Genie Code
+
+=== Slide 34 ===
+Spark Declarative Pipelines
+Follow-ups guide the journey
+
+=== Slide 35 ===
+Customization
+MCP
+Instructions
+Skills
+
+=== Slide 36 ===
+Customization: MCP
+
+=== Slide 37 ===
+h/t @ash.sultan. Demo video link
+here
+.
+
+=== Slide 38 ===
+Customization: Instructions
+
+=== Slide 39 ===
+Customization: Instructions
+
+=== Slide 40 ===
+Customization: Agent Skills
+Domain knowledge and instructions that Genie Code applies when relevant
+E.g., machine learning, pipeline conventions
+
+=== Slide 41 ===
+Lakeflow Designer
+
+=== Slide 42 ===
+Availability
+⦿
+Rings
+Rings 2+3: default-on
+Ring 1: opt-in (HIPAA)
+Regions
+Americas, Europe, Asia, ANZ
+Others: enable cross-geo
+Partner-powered AI Features
+Required
+
+=== Slide 43 ===
+Unvarnished Truths
+Internal
+
+=== Slide 44 ===
+Unvarnished Truths
+Limited Scope
+High latency + raw UX
+Quality challenges
+Internal
+
+=== Slide 45 ===
+Limited scope
+Internal
+Multi-file editing [Q1]
+Workspace file indexing in search [Q1]
+Integration with other Databricks capabilities e.g., Jobs, Ingestion, lineage tools, governance, … [Q1]
+
+=== Slide 46 ===
+UX polish
+UX polish [Q1, ongoing]
+High latency [Q1]
+Thread management: easier switching, search [Q1]
+Internal
+
+=== Slide 47 ===
+Quality challenges
+Cross-platform awareness: agent capabilities depend on current page [Q1]
+Finding and using relevant assets [Q1 + ongoing]
+Internal
+
+=== Slide 48 ===
+Constantly improving quality
+Internal
+Genie Code
+
+=== Slide 49 ===
+Frontier models
+Genie Code uses the latest models
+Right now primarily Claude Opus 4.6
+1-2 week delay for evaluation and capacity acquisition
+No model selection:
+Simplicity + best model for each task
+Internal
+
+=== Slide 50 ===
+Best Practices
+Internal
+
+=== Slide 51 ===
+Winning the “agent novice”
+Many of our customers have NO exposure to AI
+Genie Code is the coolest thing in the world for them
+Internal
+
+=== Slide 52 ===
+Competitive landscape
+AI IDEs
+Cursor
+GitHub Copilot
+Data platforms
+Snowflake:
+Cortex Code
+Fabric:
+Copilot for Data Science and Data Engineering
+BigQuery:
+Data Science Agent and Data Engineering Agent
+LLM providers
+ChatGPT /
+Codex
+Claude / Claude Code
+Gemini /
+Gemini CLI
+Internal
+
+=== Slide 53 ===
+Lead with Genie Code
+Vital for us to be the front door
+Internal
+Genie Code usage → increased consumption
+Genie Code
+
+=== Slide 54 ===
+Positioning vs. Claude Code / Cursor
+Durable advantages
+Batteries included
+: zero setup
+Knows your data
+: grounded in UC, easy access to tables, lineage, permissions, and enterprise context
+Integrated UX
+: See the dashboard or pipeline as you’re building it
+Closing the gap: authoring experience (Q1)
+Internal
+
+=== Slide 55 ===
+Many customers will have both types of users!
+Anecdotal customer:
+50% dragging feet to use AI
+40% super happy with Genie Code
+10% experimenting with Claude Code, calling out feature gaps
+Internal
+
+=== Slide 56 ===
+Successful implementation
+Identify tasks in notebooks, pipelines, dashboards where users spend a lot of time. Demo these tasks with Genie Code
+Set up Instructions and Skills to introduce org best practices
+Connect relevant MCPs to support peripheral activities
+Internal
+
+=== Slide 57 ===
+Pitching the different profiles
+Internal
+
+=== Slide 58 ===
+Objection handling
+Customer doesn’t want data to be seen by LLM
+→ Agents need it to work effectively. Customers starting to see the ROI
+Internal
+
+=== Slide 59 ===
+Objection handling
+Customer doesn’t want data to be seen by LLM
+→ Agents need it to work effectively. Customers starting to see the ROI
+Customer concerned about overly permissive agent
+→ Agent follows UC permissions and has LLM guardrails
+Internal
+
+=== Slide 60 ===
+Objection handling
+Customer doesn’t want data to be seen by LLM
+→ Agents need it to work effectively. Customers starting to see the ROI
+Customer concerned about overly permissive agent
+→ Agent follows UC permissions and has LLM guardrails
+Customer says Claude Code already does this
+→ More streamlined UX and data context, but skepticism expected until we close the gaps [Q1]
+Internal
+
+=== Slide 61 ===
+Roadmap
+Internal
+
+=== Slide 62 ===
+Background agents [Q2]
+Kick off “build me a medallion pipeline for this data source” and close your laptop. Genie Code continues working
+Graduate more interactive work to automation
+Internal
+
+=== Slide 63 ===
+Self-healing infra: Autopilot [Q2]
+>50% of a date engineer’s work is maintenance (upgrades, updates, schema evolution, etc.)
+Internal
+
+=== Slide 64 ===
+Self-healing infra: Autopilot [Q2]
+>50% of a date engineer’s work is maintenance (upgrades, updates, schema evolution, etc.)
+Nightly job fails because a schema changed upstream
+Detect the failure, read the error, update the transformation, validate with a dry run, and open a PR
+All without the user taking any action
+Internal
+
+=== Slide 65 ===
+Agent-centric experiences [Q1]
+Internal
+Genie Code
+
+=== Slide 66 ===
+Agent-centric experiences [Q1]
+Internal
+Genie Code
+
+=== Slide 67 ===
+Agent-centric experiences [Q1]
+Internal
+Genie Code
+
+=== Slide 68 ===
+Agent-centric experiences [Q1]
+Internal
+Genie Code
+
+=== Slide 69 ===
+Help customers accelerate their work with Genie Code
+Identify where they spend their time (notebooks, pipelines, etc.)
+Show them how to use Genie Code in that surface
+Enable broader adoption through Instructions, Skills, MCPs, demos
+Report issues and requests to #eng-assistant-team
+Learn more at go/geniecode
+
+=== Slide 70 ===
+Thank you!
+
+=== Slide 71 ===
+Resources
+Outline
+Event Agenda
+Content Planner
+Tech Summit
+and
+TKO Archive
+Recording Guidelines
+TBA: Zoom Backgrounds
+Thank you for supporting TKO! Here is an overview of all you need to know.
+
+=== Slide 72 ===
+TKO Event Program Overview
+TKO FY27
+is Databricks’ Field Eng global
+virtual technical enablement event
+, designed to:
+Deliver deep product knowledge through technical sessions, guided labs, workshops, and discussions
+Provide candid insights into strengths and limitations (“unvarnished truths”) of product to improve objection handling
+Align closely with R&DKO to ensure early exposure to roadmap content and consistent product direction
+Reinforce Databricks’ technical strategy and equip the field to position solutions effectively in customer conversations
+
+=== Slide 73 ===
+Your Audience
+Audience size:
+~
+3,000+
+global FE attendees across AMER, EMEA, and APJ
+What FE expects from this content:
+Unvarnished, technical truth
+— not a marketing presentation
+Clear articulation of
+how the product actually works
+, tradeoffs included
+Main
+competitors
+and how their products compare
+What’s
+ready, what’s evolving, and what’s not yet solved
+Technical guidance FE can
+apply directly in customer conversations
+Alignment to
+FY27 product direction and GTM priorities
+Delivery expectations:
+Technical depth over polish
+Real examples, architectures, and limitations welcomed
+Live moderation required across
+AMER, EMEA, and APJ
+Most timely and accurate info only
+Audience size:
+Global partner ecosystem (delivered
+on-demand
+)
+Partner TKO timing:
+Available
+~2 weeks after TKO FY27
+Partner content guidelines (placeholder):
+No confidential or internal-only roadmap details
+Messaging tailored for
+partner-led selling and delivery
+Content may be adjusted for partner readiness and reuse
+Post-production options:
+Content reused
+as-is
+Light post-production edits -
+use this slide to mark cuts
+Short alternate segment
+recorded if partner-specific context is needed
+Partner Enablement will work directly with content leads to confirm the right approach.
+Field Engineering
+Partners
+Field Engineering + Partners
+
+
+############################################################
+# Lakebase Keynote
+############################################################
+
+=== Slide 1 ===
+Keynote
+Lakebase
+
+=== Slide 2 ===
+Meet Your Speaker
+Nikita Shamgunov
+VP, Engineering
+
+=== Slide 3 ===
+Financial metrics - Overview
+Steady revenue growth
+- currently at $15M T7D ARR.
+Growth “waves” only because of
+holidays (end of Dec/Jan)
+storage optimization (end of Jan/Feb)
+Growing at 2x pace of DBSQL, roughly on target for February
+go/lakebase/usagedash
+Source for targets: Lakebase
+LRP model
+
+=== Slide 4 ===
+Lakebase Provisioned Adoption
+Getting 40-60 New Customers per week
+Reactivation has increased to 20-30 per week;
+up from 10-15 before
+go/lakebase/usagedash
+Still, nearly 50% of ARR comes from June's (Launch) cohort
+Jul - Oct cohorts each add $1.2-$1.7M ARR
+Nov - Jan cohorts each add $0.5-$0.7M ARR
+
+=== Slide 5 ===
+Lakebase Autoscaling (AWS) Adoption
+As of Feb 11, we have 225 Accounts
+100 have an ARR above $500
+More than 90% accounts came from Lakebase Provisioned users
+42% of Accounts spent >$1,000 on Lakebase Provisioned
+go/lakebase/usagedash
+We have reached $0.4M ARR;
+made up of 30k Compute hours & 20TB of storage
+Chick-fil-a: $31k ARR
+Warner Music Group: $31k ARR
+Nike: $22k ARR
+easyJet: $15k ARR
+
+=== Slide 6 ===
+Top Challenge / Objective
+Lakebase
+
+=== Slide 7 ===
+The operational database built for AI apps and agents
+Product Understanding
+What It Is:
+Lakebase Postgres is a new category of operational database built on the lake for AI era workloads. Lakebase separates compute and storage. Compute is Postgres and storage is lakehouse, so teams can scale instantly, control costs, and build on a single source of truth.
+Why It Matters:
+AI applications generate unpredictable, "spiky" traffic and require fresh data instantly. Traditional databases force you to choose between performance, cost, and integration. Lakebase removes these tradeoffs, providing a serverless engine that scales automatically and unifies your data so you can build intelligent apps without limits.
+3 Key "So That" Statements
+Serverless Autoscaling:
+Lakebase scales compute up instantly when busy and scales down to zero when idle...
+so that
+you stop paying for "always-on" resources and drastically reduce TCO for variable workloads and AI agents.
+Instant Database Branching:
+Enable instant database branching, so that teams can develop, test, and experiment in isolation without copying data or risking production.
+Standard Open Source Postgres:
+Lakebase is 100% standard Postgres under the hood...
+so that
+your developers can instantly use their favorite tools and frameworks with zero learning curve and no proprietary vendor lock-in.
+
+=== Slide 8 ===
+Persona Entry-points for Lakebase
+3 Approaches
+
+=== Slide 10 ===
+Core Capabilities & Differentiators
+Lakebase
+
+=== Slide 11 ===
+GENERALLY AVAILABLE
+
+=== Slide 12 ===
+Branching and development
+Lakebase Branching
+Instant, zero-copy isolation lets teams safely build and test without touching production and live workloads.
+Ephemeral environments
+Create and decommission dev/test branches quickly with no storage duplication.
+Git-style workflow for data
+Bring CI/CD to your database for feature branches and rapid experimentation.
+Treat your database like code
+
+=== Slide 13 ===
+Recovery and backups
+Scheduled snapshots
+Create instant database backups on a schedule.
+Rapid, precise recovery
+Restore to an exact moment within a managed window (up to 35 days) for quick incident recovery.
+Safe validation
+Use an isolated, zero-copy branch before applying changes to reduce the risk of bad restores to production.
+Precise restoration, at scale
+
+=== Slide 14 ===
+Autoscaling, with scale to zero
+Only pay for active use
+Pay only when your database is active. Idle instances drop to zero to keep costs low.
+Automatic scale to zero
+Unused databases automatically suspend after a configurable idle period with no manual intervention.
+Instant readiness
+Sub-second start times mean responsive apps and fast setup for dev/testing.
+Ready when you need it, without paying for idle capacity
+
+=== Slide 15 ===
+Horizontal read scalability
+Read isolation
+Dedicated read-only compute serves queries without impacting write workloads.
+Independent scaling
+Add or remove read query capacity without changing write compute.
+Shared data layer
+All compute accesses a single underlying data set, with no data duplication.
+High concurrency without operational complexity
+R/W
+R/O
+R/O
+R/O
+R/W
+
+=== Slide 16 ===
+Built into the Data Intelligence Platform
+Operational workloads on one platform
+Enable agents and applications to read and write data alongside analytics workloads.
+Share a common data foundation
+Operational data is immediately available without copying or ETL pipelines.
+Built-in governance and security
+Apply consistent access control, auditing, and policies across all data.
+Avoid separate stacks and proprietary governance models
+
+=== Slide 17 ===
+Lakebase Postgres: Upcoming Releases
+Available on AWS unless otherwise specified
+Security and Compliance
+Performance and resilience
+Increased autoscaling limits (Generally Available)
+Product Availability
+
+=== Slide 18 ===
+Neon 💚 Lakebase
+Neon gives access to early startups and developers to grow
+5,000 signups / day. 60K new databases a day
+Large: Meta, Amazon, PayPal, Bytedance, DoorDash, Microsoft
+Small: Fireblocks, PureGym, RaftLabs, BigID, BrowserStack, Peraton
+Neon is the start of the funnel for indie developers and startups
+Lakebase is where we want all customers to be
+Loved by Developers, trusted by Enterprise
+
+=== Slide 19 ===
+DEMO
+
+=== Slide 20 ===
+Lakebase
+Unvarnished Truth
+
+=== Slide 21 ===
+Postgres Compatibility
+Custom Extensions
+Untrusted Languages
+Superuser
+TEMP TABLES
+Unlogged TABLES
+Session context
+Statistics Collection
+Roles and Permission
+Ephemeral Compute
+Encoding
+Parameters
+Postgres Config
+Unvarnished Truth
+
+=== Slide 22 ===
+UC Integration
+Current integration is not final. This is a differentiator as no one else has it. We are working on improving this integration and want your + customer feedback on it.
+Unvarnished Truth

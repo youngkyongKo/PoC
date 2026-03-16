@@ -70,7 +70,7 @@ print()
 url_v1 = f"https://{workspace_url}/serving-endpoints/{KA_ENDPOINT_NAME}/invocations"
 
 payload_v1 = {
-    "messages": [
+    "input": [
         {
             "role": "user",
             "content": test_question
@@ -159,7 +159,7 @@ print()
 url_v2 = f"https://{workspace_url}/serving-endpoints/{KA_ENDPOINT_NAME}/invocations"
 
 payload_v2 = {
-    "messages": [
+    "input": [
         {"role": "user", "content": test_question}
     ],
     "temperature": 0.1,
@@ -336,7 +336,7 @@ print()
 url_bricks = f"https://{workspace_url}/api/2.0/bricks/tiles/{KA_TILE_ID}/query"
 
 payload_bricks = {
-    "messages": [
+    "input": [
         {
             "role": "user",
             "content": test_question

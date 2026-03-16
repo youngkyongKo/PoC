@@ -444,7 +444,7 @@ def query_ka_endpoint(endpoint_name, question, debug=False):
 
         # 요청 페이로드
         payload = {
-            "messages": [
+            "input": [
                 {
                     "role": "user",
                     "content": question
