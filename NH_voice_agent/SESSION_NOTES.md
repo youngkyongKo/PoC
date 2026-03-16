@@ -98,16 +98,16 @@ for endpoint in endpoints:
 -- Databricks SQL 또는 Notebook에서 실행
 
 -- 1. Catalog 생성 (또는 기존 사용)
-CREATE CATALOG IF NOT EXISTS main;
+CREATE CATALOG IF NOT EXISTS demo_ykko;
 
 -- 2. Schema 생성
-CREATE SCHEMA IF NOT EXISTS main.nh_voice_agent;
+CREATE SCHEMA IF NOT EXISTS demo_ykko.nh_voice_agent;
 
 -- 3. Volume 생성 (PDF 저장용)
-CREATE VOLUME IF NOT EXISTS main.nh_voice_agent.documents;
+CREATE VOLUME IF NOT EXISTS demo_ykko.nh_voice_agent.documents;
 
 -- 4. 확인
-SHOW VOLUMES IN main.nh_voice_agent;
+SHOW VOLUMES IN demo_ykko.nh_voice_agent;
 ```
 
 #### Step 3: Vector Search Endpoint 확인
@@ -121,13 +121,13 @@ Databricks UI → Compute → Vector Search
 #### Step 4: .env 파일 업데이트
 ```bash
 # Unity Catalog
-UC_CATALOG=main
+UC_CATALOG=demo_ykko
 UC_SCHEMA=nh_voice_agent
 UC_VOLUME=documents
 
 # Vector Search
 VECTOR_SEARCH_ENDPOINT=<확인한_endpoint_이름>
-VECTOR_INDEX_NAME=main.nh_voice_agent.pdf_embeddings_index
+VECTOR_INDEX_NAME=demo_ykko.nh_voice_agent.pdf_embeddings_index
 
 # Embedding Model (Qwen 또는 대안)
 EMBEDDING_MODEL=<확인한_qwen_모델_endpoint>

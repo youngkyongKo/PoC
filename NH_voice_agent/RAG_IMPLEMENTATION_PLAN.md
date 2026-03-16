@@ -149,10 +149,10 @@ mkdir -p data/raw
 ### Step 2: Unity Catalog 설정 (10분)
 ```sql
 -- Databricks Notebook에서 실행
-CREATE CATALOG IF NOT EXISTS main;
-CREATE SCHEMA IF NOT EXISTS main.nh_voice_agent
+CREATE CATALOG IF NOT EXISTS demo_ykko;
+CREATE SCHEMA IF NOT EXISTS demo_ykko.nh_voice_agent
   COMMENT 'NH Voice Agent PoC';
-CREATE VOLUME IF NOT EXISTS main.nh_voice_agent.documents
+CREATE VOLUME IF NOT EXISTS demo_ykko.nh_voice_agent.documents
   COMMENT 'PDF documents for RAG';
 ```
 

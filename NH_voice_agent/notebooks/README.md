@@ -56,9 +56,9 @@
 **목적**: Unity Catalog 기본 리소스 설정
 
 **생성 리소스**:
-- Catalog: `main` (기존 또는 신규)
-- Schema: `main.nh_voice_agent`
-- Volume: `main.nh_voice_agent.documents`
+- Catalog: `demo_ykko` (기존 또는 신규)
+- Schema: `demo_ykko.nh_voice_agent`
+- Volume: `demo_ykko.nh_voice_agent.documents`
 
 **주요 작업**:
 - Unity Catalog 환경 확인
@@ -135,8 +135,8 @@ Databricks Knowledge Assistant는 **자동화된 RAG 시스템**입니다:
 ### Unity Catalog 권한 에러
 ```sql
 -- 관리자에게 권한 요청
-GRANT CREATE SCHEMA ON CATALOG main TO `your_user@email.com`;
-GRANT CREATE VOLUME ON SCHEMA main.nh_voice_agent TO `your_user@email.com`;
+GRANT CREATE SCHEMA ON CATALOG demo_ykko TO `your_user@email.com`;
+GRANT CREATE VOLUME ON SCHEMA demo_ykko.nh_voice_agent TO `your_user@email.com`;
 ```
 
 ### Volume 파일 업로드 실패

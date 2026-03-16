@@ -38,7 +38,7 @@ Databricks Workspace에서 리소스를 먼저 생성하고 개발 진행
 
 ### 핵심 결정사항
 - **임베딩 모델**: Qwen (한글 최적화) - Databricks hosted 선호
-- **Unity Catalog**: `main.nh_voice_agent`
+- **Unity Catalog**: `demo_ykko.nh_voice_agent`
 - **Vector Search**: Delta Sync Index 사용
 
 ---
@@ -80,19 +80,19 @@ for endpoint in endpoints:
 -- Databricks SQL Warehouse 또는 Notebook에서 실행
 
 -- 1. Catalog (기존 main 사용 또는 신규)
-CREATE CATALOG IF NOT EXISTS main;
+CREATE CATALOG IF NOT EXISTS demo_ykko;
 
 -- 2. Schema
-CREATE SCHEMA IF NOT EXISTS main.nh_voice_agent
+CREATE SCHEMA IF NOT EXISTS demo_ykko.nh_voice_agent
   COMMENT 'NH Voice Agent PoC Schema';
 
 -- 3. Volume (PDF 저장용)
-CREATE VOLUME IF NOT EXISTS main.nh_voice_agent.documents
+CREATE VOLUME IF NOT EXISTS demo_ykko.nh_voice_agent.documents
   COMMENT 'PDF documents storage';
 
 -- 4. 확인
-SHOW VOLUMES IN main.nh_voice_agent;
-DESCRIBE VOLUME main.nh_voice_agent.documents;
+SHOW VOLUMES IN demo_ykko.nh_voice_agent;
+DESCRIBE VOLUME demo_ykko.nh_voice_agent.documents;
 ```
 
 **확인 사항:**
@@ -152,12 +152,12 @@ pip list | grep -E "langchain|PyPDF2|pypdf|pdfplumber"
 vim .env
 
 # 아래 내용 추가/수정
-UC_CATALOG=main
+UC_CATALOG=demo_ykko
 UC_SCHEMA=nh_voice_agent
 UC_VOLUME=documents
 
 VECTOR_SEARCH_ENDPOINT=<Step 1.3에서 확인한 이름>
-VECTOR_INDEX_NAME=main.nh_voice_agent.pdf_embeddings_index
+VECTOR_INDEX_NAME=demo_ykko.nh_voice_agent.pdf_embeddings_index
 
 EMBEDDING_MODEL=<Step 1.1에서 확인한 Qwen 모델>
 ```
@@ -202,7 +202,7 @@ ls -lh data/raw/*.pdf
 # - pdfplumber 사용 (한글 지원 우수)
 # - 로컬 PDF 읽기
 # - Databricks Volume에 업로드
-# - Delta Table 생성 (main.nh_voice_agent.parsed_docs)
+# - Delta Table 생성 (demo_ykko.nh_voice_agent.parsed_docs)
 
 # 테스트:
 python 1_rag_pipeline/01_pdf_parser.py \
@@ -212,7 +212,7 @@ python 1_rag_pipeline/01_pdf_parser.py \
 
 **출력 테이블 스키마:**
 ```
-main.nh_voice_agent.parsed_docs
+demo_ykko.nh_voice_agent.parsed_docs
 - doc_id (string) - UUID
 - file_name (string) - 파일명
 - page_number (int) - 페이지 번호
@@ -231,7 +231,7 @@ main.nh_voice_agent.parsed_docs
 # - LangChain RecursiveCharacterTextSplitter
 # - 한글 토큰 고려 (512 tokens)
 # - Overlap 50 tokens
-# - Delta Table 생성 (main.nh_voice_agent.chunked_docs)
+# - Delta Table 생성 (demo_ykko.nh_voice_agent.chunked_docs)
 
 # 테스트:
 python 1_rag_pipeline/02_chunking.py \
@@ -241,7 +241,7 @@ python 1_rag_pipeline/02_chunking.py \
 
 **출력 테이블 스키마:**
 ```
-main.nh_voice_agent.chunked_docs
+demo_ykko.nh_voice_agent.chunked_docs
 - chunk_id (string) - UUID
 - doc_id (string) - 원본 문서 ID
 - file_name (string)
@@ -274,12 +274,12 @@ python 1_rag_pipeline/03_vector_index.py \
 **Vector Index 설정:**
 ```python
 {
-  "name": "main.nh_voice_agent.pdf_embeddings_index",
+  "name": "demo_ykko.nh_voice_agent.pdf_embeddings_index",
   "endpoint_name": "<확인한_endpoint>",
   "primary_key": "chunk_id",
   "index_type": "DELTA_SYNC",
   "delta_sync_index_spec": {
-    "source_table": "main.nh_voice_agent.chunked_docs",
+    "source_table": "demo_ykko.nh_voice_agent.chunked_docs",
     "embedding_source_column": "chunk_text",
     "embedding_model_endpoint_name": "<Qwen_모델>"
   }
@@ -316,7 +316,7 @@ client = WorkspaceClient()
 
 # Vector Search 쿼리
 results = client.vector_search_indexes.query_index(
-    index_name="main.nh_voice_agent.pdf_embeddings_index",
+    index_name="demo_ykko.nh_voice_agent.pdf_embeddings_index",
     query_text="재무제표 분석 방법을 알려주세요",
     num_results=5
 )
@@ -388,7 +388,7 @@ EMBEDDING_MODEL=databricks-gte-large-en
 ```sql
 -- 관리자에게 권한 요청
 GRANT CREATE SCHEMA ON CATALOG main TO `your_user`;
-GRANT CREATE VOLUME ON SCHEMA main.nh_voice_agent TO `your_user`;
+GRANT CREATE VOLUME ON SCHEMA demo_ykko.nh_voice_agent TO `your_user`;
 ```
 
 ### Vector Search Endpoint 없음

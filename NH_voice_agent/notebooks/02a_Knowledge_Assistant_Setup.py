@@ -58,7 +58,7 @@ from datetime import datetime
 client = WorkspaceClient()
 
 # Unity Catalog 경로
-CATALOG = "main"
+CATALOG = "demo_ykko"
 SCHEMA = "nh_voice_agent"
 VOLUME = "documents"
 VOLUME_PATH = f"/Volumes/{CATALOG}/{SCHEMA}/{VOLUME}"

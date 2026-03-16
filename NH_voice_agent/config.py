@@ -22,7 +22,7 @@ class Config:
     DATABRICKS_TOKEN = os.getenv("DATABRICKS_TOKEN")
 
     # Unity Catalog
-    UC_CATALOG = os.getenv("UC_CATALOG", "main")
+    UC_CATALOG = os.getenv("UC_CATALOG", "demo_ykko")
     UC_SCHEMA = os.getenv("UC_SCHEMA", "nh_voice_agent")
     UC_VOLUME = os.getenv("UC_VOLUME", "documents")
 

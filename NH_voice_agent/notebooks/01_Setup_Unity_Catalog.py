@@ -6,7 +6,7 @@
 # MAGIC 이 노트북은 NH Voice Agent PoC를 위한 Unity Catalog 리소스를 설정합니다.
 # MAGIC
 # MAGIC ### 생성할 리소스
-# MAGIC - **Catalog**: `main` (기존 사용 또는 신규 생성)
+# MAGIC - **Catalog**: `demo_ykko` (기존 사용 또는 신규 생성)
 # MAGIC - **Schema**: `nh_voice_agent` (프로젝트 전용 스키마)
 # MAGIC - **Volume**: `documents` (PDF 문서 저장용)
 # MAGIC
@@ -40,17 +40,17 @@
 # MAGIC ### 📊 결과 해석
 # MAGIC
 # MAGIC 위 결과에서:
-# MAGIC - `main` catalog이 있으면 → 기존 것 사용
-# MAGIC - `main` catalog이 없으면 → 신규 생성 필요
+# MAGIC - `demo_ykko` catalog이 있으면 → 기존 것 사용
+# MAGIC - `demo_ykko` catalog이 없으면 → 신규 생성 필요
 # MAGIC
-# MAGIC **일반적으로 `main` catalog은 기본으로 제공됩니다.**
+# MAGIC **일반적으로 `demo_ykko` catalog은 기본으로 제공됩니다.**
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC ## Step 2: Catalog 생성 (필요시)
 # MAGIC
-# MAGIC `main` catalog이 없는 경우에만 실행합니다.
+# MAGIC `demo_ykko` catalog이 없는 경우에만 실행합니다.
 # MAGIC
 # MAGIC ### 💡 참고
 # MAGIC - `IF NOT EXISTS`를 사용하므로 이미 있어도 에러 없음
@@ -60,14 +60,14 @@
 
 # MAGIC %sql
 # MAGIC -- Catalog 생성 (이미 있으면 skip)
-# MAGIC CREATE CATALOG IF NOT EXISTS main
+# MAGIC CREATE CATALOG IF NOT EXISTS demo_ykko
 # MAGIC   COMMENT 'Main catalog for production workloads';
 
 # COMMAND ----------
 
 # MAGIC %sql
 # MAGIC -- 생성 확인
-# MAGIC DESCRIBE CATALOG main;
+# MAGIC DESCRIBE CATALOG demo_ykko;
 
 # COMMAND ----------
 
@@ -78,7 +78,7 @@
 # MAGIC
 # MAGIC ### 📁 네이밍 규칙
 # MAGIC - Schema 이름: `nh_voice_agent`
-# MAGIC - 전체 경로: `main.nh_voice_agent`
+# MAGIC - 전체 경로: `demo_ykko.nh_voice_agent`
 # MAGIC
 # MAGIC ### 💡 Schema란?
 # MAGIC - Database와 동일한 개념
@@ -88,20 +88,20 @@
 
 # MAGIC %sql
 # MAGIC -- Schema 생성
-# MAGIC CREATE SCHEMA IF NOT EXISTS main.nh_voice_agent
+# MAGIC CREATE SCHEMA IF NOT EXISTS demo_ykko.nh_voice_agent
 # MAGIC   COMMENT 'NH Voice Agent PoC - RAG 및 Agent 리소스';
 
 # COMMAND ----------
 
 # MAGIC %sql
 # MAGIC -- Schema 정보 확인
-# MAGIC DESCRIBE SCHEMA EXTENDED main.nh_voice_agent;
+# MAGIC DESCRIBE SCHEMA EXTENDED demo_ykko.nh_voice_agent;
 
 # COMMAND ----------
 
 # MAGIC %sql
 # MAGIC -- 현재 사용 중인 Schema 전환
-# MAGIC USE SCHEMA main.nh_voice_agent;
+# MAGIC USE SCHEMA demo_ykko.nh_voice_agent;
 
 # COMMAND ----------
 
@@ -123,14 +123,14 @@
 
 # MAGIC %sql
 # MAGIC -- Volume 생성
-# MAGIC CREATE VOLUME IF NOT EXISTS main.nh_voice_agent.documents
+# MAGIC CREATE VOLUME IF NOT EXISTS demo_ykko.nh_voice_agent.documents
 # MAGIC   COMMENT 'PDF documents for Knowledge Assistant RAG';
 
 # COMMAND ----------
 
 # MAGIC %sql
 # MAGIC -- Volume 정보 확인
-# MAGIC DESCRIBE VOLUME main.nh_voice_agent.documents;
+# MAGIC DESCRIBE VOLUME demo_ykko.nh_voice_agent.documents;
 
 # COMMAND ----------
 
@@ -142,7 +142,7 @@
 # COMMAND ----------
 
 # Volume 경로 확인
-volume_path = "/Volumes/main/nh_voice_agent/documents"
+volume_path = "/Volumes/demo_ykko/nh_voice_agent/documents"
 
 print(f"✅ Volume 경로: {volume_path}")
 print()
@@ -240,13 +240,13 @@ print("=" * 60)
 print()
 
 print("📦 생성된 리소스:")
-print(f"  • Catalog: main")
-print(f"  • Schema: main.nh_voice_agent")
-print(f"  • Volume: main.nh_voice_agent.documents")
+print(f"  • Catalog: demo_ykko")
+print(f"  • Schema: demo_ykko.nh_voice_agent")
+print(f"  • Volume: demo_ykko.nh_voice_agent.documents")
 print()
 
 print("📁 Volume 경로:")
-print(f"  /Volumes/main/nh_voice_agent/documents")
+print(f"  /Volumes/demo_ykko/nh_voice_agent/documents")
 print()
 
 print("🎯 다음 단계:")
@@ -265,10 +265,10 @@ print()
 # MAGIC ## ✅ 체크리스트
 # MAGIC
 # MAGIC 완료된 작업:
-# MAGIC - [x] Catalog 확인/생성 (`main`)
-# MAGIC - [x] Schema 생성 (`main.nh_voice_agent`)
-# MAGIC - [x] Volume 생성 (`main.nh_voice_agent.documents`)
-# MAGIC - [x] Volume 경로 확인 (`/Volumes/main/nh_voice_agent/documents`)
+# MAGIC - [x] Catalog 확인/생성 (`demo_ykko`)
+# MAGIC - [x] Schema 생성 (`demo_ykko.nh_voice_agent`)
+# MAGIC - [x] Volume 생성 (`demo_ykko.nh_voice_agent.documents`)
+# MAGIC - [x] Volume 경로 확인 (`/Volumes/demo_ykko/nh_voice_agent/documents`)
 # MAGIC - [x] 파일 업로드 테스트 (한글 인코딩 확인)
 # MAGIC
 # MAGIC 다음 단계:
