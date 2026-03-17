@@ -121,7 +121,10 @@ def main():
         # Configuration display
         st.subheader("연결 정보")
         st.text(f"Model: {config.SERVING_ENDPOINT}")
-        st.text(f"Vector Index: {config.VECTOR_INDEX_NAME[:50]}...")
+        ka_endpoint = config.KA_ENDPOINT_NAME or "Not configured"
+        st.text(f"KA Endpoint: {ka_endpoint}")
+        genie_space = config.GENIE_SPACE_ID or "Not configured"
+        st.text(f"Genie Space: {genie_space}")
 
         st.divider()
 
