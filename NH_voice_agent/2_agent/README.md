@@ -31,7 +31,7 @@ python supervisor_agent.py
 Supervisor Agent
 ├── Knowledge Assistant Tool (문서 기반 RAG)
 │   └── Databricks KA Endpoint
-│       └── REST API (/api/2.0/serving-endpoints/)
+│       └── Serving Endpoints REST API
 │
 └── Genie Space Tool (SQL 기반 분석)
     └── Databricks Genie Space API
@@ -69,21 +69,26 @@ GENIE_SPACE_ID=your_genie_space_id
 
 ## 문제 해결
 
-### KA 403 CSRF 에러
+### KA API 호출 에러
 
-Databricks 노트북에서는 REST API 엔드포인트를 사용해야 합니다:
+**403 CSRF 에러 또는 404 NOT_FOUND 에러가 발생하는 경우:**
+
+Databricks 노트북에서는 Serving Endpoints REST API를 사용해야 합니다:
 
 ```python
-# ✅ 올바름 - PAT 인증 사용
-url = f"https://{host}/api/2.0/serving-endpoints/{endpoint}/invocations"
+# ✅ 올바름 - Serving Endpoints REST API (PAT 인증)
+url = f"https://{host}/serving-endpoints/{endpoint}/invocations"
 
-# ❌ 잘못됨 - CSRF 토큰 필요 (브라우저용)
+# ❌ 잘못됨 - CSRF 토큰 필요 (브라우저 전용)
 url = f"https://{host}/ajax-serving-endpoints/{endpoint}/invocations"
+
+# ❌ 잘못됨 - 잘못된 경로 (404 에러)
+url = f"https://{host}/api/2.0/serving-endpoints/{endpoint}/invocations"
 ```
 
-### RAG 검색 확인
-
-Knowledge Assistant endpoint는 REST API로 호출해도 RAG 기능이 유지됩니다:
+**중요 사항:**
+- Serving Endpoints는 `/api/2.0/` prefix를 사용하지 않습니다
+- Knowledge Assistant endpoint는 REST API로 호출해도 RAG 기능이 유지됩니다
 
 ```bash
 # Endpoint 상태 확인

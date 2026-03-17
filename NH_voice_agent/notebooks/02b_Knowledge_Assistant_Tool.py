@@ -130,9 +130,9 @@ class KnowledgeAssistantTool:
         try:
             logger.info(f"Querying KA: '{question}'")
 
-            # API 엔드포인트 URL (REST API 사용)
+            # API 엔드포인트 URL (Serving Endpoints REST API)
             # KA endpoint는 REST API로 호출해도 RAG 기능이 유지됩니다
-            url = f"https://{config.DATABRICKS_HOST}/api/2.0/serving-endpoints/{self.endpoint_name}/invocations"
+            url = f"https://{config.DATABRICKS_HOST}/serving-endpoints/{self.endpoint_name}/invocations"
 
             # 요청 페이로드
             payload = {
