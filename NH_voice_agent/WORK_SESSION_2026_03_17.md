@@ -17,12 +17,14 @@ Knowledge Assistant 전용 tool을 새로 생성하여 기존 placeholder 코드
 
 **API 엔드포인트**:
 ```python
-# ✅ 올바름 - RAG 활성화
-url = f"https://{host}/ajax-serving-endpoints/{endpoint_name}/invocations"
+# ✅ 올바름 - REST API 사용 (PAT 인증)
+url = f"https://{host}/api/2.0/serving-endpoints/{endpoint_name}/invocations"
 
-# ❌ 잘못됨 - RAG 비활성화
-url = f"https://{host}/serving-endpoints/{endpoint_name}/invocations"
+# ❌ 잘못됨 - CSRF 토큰 필요 (브라우저 전용)
+url = f"https://{host}/ajax-serving-endpoints/{endpoint_name}/invocations"
 ```
+
+**중요**: Knowledge Assistant endpoint는 REST API로 호출해도 RAG 기능이 유지됩니다.
 
 ### 2. Supervisor Agent 업데이트
 
@@ -114,17 +116,19 @@ KA_TILE_ID=xxxxxxxx
 
 ## 주의사항
 
-### RAG 활성화
+### API 엔드포인트 선택
 
-**반드시** `/ajax-serving-endpoints/`를 사용해야 합니다:
+Databricks 노트북 환경에서는 **REST API**를 사용해야 합니다:
 
 ```python
-# ✅ 올바름
-url = f"https://{host}/ajax-serving-endpoints/{endpoint}/invocations"
+# ✅ 올바름 - PAT 인증 (노트북, Python 스크립트)
+url = f"https://{host}/api/2.0/serving-endpoints/{endpoint}/invocations"
 
-# ❌ 잘못됨 - RAG 검색 안 됨
-url = f"https://{host}/serving-endpoints/{endpoint}/invocations"
+# ❌ 잘못됨 - CSRF 토큰 필요 (브라우저 AJAX만 가능)
+url = f"https://{host}/ajax-serving-endpoints/{endpoint}/invocations"
 ```
+
+**중요**: KA endpoint는 어느 URL을 사용하든 RAG 기능이 유지됩니다.
 
 ### 인증
 

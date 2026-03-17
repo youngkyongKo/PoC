@@ -130,8 +130,9 @@ class KnowledgeAssistantTool:
         try:
             logger.info(f"Querying KA: '{question}'")
 
-            # API 엔드포인트 URL (ajax-serving-endpoints 사용)
-            url = f"https://{config.DATABRICKS_HOST}/ajax-serving-endpoints/{self.endpoint_name}/invocations"
+            # API 엔드포인트 URL (REST API 사용)
+            # KA endpoint는 REST API로 호출해도 RAG 기능이 유지됩니다
+            url = f"https://{config.DATABRICKS_HOST}/api/2.0/serving-endpoints/{self.endpoint_name}/invocations"
 
             # 요청 페이로드
             payload = {

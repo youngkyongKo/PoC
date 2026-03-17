@@ -79,8 +79,9 @@ def query_knowledge_assistant(endpoint_name, question, debug=False):
         workspace_url = spark.conf.get("spark.databricks.workspaceUrl")
         token = dbutils.notebook.entry_point.getDbutils().notebook().getContext().apiToken().get()
 
-        # Ajax Serving Endpoint URL (RAG 활성화)
-        url = f"https://{workspace_url}/ajax-serving-endpoints/{endpoint_name}/invocations"
+        # REST API Serving Endpoint URL
+        # KA endpoint는 REST API로 호출해도 RAG 기능이 유지됩니다
+        url = f"https://{workspace_url}/api/2.0/serving-endpoints/{endpoint_name}/invocations"
 
         # 요청 페이로드
         payload = {

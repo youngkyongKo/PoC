@@ -31,7 +31,7 @@ python supervisor_agent.py
 Supervisor Agent
 ├── Knowledge Assistant Tool (문서 기반 RAG)
 │   └── Databricks KA Endpoint
-│       └── ajax-serving-endpoints (RAG 활성화)
+│       └── REST API (/api/2.0/serving-endpoints/)
 │
 └── Genie Space Tool (SQL 기반 분석)
     └── Databricks Genie Space API
@@ -69,23 +69,26 @@ GENIE_SPACE_ID=your_genie_space_id
 
 ## 문제 해결
 
-### KA 401 인증 에러
+### KA 403 CSRF 에러
 
-ajax-serving-endpoints 사용 시 올바른 토큰 필요:
+Databricks 노트북에서는 REST API 엔드포인트를 사용해야 합니다:
+
+```python
+# ✅ 올바름 - PAT 인증 사용
+url = f"https://{host}/api/2.0/serving-endpoints/{endpoint}/invocations"
+
+# ❌ 잘못됨 - CSRF 토큰 필요 (브라우저용)
+url = f"https://{host}/ajax-serving-endpoints/{endpoint}/invocations"
+```
+
+### RAG 검색 확인
+
+Knowledge Assistant endpoint는 REST API로 호출해도 RAG 기능이 유지됩니다:
 
 ```bash
-# 토큰 확인
-echo $DATABRICKS_TOKEN
-
 # Endpoint 상태 확인
 databricks serving-endpoints get --name $KA_ENDPOINT_NAME
-```
 
-### RAG 검색 비활성화 문제
-
-**중요**: `/ajax-serving-endpoints/` 사용해야 RAG 활성화됩니다.
-
-```
-✅ https://{host}/ajax-serving-endpoints/{endpoint}/invocations
-❌ https://{host}/serving-endpoints/{endpoint}/invocations
+# 토큰 확인
+echo $DATABRICKS_TOKEN
 ```
