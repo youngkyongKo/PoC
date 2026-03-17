@@ -15,7 +15,7 @@ from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_community.chat_models import ChatDatabricks
 from langchain.memory import ConversationBufferMemory
 
-from vector_search_tool import create_vector_search_tool
+from knowledge_assistant_tool import create_knowledge_assistant_tool
 from genie_tool import create_genie_tool
 from config import config
 
@@ -42,7 +42,7 @@ class SupervisorAgent:
 
         # Initialize tools
         self.tools = [
-            create_vector_search_tool(),
+            create_knowledge_assistant_tool(),
             create_genie_tool()
         ]
 
@@ -90,11 +90,11 @@ class SupervisorAgent:
         return """당신은 NH생명 고객 지원 AI 어시스턴트입니다.
 
 사용 가능한 도구:
-1. vector_search: 보험 상품 정보, 약관, 절차 등을 문서에서 검색
-2. genie_space: 판매 실적, 통계 등의 데이터를 분석
+1. knowledge_assistant: 보험 상품 정보, 약관, 절차 등을 문서에서 검색 (Knowledge Assistant 사용)
+2. genie_space: 판매 실적, 통계 등의 데이터를 분석 (Genie Space 사용)
 
 도구 사용 가이드:
-- 문서나 정책 관련 질문 → vector_search 사용
+- 문서나 정책 관련 질문 → knowledge_assistant 사용
 - 데이터 분석이나 통계 질문 → genie_space 사용
 - 복합적인 질문은 두 도구를 순차적으로 사용
 

@@ -11,10 +11,10 @@ from supervisor_agent import SupervisorAgent
 from config import config
 
 
-def test_vector_search_queries():
-    """Vector Search 관련 질문 테스트"""
+def test_knowledge_assistant_queries():
+    """Knowledge Assistant 관련 질문 테스트"""
     print("\n" + "=" * 60)
-    print("Testing Vector Search Queries")
+    print("Testing Knowledge Assistant Queries")
     print("=" * 60 + "\n")
 
     agent = SupervisorAgent()
@@ -81,15 +81,14 @@ def main():
 
     print("\n설정:")
     print(f"  - Model: {config.SERVING_ENDPOINT}")
-    print(f"  - Vector Index: {config.VECTOR_INDEX_NAME}")
+    print(f"  - KA Endpoint: {config.KA_ENDPOINT_NAME or 'Not configured'}")
     print(f"  - Genie Space: {config.GENIE_SPACE_ID or 'Not configured'}")
 
     # Run tests
     try:
-        print("\n⚠️  이 테스트는 실제 Databricks 리소스가 설정되어 있어야 합니다.")
-        print("Mock 데이터로 테스트가 진행됩니다.\n")
+        print("\n⚠️  이 테스트는 실제 Databricks 리소스가 설정되어 있어야 합니다.\n")
 
-        test_vector_search_queries()
+        test_knowledge_assistant_queries()
         test_genie_queries()
         test_complex_queries()
 

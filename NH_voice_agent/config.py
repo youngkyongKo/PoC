@@ -43,6 +43,10 @@ class Config:
         f"{UC_CATALOG}.{UC_SCHEMA}.pdf_embeddings_index"
     )
 
+    # Knowledge Assistant Configuration
+    KA_ENDPOINT_NAME = os.getenv("KA_ENDPOINT_NAME")
+    KA_TILE_ID = os.getenv("KA_TILE_ID")
+
     # Genie Space Configuration
     GENIE_SPACE_ID = os.getenv("GENIE_SPACE_ID")
     SQL_WAREHOUSE_ID = os.getenv("SQL_WAREHOUSE_ID")
