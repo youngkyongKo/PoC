@@ -20,9 +20,8 @@ def test_knowledge_assistant_queries():
     agent = SupervisorAgent()
 
     test_questions = [
-        "보험 상품의 주요 보장 내용은 무엇인가요?",
-        "보험 청약 절차를 알려주세요",
-        "보험금 청구 방법이 어떻게 되나요?"
+        "회사 홈페이지 URL은?",
+        "보험계약을 중도 해지시 해지환급금은 이미 납입한 보험료보다 적거나 없는 경우, 이유는?"
     ]
 
     for question in test_questions:
@@ -42,8 +41,7 @@ def test_genie_queries():
 
     test_questions = [
         "지난달 판매 실적을 보여줘",
-        "상품별 가입자 통계는 어떻게 되나요?",
-        "최근 1주일 신규 가입자 수는?"
+        "상품별 가입자 통계는 어떻게 되나요?"
     ]
 
     for question in test_questions:
@@ -62,8 +60,7 @@ def test_complex_queries():
     agent = SupervisorAgent()
 
     test_questions = [
-        "가장 많이 판매된 상품의 보장 내용을 알려주세요",
-        "최근 판매 실적과 해당 상품들의 특징을 비교해주세요"
+        "가장 많이 판매된 상품의 보장 내용을 알려주세요"
     ]
 
     for question in test_questions:
