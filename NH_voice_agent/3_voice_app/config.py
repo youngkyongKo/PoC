@@ -59,6 +59,11 @@ class Config:
     # Voice Configuration
     SPEECH_LANGUAGE = os.getenv("SPEECH_LANGUAGE", "ko-KR")
     TTS_LANGUAGE = os.getenv("TTS_LANGUAGE", "ko")
+
+    # Edge TTS Configuration (Microsoft Neural TTS - Free & High Quality)
+    TTS_VOICE_NAME = os.getenv("TTS_VOICE_NAME", "ko-KR-SunHiNeural")  # 밝고 경쾌한 여성 음성
+    TTS_SPEAKING_RATE = os.getenv("TTS_SPEAKING_RATE", "+20%")  # 20% 빠르게 ("+20%" or "-20%")
+    TTS_PITCH = os.getenv("TTS_PITCH", "+5Hz")  # 약간 높은 톤 ("+5Hz" or "-5Hz")
     AUDIO_SAMPLE_RATE = int(os.getenv("AUDIO_SAMPLE_RATE", "16000"))
 
     # Application Settings

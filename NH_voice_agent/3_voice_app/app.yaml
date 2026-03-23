@@ -1,0 +1,45 @@
+command: ["streamlit", "run", "app.py", "--server.port=8000", "--server.address=0.0.0.0", "--server.enableCORS=false", "--server.enableXsrfProtection=false"]
+
+env:
+  - name: UC_CATALOG
+    value: "demo_ykko"
+  - name: UC_SCHEMA
+    value: "nh_voice_agent"
+  - name: UC_VOLUME
+    value: "vol_data"
+  - name: VECTOR_SEARCH_ENDPOINT
+    value: "one-env-shared-endpoint-11"
+  - name: VECTOR_INDEX_NAME
+    value: "demo_ykko.nh_voice_agent.doc_embed_index"
+  - name: GENIE_SPACE_ID
+    value: "your_genie_space_id"
+  - name: SQL_WAREHOUSE_ID
+    value: "your_warehouse_id"
+  - name: EMBEDDING_MODEL
+    value: "databricks-qwen3-embedding-0-6b"
+  - name: LLM_MODEL
+    value: "databricks-claude-sonnet-4-6"
+  - name: SERVING_ENDPOINT
+    value: "databricks-claude-sonnet-4-6"
+  - name: KA_ENDPOINT_NAME
+    value: "ka-69e8398a-endpoint"
+  - name: SPEECH_LANGUAGE
+    value: "ko-KR"
+  - name: TTS_LANGUAGE
+    value: "ko"
+  - name: AUDIO_SAMPLE_RATE
+    value: "16000"
+  - name: TTS_VOICE_NAME
+    value: "ko-KR-SunHiNeural"
+  - name: TTS_SPEAKING_RATE
+    value: "+20%"
+  - name: TTS_PITCH
+    value: "+5Hz"
+  - name: DEBUG
+    value: "True"
+  - name: LOG_LEVEL
+    value: "INFO"
+
+resources:
+  cpu: "2"
+  memory: "4Gi"

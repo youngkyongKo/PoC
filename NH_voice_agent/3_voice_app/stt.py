@@ -8,9 +8,6 @@ import logging
 from typing import Optional
 import tempfile
 
-# Add parent directory to path
-sys.path.append(str(Path(__file__).parent.parent))
-
 from config import config
 
 logging.basicConfig(level=config.LOG_LEVEL)

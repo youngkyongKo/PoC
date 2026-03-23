@@ -8,9 +8,6 @@ from typing import Dict
 import logging
 import requests
 
-# Add parent directory to path
-sys.path.append(str(Path(__file__).parent.parent))
-
 from databricks.sdk import WorkspaceClient
 from pydantic import BaseModel, Field
 from config import config

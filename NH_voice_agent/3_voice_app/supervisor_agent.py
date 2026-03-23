@@ -7,9 +7,6 @@ from pathlib import Path
 from typing import TypedDict, Annotated, Literal
 import logging
 
-# Add parent directory to path
-sys.path.append(str(Path(__file__).parent.parent))
-
 from langgraph.graph import StateGraph, END
 from langchain_community.chat_models import ChatDatabricks
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage

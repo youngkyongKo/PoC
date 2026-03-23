@@ -1,148 +1,177 @@
-# NH Voice Agent PoC
+# NH Voice Agent
 
-Databricks 플랫폼을 활용한 음성 기반 RAG Agent 시스템
+AI 기반 음성 금융 상담 서비스 - Databricks Knowledge Assistant와 Genie Space를 활용한 RAG 시스템
 
-> **현재 상태 (2025-02-25):** Phase 1 완료 - 음성 인터페이스 테스트 환경 구축 완료
-> 상세 진행 상황은 [README_PROGRESS.md](README_PROGRESS.md) 참고
+## 프로젝트 개요
 
-## 🚀 빠른 시작 (현재 가능한 기능)
+NH투자증권의 금융 상품 문서를 기반으로 음성으로 질문하고 답변을 받을 수 있는 AI 상담 시스템입니다.
 
-### 음성 인터페이스 테스트하기
+### 주요 기능
 
-```bash
-# 1. 가상환경 활성화
-source venv/bin/activate
+- 🎤 **음성 인식**: 한국어 음성 질문 지원 (Speech-to-Text)
+- 🔊 **음성 합성**: 답변을 자연스러운 음성으로 제공 (Text-to-Speech)
+- 📚 **Knowledge Assistant**: 금융 문서 기반 RAG 시스템
+- 📊 **Genie Space**: 데이터 분석 쿼리 처리
+- 🤖 **Supervisor Agent**: 질문 유형에 따른 적절한 도구 선택
 
-# 2. Streamlit 앱 실행
-streamlit run 3_voice_app/app_simple.py
+### 기술 스택
 
-# 또는 CLI에서 테스트
-python test_voice_flow.py
-```
-
-**현재 동작하는 기능:**
-- 🎤 음성 입력 → 텍스트 변환 (Google Speech Recognition)
-- 🤖 Dummy Agent 처리 (테스트용)
-- 🔊 답변 음성 출력 (gTTS)
-- 💬 텍스트 입력 (음성 대신 타이핑 가능)
-- 📝 대화 기록 표시 및 오디오 재생
-
-**필수 사항:**
-- FFmpeg 설치: `brew install ffmpeg`
-- 인터넷 연결 (STT/TTS API 사용)
-
----
-
-## 프로젝트 구성
-
-### 1. RAG 파이프라인 (`1_rag_pipeline/`)
-- PDF 문서 파싱 및 청킹
-- Vector Search 인덱스 생성
-- Databricks Delta Live Tables 활용
-
-### 2. Multi-Agent Supervisor (`2_agent/`)
-- LangChain 기반 Agent 구현
-- Vector Search Tool 통합
-- Genie Space Tool 통합
-- Supervisor Agent 오케스트레이션
-
-### 3. 음성 App (`3_voice_app/`)
-- Speech-to-Text (음성 입력)
-- Agent 질의 처리
-- Text-to-Speech (음성 출력)
-- Streamlit 기반 UI
-
-## 빠른 시작
-
-### 1. 환경 설정
-
-```bash
-# 가상환경 생성 및 활성화
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# 의존성 설치
-pip install -r requirements.txt
-
-# 환경변수 설정
-cp .env.example .env
-# .env 파일을 편집하여 Databricks 설정 입력
-```
-
-### 2. RAG 파이프라인 실행
-
-```bash
-cd 1_rag_pipeline
-python pipeline.py
-```
-
-### 3. Agent 테스트
-
-```bash
-cd 2_agent
-python test_agent.py
-```
-
-### 4. 음성 App 실행
-
-```bash
-cd 3_voice_app
-streamlit run app.py
-```
-
-## Databricks 요구사항
-
-- Unity Catalog 활성화된 Workspace
-- Vector Search 엔드포인트
-- SQL Warehouse (Genie Space용)
-- ML Runtime Cluster
+- **플랫폼**: Databricks (Unity Catalog, Vector Search, Model Serving)
+- **AI 모델**: Claude Sonnet 4.6, Qwen3 Embedding
+- **웹 프레임워크**: Streamlit
+- **음성 처리**: Edge TTS (Microsoft Neural TTS)
+- **배포**: Databricks Apps
 
 ## 프로젝트 구조
 
 ```
 NH_voice_agent/
-├── 1_rag_pipeline/          # RAG 파이프라인
-│   ├── 01_pdf_parser.py     # PDF 파싱
-│   ├── 02_chunking.py       # 청킹 처리
+├── 1_rag_pipeline/          # RAG 파이프라인 (PDF 처리, 벡터 인덱싱)
+│   ├── 01_pdf_parser.py     # PDF 문서 파싱
+│   ├── 02_chunking.py       # 문서 청킹
 │   ├── 03_vector_index.py   # 벡터 인덱스 생성
-│   └── pipeline.py          # 전체 파이프라인
+│   └── pipeline.py          # 통합 파이프라인
 │
 ├── 2_agent/                 # Agent 구현
-│   ├── vector_search_tool.py
-│   ├── genie_tool.py
-│   ├── supervisor_agent.py
-│   └── test_agent.py
+│   ├── supervisor_agent.py # 멀티 에이전트 조정
+│   ├── knowledge_assistant_tool.py  # KA 도구
+│   └── genie_tool.py        # Genie Space 도구
 │
-└── 3_voice_app/             # 음성 앱
-    ├── app.py
-    ├── stt.py
-    └── tts.py
+├── 3_voice_app/            # Streamlit 음성 앱
+│   ├── app.py              # 메인 애플리케이션
+│   ├── app.yaml            # Databricks Apps 설정
+│   ├── config.py           # 설정 관리
+│   ├── stt.py              # Speech-to-Text
+│   ├── tts.py              # Text-to-Speech
+│   ├── supervisor_agent.py # Agent (앱용)
+│   ├── knowledge_assistant_tool.py
+│   ├── genie_tool.py
+│   └── requirements.txt
+│
+└── notebooks/              # Jupyter 노트북 (설정 및 테스트)
+    ├── 01_Setup_Unity_Catalog.py
+    ├── 02a_Knowledge_Assistant_Setup.py
+    └── 03_Test_Knowledge_Assistant.py
 ```
 
-## 개발 로드맵
+## 설치 및 실행
 
-### Phase 1: 음성 인터페이스 (완료 ✅)
-- [x] 프로젝트 구조 생성
-- [x] 음성 입력 (STT) 구현
-- [x] 음성 출력 (TTS) 구현
-- [x] Streamlit UI 구현
-- [x] Dummy Agent 테스트 환경
+### 1. RAG 파이프라인 실행
 
-### Phase 2: RAG Pipeline (진행 예정)
-- [ ] PDF 파싱 및 청킹
-- [ ] Vector Search 인덱스 생성
-- [ ] DLT 파이프라인 구현
+```bash
+cd 1_rag_pipeline
+pip install -r requirements.txt
 
-### Phase 3: Agent System (진행 예정)
-- [ ] Vector Search Tool 개발
-- [ ] Genie Space Tool 개발
-- [ ] LangChain Supervisor Agent 통합
+# PDF 파싱 및 벡터 인덱스 생성
+python pipeline.py
+```
 
-### Phase 4: 통합 및 배포 (진행 예정)
-- [ ] Voice App ↔ Real Agent 연동
-- [ ] Databricks Workspace 배포
-- [ ] 성능 최적화
+### 2. Voice App 로컬 실행
+
+```bash
+cd 3_voice_app
+pip install -r requirements.txt
+
+# 환경 변수 설정 (.env 파일 생성)
+# DATABRICKS_HOST, DATABRICKS_TOKEN 등 설정
+
+# Streamlit 앱 실행
+streamlit run app.py
+```
+
+### 3. Databricks Apps 배포
+
+```bash
+cd 3_voice_app
+
+# 파일 업로드
+databricks workspace import-dir . /Workspace/Users/<your-email>/nh_voice_app_v2
+
+# 앱 배포
+databricks apps deploy nh-voice-agent \
+  --source-code-path /Workspace/Users/<your-email>/nh_voice_app_v2 \
+  --mode SNAPSHOT
+```
+
+## 환경 변수 설정
+
+`3_voice_app/.env` 파일 또는 `app.yaml`에서 다음 환경 변수를 설정:
+
+```bash
+# Unity Catalog
+UC_CATALOG=demo_ykko
+UC_SCHEMA=nh_voice_agent
+UC_VOLUME=vol_data
+
+# Vector Search
+VECTOR_SEARCH_ENDPOINT=one-env-shared-endpoint-11
+VECTOR_INDEX_NAME=demo_ykko.nh_voice_agent.doc_embed_index
+
+# Knowledge Assistant
+KA_ENDPOINT_NAME=ka-69e8398a-endpoint
+
+# Genie Space (선택사항)
+GENIE_SPACE_ID=your_genie_space_id
+SQL_WAREHOUSE_ID=your_warehouse_id
+
+# Models
+EMBEDDING_MODEL=databricks-qwen3-embedding-0-6b
+LLM_MODEL=databricks-claude-sonnet-4-6
+SERVING_ENDPOINT=databricks-claude-sonnet-4-6
+
+# Voice Settings
+SPEECH_LANGUAGE=ko-KR
+TTS_LANGUAGE=ko
+TTS_VOICE_NAME=ko-KR-SunHiNeural
+TTS_SPEAKING_RATE=+20%
+TTS_PITCH=+5Hz
+
+# Application
+DEBUG=True
+LOG_LEVEL=INFO
+```
+
+## 사용 방법
+
+1. **음성 입력**: 마이크 버튼을 클릭하여 음성으로 질문
+2. **샘플 질문**: 화면의 샘플 질문을 클릭하여 빠른 테스트
+3. **텍스트 입력**: 하단 입력창에 직접 질문 입력
+4. **답변 듣기**: Assistant 응답이 자동으로 음성으로 재생
+
+## 주요 기능 설명
+
+### Supervisor Agent
+
+사용자 질문을 분석하여 적절한 도구(KA 또는 Genie)를 선택:
+- 금융 상품 정보 → Knowledge Assistant (문서 검색)
+- 데이터 분석 쿼리 → Genie Space (SQL 생성)
+
+### Knowledge Assistant
+
+- PDF 문서를 청킹하여 Vector Search에 인덱싱
+- 사용자 질문에 관련된 문서 조각을 검색
+- Claude 모델로 답변 생성
+- 출처 문서 정보 제공
+
+### Voice Interface
+
+- **STT**: 브라우저 기반 음성 인식 (ko-KR)
+- **TTS**: Microsoft Edge TTS (고품질 한국어 음성)
+- 실시간 음성 변환 및 자동 재생
+
+## 배포 정보
+
+- **플랫폼**: Databricks Apps
+- **앱 URL**: https://e2-demo-field-eng.cloud.databricks.com/apps/nh-voice-agent
+- **컴퓨팅**: Serverless (CPU: 2, Memory: 4Gi)
+
+## 문서
+
+- [TTS_GUIDE.md](TTS_GUIDE.md) - Text-to-Speech 설정 가이드
+- [1_rag_pipeline/README.md](1_rag_pipeline/README.md) - RAG 파이프라인 상세
+- [2_agent/README.md](2_agent/README.md) - Agent 구현 상세
+- [3_voice_app/README.md](3_voice_app/README.md) - Voice App 상세
 
 ## 라이선스
 
-PoC Project - Internal Use Only
+이 프로젝트는 데모 및 PoC 용도로 제작되었습니다.
