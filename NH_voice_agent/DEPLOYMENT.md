@@ -9,8 +9,9 @@
 - **Warehouse**: `e2b5c5e3a1193304`
 
 ### 2. Knowledge Assistant
-- **Endpoint**: `ka-69e8398a-endpoint`
-- **Tile ID**: `69e8398a`
+- **Endpoint**: `ka-b5edb67b-endpoint`
+- **Tile ID**: `b5edb67b-d0c6-4c2b-96ae-9876e4778260`
+- **Name**: `ykko_NH_voice_KA`
 - **Vector Index**: 채권 상품 설명서 PDF 문서
 
 ### 3. Multi-Agent Supervisor
@@ -124,8 +125,9 @@ GENIE_SPACE_ID=01f128b75fcd1eb8be6fab662cf566f1
 SQL_WAREHOUSE_ID=e2b5c5e3a1193304
 
 # Knowledge Assistant (✓ 설정 완료)
-KA_ENDPOINT_NAME=ka-69e8398a-endpoint
-KA_TILE_ID=69e8398a
+KA_ENDPOINT_NAME=ka-b5edb67b-endpoint
+KA_TILE_ID=b5edb67b-d0c6-4c2b-96ae-9876e4778260
+KA_NAME=ykko_NH_voice_KA
 
 # Model
 SERVING_ENDPOINT=databricks-claude-sonnet-4-6
@@ -206,7 +208,8 @@ for q in questions:
 - API 엔드포인트 확인
 
 ### Knowledge Assistant 오류
-- Endpoint 상태 확인: `ka-69e8398a-endpoint`
+- Endpoint 상태 확인: `ka-b5edb67b-endpoint`
+- Tile ID 확인: `b5edb67b-d0c6-4c2b-96ae-9876e4778260`
 - Serving Endpoints REST API 사용 (CSRF 토큰 불필요)
 
 ### 라우팅 오류

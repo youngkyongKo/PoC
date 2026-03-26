@@ -181,7 +181,9 @@ LOG_LEVEL=INFO
 - **데이터**: 채권 상품 설명서 PDF 문서
 - **내용**: 발행사 소개, 사업 개요, 신용평가 요인, 재무 상황, 리스크
 - **기능**: PDF 청킹 → Vector Search → RAG 생성
-- **Endpoint**: `ka-69e8398a-endpoint`
+- **Endpoint**: `ka-b5edb67b-endpoint`
+- **Tile ID**: `b5edb67b-d0c6-4c2b-96ae-9876e4778260`
+- **Name**: `ykko_NH_voice_KA`
 
 ### Voice Interface
 
@@ -221,7 +223,8 @@ LOG_LEVEL=INFO
 
 3. **Knowledge Assistant**
    - ✓ Vector Index 생성
-   - ✓ Serving Endpoint 배포 (`ka-69e8398a-endpoint`)
+   - ✓ Serving Endpoint 배포 (`ka-b5edb67b-endpoint`)
+   - ✓ Name: `ykko_NH_voice_KA`
    - ✓ RAG 기능 테스트 완료
 
 4. **Multi-Agent Supervisor**

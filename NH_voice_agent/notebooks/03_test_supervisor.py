@@ -35,8 +35,8 @@ os.environ["GENIE_SPACE_ID"] = "01f128b75fcd1eb8be6fab662cf566f1"
 os.environ["SQL_WAREHOUSE_ID"] = "e2b5c5e3a1193304"
 
 # Knowledge Assistant
-os.environ["KA_ENDPOINT_NAME"] = "ka-69e8398a-endpoint"
-os.environ["KA_TILE_ID"] = "69e8398a"
+os.environ["KA_ENDPOINT_NAME"] = "ka-b5edb67b-endpoint"
+os.environ["KA_TILE_ID"] = "b5edb67b-d0c6-4c2b-96ae-9876e4778260"
 
 # Model
 os.environ["SERVING_ENDPOINT"] = "databricks-claude-sonnet-4-6"

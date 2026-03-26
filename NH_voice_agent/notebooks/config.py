@@ -29,8 +29,8 @@ class Config:
     VECTOR_INDEX_NAME = os.getenv("VECTOR_INDEX_NAME", f"{UC_CATALOG}.{UC_SCHEMA}.doc_embed_index")
 
     # Knowledge Assistant
-    KA_ENDPOINT_NAME = os.getenv("KA_ENDPOINT_NAME")
-    KA_TILE_ID = os.getenv("KA_TILE_ID")
+    KA_ENDPOINT_NAME = os.getenv("KA_ENDPOINT_NAME", "ka-b5edb67b-endpoint")
+    KA_TILE_ID = os.getenv("KA_TILE_ID", "b5edb67b-d0c6-4c2b-96ae-9876e4778260")
 
     # Genie Space
     GENIE_SPACE_ID = os.getenv("GENIE_SPACE_ID")

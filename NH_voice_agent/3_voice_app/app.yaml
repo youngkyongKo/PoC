@@ -12,9 +12,9 @@ env:
   - name: VECTOR_INDEX_NAME
     value: "demo_ykko.nh_voice_agent.doc_embed_index"
   - name: GENIE_SPACE_ID
-    value: "your_genie_space_id"
+    value: "01f128b75fcd1eb8be6fab662cf566f1"
   - name: SQL_WAREHOUSE_ID
-    value: "your_warehouse_id"
+    value: "e2b5c5e3a1193304"
   - name: EMBEDDING_MODEL
     value: "databricks-qwen3-embedding-0-6b"
   - name: LLM_MODEL
@@ -22,7 +22,11 @@ env:
   - name: SERVING_ENDPOINT
     value: "databricks-claude-sonnet-4-6"
   - name: KA_ENDPOINT_NAME
-    value: "ka-69e8398a-endpoint"
+    value: "ka-b5edb67b-endpoint"
+  - name: KA_TILE_ID
+    value: "b5edb67b-d0c6-4c2b-96ae-9876e4778260"
+  - name: KA_NAME
+    value: "ykko_NH_voice_KA"
   - name: SPEECH_LANGUAGE
     value: "ko-KR"
   - name: TTS_LANGUAGE
