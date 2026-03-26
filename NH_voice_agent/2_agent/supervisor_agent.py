@@ -95,14 +95,44 @@ class SupervisorAgent:
         question = state["question"]
 
         # LLM을 사용하여 라우팅 결정
-        system_prompt = """당신은 질문을 분석하여 적절한 도구를 선택하는 라우터입니다.
+        system_prompt = """당신은 NH 증권 채권 상품 상담을 위한 라우터입니다. 고객의 질문을 분석하여 적절한 도구를 선택합니다.
 
-두 가지 도구:
-1. knowledge_assistant: 문서, 약관, 정책, 절차 등의 정보 검색
-   - 예: "보험 약관은?", "회사 정책은?", "절차는 어떻게?"
+## 사용 가능한 도구
 
-2. genie_space: 데이터 분석, 통계, 판매 실적 등
-   - 예: "판매 실적은?", "통계를 보여줘", "데이터 분석"
+### 1. genie_space (채권 종목 정보 검색)
+**데이터**: 판매 중인 채권 종목의 구조화된 데이터
+**사용 시기**:
+- 채권을 검색하거나 비교할 때
+- 특정 조건(등급, 수익률, 만기)으로 필터링할 때
+- 수치 데이터 기반 분석이 필요할 때
+- 발행사별 채권 목록을 조회할 때
+
+**예시 질문**:
+- "A- 이상 등급인 채권을 찾아줘"
+- "수익률 높은 순으로 보여줘"
+- "만기 1년 미만인 채권은?"
+- "롯데캐피탈 채권을 비교해줘"
+- "민평금리보다 싼 회사채는?"
+
+### 2. knowledge_assistant (채권 상품 설명서 검색)
+**데이터**: 채권 상품 설명서 PDF 문서
+**사용 시기**:
+- 발행사에 대한 상세 정보가 필요할 때
+- "회사 소개", "사업 내용", "신용평가 요인" 등의 질문
+- "어떤 회사인지", "무슨 일을 하는지" 등의 정성적 정보 요청
+- 투자 리스크, 재무 상황 관련 질문
+
+**예시 질문**:
+- "DL에너지 회사에 대해 알려줘"
+- "이 발행사가 무슨 일을 하는 회사야?"
+- "신용등급 전망은 어때?"
+- "재무 상황이 어때?"
+- "투자 리스크는 뭐가 있어?"
+
+## 라우팅 규칙
+- 채권 검색, 비교, 수치 분석 → "genie_space"
+- 발행사 정보, 회사 소개, 리스크 분석 → "knowledge_assistant"
+- 복합 질의는 먼저 필요한 도구부터 사용 (구조화된 데이터가 필요하면 genie_space)
 
 질문을 분석하고 "knowledge_assistant" 또는 "genie_space" 중 하나만 답변하세요."""
 
@@ -115,19 +145,25 @@ class SupervisorAgent:
             response = self.llm.invoke(messages)
             route_decision = response.content.strip().lower()
 
-            # 키워드 기반 fallback
-            if "genie" in route_decision or "데이터" in question or "통계" in question or "실적" in question:
-                route = "genie_space"
-            else:
-                route = "knowledge_assistant"
+            # 키워드 기반 fallback (채권 도메인 특화)
+            genie_keywords = ["채권", "종목", "등급", "수익률", "만기", "민평", "비교", "검색", "찾아", "보여"]
+            ka_keywords = ["회사", "발행사", "사업", "소개", "전망", "리스크", "재무", "신용평가"]
 
-            logger.info(f"Router decision: {route}")
+            if "genie" in route_decision or any(kw in question for kw in genie_keywords):
+                route = "genie_space"
+            elif "knowledge" in route_decision or any(kw in question for kw in ka_keywords):
+                route = "knowledge_assistant"
+            else:
+                # 기본값: 데이터 검색 우선
+                route = "genie_space"
+
+            logger.info(f"Router decision: {route} (question: {question[:50]}...)")
             state["route"] = route
 
         except Exception as e:
             logger.error(f"Router error: {e}")
-            # 기본값: knowledge_assistant
-            state["route"] = "knowledge_assistant"
+            # 기본값: genie_space (채권 검색이 더 일반적)
+            state["route"] = "genie_space"
 
         return state
 

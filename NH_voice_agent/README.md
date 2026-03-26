@@ -1,18 +1,18 @@
 # NH Voice Agent
 
-AI 기반 음성 금융 상담 서비스 - Databricks Knowledge Assistant와 Genie Space를 활용한 RAG 시스템
+AI 기반 음성 채권 상담 서비스 - Databricks Knowledge Assistant와 Genie Space를 활용한 Multi-Agent RAG 시스템
 
 ## 프로젝트 개요
 
-NH투자증권의 금융 상품 문서를 기반으로 음성으로 질문하고 답변을 받을 수 있는 AI 상담 시스템입니다.
+NH 증권의 채권 상품 투자 상담을 지원하는 AI 시스템입니다. 채권 종목 정보 검색, 발행사 정보 조회, 투자 상담을 음성과 텍스트로 제공합니다.
 
 ### 주요 기능
 
 - 🎤 **음성 인식**: 한국어 음성 질문 지원 (Speech-to-Text)
 - 🔊 **음성 합성**: 답변을 자연스러운 음성으로 제공 (Text-to-Speech)
-- 📚 **Knowledge Assistant**: 금융 문서 기반 RAG 시스템
-- 📊 **Genie Space**: 데이터 분석 쿼리 처리
-- 🤖 **Supervisor Agent**: 질문 유형에 따른 적절한 도구 선택
+- 📊 **Genie Space**: 채권 종목 정보 검색 및 비교 (SQL 기반)
+- 📚 **Knowledge Assistant**: 채권 상품 설명서 검색 (PDF 기반 RAG)
+- 🤖 **Multi-Agent Supervisor**: 질문 유형에 따른 적절한 도구 선택 및 라우팅
 
 ### 기술 스택
 
@@ -138,20 +138,50 @@ LOG_LEVEL=INFO
 3. **텍스트 입력**: 하단 입력창에 직접 질문 입력
 4. **답변 듣기**: Assistant 응답이 자동으로 음성으로 재생
 
+### 질문 예시
+
+**채권 검색 (Genie Space)**
+- "A- 이상 등급인 회사채를 수익률 높은 순으로 보여줘"
+- "만기 1년 미만인 채권 중 수익률이 높은 종목은?"
+- "롯데캐피탈에서 발행한 채권을 비교해줘"
+- "민평금리보다 싼 회사채는?"
+
+**발행사 정보 (Knowledge Assistant)**
+- "DL에너지 회사에 대해 알려줘"
+- "이 발행사가 무슨 일을 하는 회사야?"
+- "신용등급 전망은 어때?"
+- "투자 리스크는 뭐가 있어?"
+
+**복합 질의 (Multi-Agent)**
+- "DL에너지 채권을 자세히 알려줘" (종목 정보 + 회사 소개)
+
 ## 주요 기능 설명
 
-### Supervisor Agent
+### Multi-Agent Supervisor (LangGraph)
 
-사용자 질문을 분석하여 적절한 도구(KA 또는 Genie)를 선택:
-- 금융 상품 정보 → Knowledge Assistant (문서 검색)
-- 데이터 분석 쿼리 → Genie Space (SQL 생성)
+사용자 질문을 분석하여 적절한 도구를 선택하고 라우팅:
 
-### Knowledge Assistant
+**라우팅 규칙**
+- 채권 검색, 비교, 수치 분석 → **Genie Space**
+  - 예: "A 등급 채권", "수익률 비교", "만기 조건"
+- 발행사 정보, 회사 소개, 리스크 → **Knowledge Assistant**
+  - 예: "회사 소개", "사업 내용", "신용평가 요인"
+- 복합 질의 → **순차적 도구 호출**
+  - 예: "DL에너지 채권 자세히" → Genie + KA
 
-- PDF 문서를 청킹하여 Vector Search에 인덱싱
-- 사용자 질문에 관련된 문서 조각을 검색
-- Claude 모델로 답변 생성
-- 출처 문서 정보 제공
+### Genie Space (채권 종목 정보)
+
+- **테이블**: `demo_ykko.nh_voice_agent.fundinfo` (28개 채권)
+- **데이터**: 신용등급, 수익률, 만기일, 발행사, 표면금리 등
+- **기능**: 자연어 → SQL 변환, 조건 검색, 비교 분석
+- **Space ID**: `01f128b75fcd1eb8be6fab662cf566f1`
+
+### Knowledge Assistant (채권 상품 설명서)
+
+- **데이터**: 채권 상품 설명서 PDF 문서
+- **내용**: 발행사 소개, 사업 개요, 신용평가 요인, 재무 상황, 리스크
+- **기능**: PDF 청킹 → Vector Search → RAG 생성
+- **Endpoint**: `ka-69e8398a-endpoint`
 
 ### Voice Interface
 
@@ -167,10 +197,45 @@ LOG_LEVEL=INFO
 
 ## 문서
 
+- [DEPLOYMENT.md](DEPLOYMENT.md) - **배포 가이드 및 테스트 방법** ⭐
+- [multi_agent_supervisor_prompt.md](multi_agent_supervisor_prompt.md) - Supervisor 프롬프트 상세
+- [genie_space_config.md](genie_space_config.md) - Genie Space 구성 가이드
 - [TTS_GUIDE.md](TTS_GUIDE.md) - Text-to-Speech 설정 가이드
 - [1_rag_pipeline/README.md](1_rag_pipeline/README.md) - RAG 파이프라인 상세
 - [2_agent/README.md](2_agent/README.md) - Agent 구현 상세
 - [3_voice_app/README.md](3_voice_app/README.md) - Voice App 상세
+
+## 배포 상태
+
+### ✅ 완료된 구성
+
+1. **데이터 준비**
+   - ✓ 채권 종목 테이블 생성 (`demo_ykko.nh_voice_agent.fundinfo`)
+   - ✓ 28개 채권 샘플 데이터 입력
+   - ✓ 채권 상품 설명서 PDF 문서 업로드
+
+2. **Genie Space**
+   - ✓ Space 생성 완료 (ID: `01f128b75fcd1eb8be6fab662cf566f1`)
+   - ✓ 테이블 연결 및 Instructions 구성
+   - ✓ Sample Questions 등록
+
+3. **Knowledge Assistant**
+   - ✓ Vector Index 생성
+   - ✓ Serving Endpoint 배포 (`ka-69e8398a-endpoint`)
+   - ✓ RAG 기능 테스트 완료
+
+4. **Multi-Agent Supervisor**
+   - ✓ LangGraph 기반 Supervisor Agent 구현
+   - ✓ Genie Tool & Knowledge Assistant Tool 구현
+   - ✓ 채권 도메인 특화 라우팅 로직 구현
+   - ✓ Databricks Workspace에 배포
+
+### 📋 다음 단계
+
+- [ ] Databricks 노트북에서 통합 테스트
+- [ ] Voice App과 연동
+- [ ] 복합 질의 처리 개선 (순차적 도구 호출)
+- [ ] 수익 계산 로직 추가
 
 ## 라이선스
 

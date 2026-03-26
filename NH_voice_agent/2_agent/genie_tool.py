@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 from typing import Dict, Optional
 import logging
+import requests
 
 # Add parent directory to path
 sys.path.append(str(Path(__file__).parent.parent))
@@ -49,12 +50,13 @@ class GenieSpaceTool:
 
         logger.info(f"GenieSpaceTool initialized with space_id: {self.space_id}")
 
-    def query(self, question: str) -> Dict:
+    def query(self, question: str, conversation_id: str = None) -> Dict:
         """
         Genie Space에 질문
 
         Args:
             question: 자연어 질문
+            conversation_id: 대화 ID (follow-up 질문 시)
 
         Returns:
             쿼리 결과
@@ -62,30 +64,85 @@ class GenieSpaceTool:
         try:
             logger.info(f"Querying Genie: '{question}'")
 
-            # TODO: Implement actual Genie Space query
-            # Using Databricks SDK or REST API
+            # Construct REST API URL
+            url = f"https://{config.DATABRICKS_HOST}/api/2.0/genie/spaces/{self.space_id}/start-conversation"
 
-            # Placeholder response
-            result = {
-                "question": question,
-                "sql": "SELECT * FROM sales_data LIMIT 5",
-                "result": [
-                    {"product": "상품 A", "sales": 1000},
-                    {"product": "상품 B", "sales": 800},
-                    {"product": "상품 C", "sales": 600}
-                ],
-                "summary": f"'{question}'에 대한 분석 결과입니다."
+            headers = {
+                "Authorization": f"Bearer {config.DATABRICKS_TOKEN}",
+                "Content-Type": "application/json"
             }
 
-            logger.info("Query successful")
-            return result
+            payload = {
+                "content": question
+            }
+
+            # Follow-up 질문인 경우
+            if conversation_id:
+                url = f"https://{config.DATABRICKS_HOST}/api/2.0/genie/spaces/{self.space_id}/conversations/{conversation_id}/messages"
+
+            # API 호출
+            import requests
+            response = requests.post(url, headers=headers, json=payload, timeout=120)
+
+            if response.status_code != 200:
+                logger.error(f"Genie API error: {response.status_code} - {response.text}")
+                return {
+                    "error": f"API error: {response.status_code}",
+                    "question": question
+                }
+
+            result_data = response.json()
+            logger.info(f"Genie response received: {result_data.get('conversation_id', 'N/A')}")
+
+            # 응답 파싱
+            return self._parse_genie_response(result_data, question)
 
         except Exception as e:
             logger.error(f"Error querying Genie: {e}")
+            import traceback
+            logger.error(f"Traceback: {traceback.format_exc()}")
             return {
                 "error": str(e),
                 "question": question
             }
+
+    def _parse_genie_response(self, response: Dict, question: str) -> Dict:
+        """
+        Genie API 응답 파싱
+
+        Args:
+            response: API 응답
+            question: 원본 질문
+
+        Returns:
+            파싱된 결과
+        """
+        result = {
+            "question": question,
+            "conversation_id": response.get("conversation_id"),
+            "message_id": response.get("id"),
+        }
+
+        # SQL 쿼리 추출
+        if "attachments" in response:
+            for attachment in response.get("attachments", []):
+                if attachment.get("query"):
+                    query_info = attachment["query"]
+                    result["sql"] = query_info.get("query")
+                    result["description"] = query_info.get("description", "")
+
+                    # 쿼리 결과 추출
+                    if "result" in query_info:
+                        query_result = query_info["result"]
+                        result["columns"] = [col.get("name") for col in query_result.get("schema", {}).get("columns", [])]
+                        result["data"] = query_result.get("data_array", [])
+                        result["row_count"] = query_result.get("row_count", 0)
+
+        # 텍스트 응답 추출
+        result["text_response"] = response.get("content", "")
+        result["status"] = response.get("status", "UNKNOWN")
+
+        return result
 
     def format_result(self, result: Dict) -> str:
         """
